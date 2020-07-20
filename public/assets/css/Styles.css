@@ -1,0 +1,105 @@
+﻿.item-image {
+    height: 100px;
+    width: auto;
+}
+
+.popupModal {
+    position: absolute;
+    width: 59%;
+    top: 15%;
+    left: 24%;
+    background: white;
+    box-shadow: 2px 5px 16px 10px grey;
+    animation-name: hieuung;
+    animation-duration: 2s;
+}
+
+@keyframes hieuung {
+    0% {
+        top: 0%;
+        left: 24%;
+    }
+    100% {
+        top: 15%;
+        left: 24%;
+    }
+}
+
+
+/*Style input*/
+
+[type=radio],
+[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+/**
+ * Giving Checkbox & Radio not checked a new appearance
+ */
+
+[type=radio],
+[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    border: solid 1px #cccccc;
+    margin-right: 8px;
+    position: relative;
+}
+
+
+/**
+ * Giving Checkbox & Radio checked state a new appearance
+ */
+
+[type=radio]:checked::before,
+[type=checkbox]:checked::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: #3f6ad8;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+
+/**
+ * Rounding Radio inputs new appearance
+ */
+
+[type=radio],
+[type=radio]:checked::before {
+    border-radius: 100%;
+}
+
+#myid2 {
+    display: block;
+    width: 200px;
+    height: auto;
+}
+
+#myid {
+    border-radius: 10px;
+    padding: 5px 5px;
+}
+.button-large-edit {
+    margin-right: 8px;
+    width: 85px;
+}
+.button-large-delete {
+    width: 85px;
+}
+@media screen and ( max-width:1024px ){
+    .button-large-delete {
+        margin-top: 8px;
+        width: 85px;
+    }
+    .button-large-edit {
+        margin-top: 8px;
+        margin-right: 0px;
+        
+    }
+}
