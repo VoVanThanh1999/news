@@ -1,11 +1,11 @@
 <?php 
-class Posts {
+class posts {
     private $id;
     private $category_id;
     private $title;
     private $intro;
     private $content;
-    private $imaga;
+    private $images = array();
     private $tag;
     private $description;
     private $count_conment;
@@ -36,9 +36,9 @@ class Posts {
         return $this->content;
     }
 
-    public function getImaga()
+    public function getImages()
     {
-        return $this->imaga;
+        return $this->images;
     }
 
     public function getTag()
@@ -91,9 +91,9 @@ class Posts {
         $this->content = $content;
     }
 
-    public function setImaga($imaga)
+    public function setImages($images)
     {
-        $this->imaga = $imaga;
+        $this->images = $images;
     }
 
     public function setTag($tag)
@@ -120,6 +120,9 @@ class Posts {
     {
         $this->active = $active;
     }
+
+
+    
 
     
 }

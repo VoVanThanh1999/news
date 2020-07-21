@@ -5,8 +5,8 @@ class model_and_view_admin {
         return new $model();
     }
     
-    public function view($view,$data = []){
-        $datas = $data;
+    public function view($view){
+//        $datas = $data;
         require_once '../public/views/admins/'.$view.'.php';
     }
 }
