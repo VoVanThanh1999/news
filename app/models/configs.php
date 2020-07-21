@@ -1,5 +1,5 @@
 <?php 
-class Configs{
+class configs{
     private $id;
     private $title;
     private $config_key;

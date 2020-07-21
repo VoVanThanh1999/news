@@ -1,5 +1,5 @@
 <?php 
-class Categories{
+class categories{
     private $id;
     private $name;
     private $tag;

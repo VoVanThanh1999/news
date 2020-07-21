@@ -1,6 +1,4 @@
 <?php
-
-
 class model_and_view_newscate
 {
     public function model($model){
