@@ -8,7 +8,7 @@ include_once('../public/views/Share/Header.php');
 include_once('../public/views/Share/Menu.php');
 ?>
 <!--            End menu share-->
-<div class="pt-4 pl-5">
+<div class="pt-4 pl-4">
     <div class="app-page-title">
         <div class="page-title-wrapper">
             <div class="page-title-heading">

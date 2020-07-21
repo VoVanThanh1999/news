@@ -66,7 +66,7 @@
                                     <a href="ForgotPassword" class="btn-lg btn btn-link">Recover Password</a>
                                 </div>
                                 <div class="float-right">
-                                    <button class="btn btn-primary btn-lg">Login to Dashboard</button>
+                                    <button class="btn btn-primary btn-lg" onclick="Login()">Login to Dashboard</button>
                                 </div>
                             </div>
                         </div>
@@ -77,6 +77,11 @@
         </div>
     </div>
 </div>
+<script>
+    function Login() {
+        location.href ="index";
+    }
+</script>
 <script type="text/javascript" src="/news/public/assets/js/main.js"></script>
 <script src="/news/public/assets/js/site.js" asp-append-version="true"></script>
 </body>
