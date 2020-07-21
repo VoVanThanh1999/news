@@ -20,5 +20,13 @@ class admin extends model_and_view_admin{
     function NewsCateEdit() {
         $this->view('NewsCateEdit',"");
     }
-
+    function Login() {
+        $this->view('Login',"");
+    }
+    function Register() {
+        $this->view('Register',"");
+    }
+    function ForgotPassword() {
+        $this->view('ForgotPassword',"");
+    }
 }
