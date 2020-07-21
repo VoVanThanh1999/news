@@ -4,8 +4,8 @@ class model_and_view_admin {
         require_once '../app/models/'.$model.'.php';
         return new $model();
     }
-    public function view($view){
-//        $datas = $data;
+    public function view($view, $data){
+        $datas = $data;
         require_once '../public/views/admins/'.$view.'.php';
     }
 }

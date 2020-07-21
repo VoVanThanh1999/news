@@ -1,11 +1,11 @@
 <!--------------------- Heade share -------------->
 <?php
-include_once('../Share/header.php');
+include_once('../public/views/Share/Header.php');
 ?>
 <!------------------ End  Heade share -------------->
 <!-- ----------------menu share---------------------->
 <?php
-include_once('../Share/menu.php');
+include_once('../public/views/Share/Menu.php');
 ?>
 <!--            End menu share-->
 <div class="pt-4 pl-4">
@@ -16,7 +16,7 @@ include_once('../Share/menu.php');
                     <i class="pe-7s-cash icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>
-                   Add NewsCate
+                    Edit NewsCate
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@ include_once('../Share/menu.php');
                     <td>
                         <input type="submit" value="Save" class="btn btn-success btn-shadow text-white mr-3 col-3" />
                         <a href="javascript:void(0)" onclick="Reset()" class="btn btn-warning btn-shadow text-white  align-self-center mr-3 col-3  pt-2"><span>Reset</span> </a>
-                        <a href="../NewsCate/index.php" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
+                        <a href="NewsCateGetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
                     </td>
                 </tr>
                 </tbody>
@@ -79,7 +79,7 @@ include_once('../Share/menu.php');
 </script>
 <!-- -------- Footer share -------------- -->
 <?php
-include_once('../Share/footer.php');
+include_once('../public/views/Share/Footer.php');
 ?>
 <!-- ---------------End footer share --------------->
 
