@@ -2144,3 +2144,7 @@ include_once('./views/Share/menu.php');
 include_once('./views/Share/footer.php');
 ?>
 <!-- ---------------End footer share --------------->
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6200470e7ce46f4de107ae441b0309f435975c42
