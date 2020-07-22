@@ -1,11 +1,11 @@
 <!--------------------- Heade share -------------->
 <?php
-include_once('./views/Share/Header.php');
+include_once('../public/views/Share/Header.php');
 ?>
 <!------------------ End  Heade share -------------->
 <!-- ----------------menu share---------------------->
 <?php
-include_once('./views/Share/menu.php');
+include_once('../public/views/Share/menu.php');
 ?>
 <!--            End menu share-->
 
@@ -2141,7 +2141,7 @@ include_once('./views/Share/menu.php');
 
 <!-- -------- Footer share -------------- -->
 <?php
-include_once('./views/Share/footer.php');
+include_once('../public/views/Share/footer.php');
 ?>
 <!-- ---------------End footer share --------------->
 <<<<<<< HEAD

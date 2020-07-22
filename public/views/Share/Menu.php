@@ -490,7 +490,7 @@
                     </a>
                     <ul class="mm-collapse">
                         <li >
-                            <a href="../NewsCate/Index.php">
+                            <a href="NewsCateGetAll">
                                 <i class="metismenu-icon pe-7s-box1"></i>NewsCate
                             </a>
                         </li>
