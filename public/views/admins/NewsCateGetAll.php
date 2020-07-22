@@ -67,39 +67,39 @@ include_once('../public/views/Share/Menu.php');
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    foreach ($data as $value){
-                    ?>
-                    <tr role="row" class="odd">
-                        <td tabindex="0" class="sorting_1"><?=$value->id?></td>
-                        <td><?=$value->name?></td>
-                        <td><?=$value->tag?></td>
-                        <td><?=$value->description?></td>
-                        <td><?=$value->icon?></td>
-                        <td><?=$value->slug?></td>
-                        <td class="text-center">
-                        <?php
-                            if($value->active == 1){
-                               ?>
-                                <input type="checkbox"  id="exampleCheck1" checked="checked">
-                                <?php
-                            }
-                            else{
-                        ?>
-                                <input type="checkbox"  id="exampleCheck1">
-                            <?php
-                            }
-                            ?>
-                        </td>
-                        <td class="text-center"><a class="btn btn-primary btn-shadow text-white button-large-edit"
-                                                   href="NewsCateEdit">Edit <i class="fas fa-edit"></i> </a> <a
-                                    class="btn btn-warning btn-shadow text-white button-large-delete"
-                                    href="javascript:void(0);" onclick="DeleteRecord()">Del <i class="fas fa-trash"></i></a>
-                        </td>
-                    </tr>
-                        <?php
-                    }
-                    ?>
+<!--                    --><?php
+//                    foreach ($data as $value){
+//                    ?>
+<!--                    <tr role="row" class="odd">-->
+<!--                        <td tabindex="0" class="sorting_1">--><?//=$value->id?><!--</td>-->
+<!--                        <td>--><?//=$value->name?><!--</td>-->
+<!--                        <td>--><?//=$value->tag?><!--</td>-->
+<!--                        <td>--><?//=$value->description?><!--</td>-->
+<!--                        <td>--><?//=$value->icon?><!--</td>-->
+<!--                        <td>--><?//=$value->slug?><!--</td>-->
+<!--                        <td class="text-center">-->
+<!--                        --><?php
+//                            if($value->active == 1){
+//                               ?>
+<!--                                <input type="checkbox"  id="exampleCheck1" checked="checked">-->
+<!--                                --><?php
+//                            }
+//                            else{
+//                        ?>
+<!--                                <input type="checkbox"  id="exampleCheck1">-->
+<!--                            --><?php
+//                            }
+//                            ?>
+<!--                        </td>-->
+<!--                        <td class="text-center"><a class="btn btn-primary btn-shadow text-white button-large-edit"-->
+<!--                                                   href="NewsCateEdit">Edit <i class="fas fa-edit"></i> </a> <a-->
+<!--                                    class="btn btn-warning btn-shadow text-white button-large-delete"-->
+<!--                                    href="javascript:void(0);" onclick="DeleteRecord()">Del <i class="fas fa-trash"></i></a>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                        --><?php
+//                    }
+//                    ?>
                     </tbody>
                 </table>
             </div>
