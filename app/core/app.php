@@ -6,7 +6,7 @@ class app {
     public	$params = [];
     
     function __construct( ){
-        $url = $this->parseUrl();        
+        $url = $this->parseUrl();
         $this->controllers = file_exists('../app/controllers/'.$url[0].'.php')?$url[0]:'home';
         unset($url[0]);
         require_once '../app/controllers/'.$this->controllers. '.php';

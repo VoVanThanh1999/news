@@ -8,6 +8,16 @@ class Categories{
     private $slug;
     private $active;
     
+//    public function __construct($id, $name, $tag, $description, $icon, $slug, $active)
+//    {
+//        $this->id = $id;
+//        $this->name = $name;
+//        $this->tag = $tag;
+//        $this->description = $description;
+//        $this->icon = $icon;
+//        $this->slug = $slug;
+//        $this->active = $active;
+//    }
     public function getId()
     {
         return $this->id;
@@ -77,6 +87,22 @@ class Categories{
     {
         $this->active = $active;
     }
+}
+class categoriesModel
+{
+    public $mysql;
 
-    
+    public function __construct()
+    {
+        $this->mysql = new mysqli(localhostss, root, '', categories) or die("Lỗi kết nối đến sever");
+    }
+    function getAll(){
+        $query = "SELECT * FROM categories";
+        $result = $this->mysql->query($query);
+        $data = [];
+        foreach ($result->fetch_all() as $value){
+            array_push($data, new Categories($value[0], $value[1], $value[2], $value[3], $value[4], $value[5], $value[6]));
+        }
+        return $data;
+    }
 }
