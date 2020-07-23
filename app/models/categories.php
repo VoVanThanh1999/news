@@ -8,11 +8,7 @@ class Categories
     public $icon;
     public $slug;
     public $active;
-<<<<<<< HEAD
 
-    public function __construct($id, $name, $description,$tag,$icon,$slug,$active)
-=======
-    
     public function __construct($id, $name,$tag,$description,$icon,$slug,$active)
     {
         $this->id = $id;
@@ -60,16 +56,44 @@ class Categories
     }
 
     public function setId($id)
->>>>>>> 02fb75f08abd2b3b55e811da5fb3c93040a1322e
     {
         $this->id = $id;
+    }
+
+    public function setName($name)
+    {
         $this->name = $name;
+    }
+
+    public function setTag($tag)
+    {
         $this->tag = $tag;
+    }
+
+    public function setDescription($description)
+    {
         $this->description = $description;
+    }
+
+    public function setIcon($icon)
+    {
         $this->icon = $icon;
+    }
+
+    public function setSlug($slug)
+    {
         $this->slug = $slug;
+    }
+
+    public function setActive($active)
+    {
         $this->active = $active;
     }
+
+
+
+
+
 }
 class CategoriesModel{
     private $mysql;
@@ -87,29 +111,4 @@ class CategoriesModel{
         }
         return $data;
     }
-<<<<<<< HEAD
-=======
-
-
-    
-    
-    
-}
-class CategoriesModel{
-    private $mysql;
-    public function __construct()
-    {
-        $this->mysql = new mysqli(hostname, username, password, dbname);
-    }
-    function GetAll()
-    {
-        $query = "SELECT * FROM categories";
-        $result = $this->mysql->query($query);
-        $data = [];
-        foreach ($result->fetch_all() as $item) {
-            array_push($data, new Categories($item[0], $item[1], $item[2], $item[3], $item[4], $item[5], $item[6]));
-        }
-        return $data;
-    }
->>>>>>> 02fb75f08abd2b3b55e811da5fb3c93040a1322e
 }
