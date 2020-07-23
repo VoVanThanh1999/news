@@ -1,3 +1,9 @@
+<?php
+session_start();
+if($_SESSION["name"] == null){
+    header('location: /news/public/login/login');
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,10 +20,6 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <!-- CSS -->
-    <!-- JavaScript -->
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
@@ -26,8 +28,9 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <script src="/news/public/assets/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/news/public/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="/news/public/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link href="/news/public/assets/lib/datatables/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
     <link href="/news/public/assets/lib/datatables/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet"/>
@@ -82,7 +85,7 @@
                     <div class="widget-content p-0">
                         <div class="widget-content-wrapper">
                             <div class="widget-content-left">
-                                <div class="btn-group">
+                                <div class="btn-group ">
                                     <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                        class="p-0 btn">
                                         <img width="42" class="rounded-circle"
@@ -90,31 +93,22 @@
                                              alt="">
                                         <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                     </a>
-                                    <div tabindex="-1" role="menu" aria-hidden="true"
-                                         class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
+                                    <div tabindex="-1" role="group" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right " style="">
                                         <div class="dropdown-menu-header">
                                             <div class="dropdown-menu-header-inner bg-info">
-                                                <div class="menu-header-image opacity-2"
-                                                     style="background-image: url('/Project/assets/images/dropdown-header/city3.jpg');">
-                                                </div>
+                                                <div class="menu-header-image opacity-2" ></div>
                                                 <div class="menu-header-content text-left">
                                                     <div class="widget-content p-0">
                                                         <div class="widget-content-wrapper">
                                                             <div class="widget-content-left mr-3">
-                                                                <img width="42" class="rounded-circle"
-                                                                     src="assets/images/avatars/1.jpg" alt="">
+                                                                <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
                                                             </div>
                                                             <div class="widget-content-left">
                                                                 <div class="widget-heading">Alina Mcloughlin</div>
-                                                                <div class="widget-subheading opacity-8">A short
-                                                                    profile description
-                                                                </div>
+                                                                <div class="widget-subheading opacity-8">A short profile description</div>
                                                             </div>
                                                             <div class="widget-content-right mr-2">
-                                                                <button
-                                                                        class="btn-pill btn-shadow btn-shine btn btn-focus">
-                                                                    Logout
-                                                                </button>
+                                                                <button class="btn-pill btn-shadow btn-shine btn btn-focus">Logout</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -131,8 +125,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="javascript:void(0);" class="nav-link">Recover
-                                                            Password</a>
+                                                        <a href="javascript:void(0);" class="nav-link">Recover Password</a>
                                                     </li>
                                                     <li class="nav-item-header nav-item">My Account
                                                     </li>
@@ -150,7 +143,7 @@
                                                         <a href="javascript:void(0);" class="nav-link">Logs</a>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
                                         </div>
                                         <ul class="nav flex-column">
                                             <li class="nav-item-divider mb-0 nav-item"></li>
@@ -158,18 +151,13 @@
                                         <div class="grid-menu grid-menu-2col">
                                             <div class="no-gutters row">
                                                 <div class="col-sm-6">
-                                                    <button
-                                                            class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-warning">
-                                                        <i
-                                                                class="pe-7s-chat icon-gradient bg-amy-crisp btn-icon-wrapper mb-2"></i>
-                                                        Message Inbox
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-warning">
+                                                        <i class="pe-7s-chat icon-gradient bg-amy-crisp btn-icon-wrapper mb-2"></i> Message Inbox
                                                     </button>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <button
-                                                            class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger">
-                                                        <i
-                                                                class="pe-7s-ticket icon-gradient bg-love-kiss btn-icon-wrapper mb-2"></i>
+                                                    <button class="btn-icon-vertical btn-transition btn-transition-alt pt-2 pb-2 btn btn-outline-danger">
+                                                        <i class="pe-7s-ticket icon-gradient bg-love-kiss btn-icon-wrapper mb-2"></i>
                                                         <b>Support Tickets</b>
                                                     </button>
                                                 </div>
@@ -179,16 +167,15 @@
                                             <li class="nav-item-divider nav-item">
                                             </li>
                                             <li class="nav-item-btn text-center nav-item">
-                                                <button class="btn-wide btn btn-primary btn-sm"> Open Messages
-                                                </button>
+                                                <button class="btn-wide btn btn-primary btn-sm"> Open Messages </button>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="widget-content-left  ml-3 header-user-info">
-                                <div class="widget-heading"> Alina Mclourd</div>
-                                <div class="widget-subheading"> VP People Manager</div>
+                                <div class="widget-heading"> <?php print_r( $_SESSION["name"])?></div>
+                                <div class="widget-subheading"><a href="/news/public/login/logout">Logout</a></div>
                             </div>
                         </div>
                     </div>
