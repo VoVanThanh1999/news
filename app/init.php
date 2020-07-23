@@ -14,3 +14,5 @@ require_once 'models/contacts.php';
 require_once 'models/configs.php';
 require_once 'models/comments.php';
 require_once 'models/categories.php';
+require_once 'repository/categories_repository.php';
+require_once 'controllers/categoires_controller.php';

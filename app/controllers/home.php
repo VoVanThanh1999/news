@@ -2,11 +2,20 @@
 include_once '../app/init.php';
 
 class home extends model_and_view_user {
-    public function  index($user,$lever) {
-        echo $user." ".$lever;
-        $this->view('trangchu',"");
+    
+    
+    public function  index() {
+        $categoriesDao = new categories_repository();
+        $categories[] = $categoriesDao->getAll();
+        $this->view('trangchu', $categories);
     }
-    public  function pages(){
-        echo  'pages';
+    public  function pages($page){
+        
+        echo  $page;
+    }
+    public function test($param){
+        $this->view('trangchu',$param);
+       
+ 
     }
 }
