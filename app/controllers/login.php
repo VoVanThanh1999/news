@@ -10,7 +10,6 @@ class login extends model_and_view_login
     function index()
     {
         $this->view('login', "");
-
     }
     function CheckLogin()
     {
@@ -74,5 +73,11 @@ class login extends model_and_view_login
                 header('location: Register?error=1');
             }
         }
+    }
+    function ForgotPassword(){
+        $this->view('ForgotPassword', "");
+    }
+    function SubmitForgotPass(){
+
     }
 }
