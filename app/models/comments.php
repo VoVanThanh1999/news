@@ -1,11 +1,11 @@
 <?php 
 class comments{
-    private $id;
-    private $user_id;
-    private $post_id;
-    private $content;
-    private $status;
-    private $active;
+    public $id;
+    public $user_id;
+    public $post_id;
+    public $content;
+    public $status;
+    public $active;
     public function getId()
     {
         return $this->id;

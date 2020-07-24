@@ -1,14 +1,14 @@
 <?php 
 class contacts{
     
-    private $id;
-    private $full_name;
-    private $email;
-    private $phone_number;
-    private $title;
-    private $content;
-    private $status;
-    private $active;
+    public $id;
+    public $full_name;
+    public $email;
+    public $phone_number;
+    public $title;
+    public $content;
+    public $status;
+    public $active;
     public function getId()
     {
         return $this->id;

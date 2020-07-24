@@ -1,11 +1,11 @@
 <?php 
 class users {
-    private $id;
-    private $name;
-    private $email;
-    private $pass_word;
-    private $gender;
-    private $date_of_birth;
+    public $id;
+    public $name;
+    public $email;
+    public $pass_word;
+    public $gender;
+    public $date_of_birth;
     
     public function getId()
     {

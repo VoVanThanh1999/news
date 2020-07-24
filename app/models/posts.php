@@ -1,23 +1,43 @@
 <?php 
 class posts {
-    private $id;
-    private $category_id;
-    private $title;
-    private $intro;
-    private $content;
-    private $images = array();
-    private $tag;
-    private $description;
-    private $count_conment;
-    private $slug;
-    private $active;
+    public $id;
+    public $category_id;
+    public $title;
+    public $intro;
+    public $content;
+    public $images;
+    public $tag;
+    public $description;
+    public $count_conment;
+    public $slug;
+    public $active;
+    
+    function posts() {
+        
+    }
+    
+    function  __construct($id,$category_id,$title,$intro,$content,$images,$tag,$description,$count_conment,$slug,$active) {
+        $this->id=$id;
+        $this->category_id=$category_id;
+        $this->title=$title;
+        $this->intro=$intro;
+        $this->content=$content;
+        $this->images=$images;
+        $this->tag=$tag;
+        $this->count_conment=$count_conment;
+        $this->description=$description;
+        $this->slug=$slug;
+        $this->active = $active;
+    }
+    
     public function getId()
     {
         return $this->id;
     }
 
     public function getCategory_id()
-    {
+    {   
+        
         return $this->category_id;
     }
 
@@ -121,7 +141,8 @@ class posts {
         $this->active = $active;
     }
 
-
+    
+    
     
 
     
