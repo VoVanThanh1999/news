@@ -1,11 +1,11 @@
 <?php 
 class configs{
-    private $id;
-    private $title;
-    private $config_key;
-    private $config_value;
-    private $description;
-    private $active;
+    public $id;
+    public $title;
+    public $config_key;
+    public $config_value;
+    public $description;
+    public $active;
     public function getId()
     {
         return $this->id;
