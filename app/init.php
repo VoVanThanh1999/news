@@ -16,3 +16,6 @@ require_once 'models/comments.php';
 require_once 'models/categories.php';
 require_once 'repository/categories_repository.php';
 require_once 'controllers/categoires_controller.php';
+require_once 'core/model_and_view_login.php';
+require_once 'repository/user_repository.php';
+require_once 'controllers/login.php';

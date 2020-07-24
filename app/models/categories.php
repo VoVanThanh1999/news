@@ -8,7 +8,7 @@ class Categories
     public $icon;
     public $slug;
     public $active;
-    
+
     public function __construct($id, $name,$tag,$description,$icon,$slug,$active)
     {
         $this->id = $id;
@@ -91,9 +91,9 @@ class Categories
     }
 
 
-    
-    
-    
+
+
+
 }
 class CategoriesModel{
     private $mysql;
