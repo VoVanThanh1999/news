@@ -6,6 +6,16 @@ class comments{
     public $content;
     public $status;
     public $active;
+    
+    public function __construct($id,$user_id,$post_id,$content,$status,$active){
+        $this->id=$id;
+        $this->user_id=$user_id;
+        $this->post_id=$post_id;
+        $this->content=$content;
+        $this->status=$status;
+        $this->active=$active;
+    }
+    
     public function getId()
     {
         return $this->id;
