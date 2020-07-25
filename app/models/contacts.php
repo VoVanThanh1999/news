@@ -8,7 +8,6 @@ class contacts{
     public $content;
     public $status;
     public $active;
-
     public function __construct($id, $full_name, $email, $phone_number, $title, $content, $status, $active)
     {
         $this->id = $id;

@@ -5,9 +5,26 @@ class categories_repository {
     public function __construct(){
         $this->mysql = new mysqli(hostname, username, password, dbname);
     }
-  
-   
+
+     
     function getAll(){
+    }
+    function getById($id){
+        $query = "SELECT * FROM categories where id = ".$id."";
+        $result = $this->mysql->query($query);
+        $categories;
+        while($row = $result->fetch_assoc()) {
+            $categories =  new Categories($row['id'], $row['name'], $row['tag'], $row['description'], $row['icon'], $row['slug'], $row['active']);
+        }
+        if(isset($categories)){
+            return  $categories ;
+        }
+        return null;
+        
+    }
+    
+    function   getAll(){
+
         $query = "SELECT * FROM categories";
         $result = $this->mysql->query($query);
         $data = [];

@@ -1,11 +1,21 @@
 <?php 
 class comments{
-    private $id;
-    private $user_id;
-    private $post_id;
-    private $content;
-    private $status;
-    private $active;
+    public $id;
+    public $user_id;
+    public $post_id;
+    public $content;
+    public $status;
+    public $active;
+    
+    public function __construct($id,$user_id,$post_id,$content,$status,$active){
+        $this->id=$id;
+        $this->user_id=$user_id;
+        $this->post_id=$post_id;
+        $this->content=$content;
+        $this->status=$status;
+        $this->active=$active;
+    }
+    
     public function getId()
     {
         return $this->id;
