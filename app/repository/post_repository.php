@@ -12,7 +12,6 @@ class post_repository
     }
 
     function getById($id){
-    
         $query =" SELECT * FROM post WHERE id = ".$id ." ";
         $result = $this->mysql->query($query);
         $post;
@@ -20,11 +19,11 @@ class post_repository
             while($row = $result->fetch_assoc()) {
                 $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active']);
             }
-        } else {
-            echo "0 results";
+        } 
+        if (isset($post)) {
+            return $post;
         }
-     
-        return $post;
+        return null;
     }
 
     function deleteById($id){
@@ -68,5 +67,18 @@ class post_repository
     }
 
     function getAll()
-    {}
+    {
+        $query =" SELECT * FROM post  ";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active']);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+        
+        
+    }
 }

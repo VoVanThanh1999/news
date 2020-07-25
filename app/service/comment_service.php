@@ -5,24 +5,21 @@ include_once '../app/init.php';
  * 
  */
 class comment_service {
-    private $userDAO ;
-    private $postDAO;
-    private $commentDAO;
-    
-    function __construct() {
-       $this->userDAO = new user_repository();
-       $this->postDAO = new post_repository();
-       $this->commentDAO = new comment_repository();
-    }
+   
     
     public function createComment(comments $cm){
-        if ($this->userDAO->getById($cm->getUser_id()) && $this->postDAO->getById($cm->getPost_id())) {
-            $this->commentDAO->saveOrUpdate($cm);
-        }   
+        $userDAO = new user_repository();
+        $postDAO = new post_repository();
+        $commentDAO = new comments_repository();
+        if ($userDAO->getById($cm->getUser_id())!=null && $postDAO->getById($cm->getPost_id()) != null) {
+            return $commentDAO->saveOrUpdate($cm);
+        }
+        return false;
     }
     
     public function activeCommentById($id){
-        $comment = $this->commentDAO->getById($id);
+        $commentDAO = new comments_repository();
+        $comment = $commentDAO->getById($id);
         if (isset($comment)){
             $comment->setActive(1);
             $commentDAO->saveOrUpdate($comment);
@@ -30,8 +27,12 @@ class comment_service {
     }
     
     public function deleteComment($id){
-        $this->commentDAO->deleteById($id);
+        $commentDAO = new comments_repository();
+        $commentDAO->deleteById($id);
     }
+    
+    
+    
     
    
   
