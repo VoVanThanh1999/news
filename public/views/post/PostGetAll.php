@@ -8,7 +8,7 @@ include_once('../public/views/Share/Header.php');
 include_once('../public/views/Share/Menu.php');
 ?>
 <!--            End menu share-->
-<div class="pt-4 pl-4">
+<div class="pb-4 ">
     <div class="app-page-title">
         <div class="page-title-wrapper">
             <div class="page-title-heading">
@@ -51,14 +51,12 @@ include_once('../public/views/Share/Menu.php');
                         <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                             aria-label="Browser: activate to sort column ascending">Title
                         </th>
-                        <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                            aria-label="Platform(s): activate to sort column ascending">Introl
-                        </th>
+
                         <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                             aria-label="Engine version: activate to sort column ascending">Images
                         </th>
                         <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                            aria-label="Engine version: activate to sort column ascending">Tag
+                            aria-label="Engine version: activate to sort column ascending" >Tag
                         </th>
                         <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                             aria-label="Engine version: activate to sort column ascending">Description
@@ -69,40 +67,41 @@ include_once('../public/views/Share/Menu.php');
                         <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                             aria-label="Engine version: activate to sort column ascending">active
                         </th>
-                        <th class="text-center" style="width: 150px">Action</th>
+                        <th class="text-center" >Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                    foreach ($posts as $value){
+                    foreach ($data as $value){
                     ?>
                     <tr role="row" class="odd">
                         <td tabindex="0" class="sorting_1"><?=$value->id?></td>
                         <td><?=$value->category_id?></td>
                         <td><?=$value->title?></td>
-                        <td><?=$value->introl?></td>
-                        <td><?=$value->images?></td>
-                        <td><?=$value->tag?></td>
+                        <td><span><?=$value->images?></span></td>
+                        <td style="width: 100px;display: -webkit-box; -webkit-box-orient: vertical;"><?=$value->tag?></td>
                         <td><?=$value->description?></td>
-                        <td><?=$value->slug?></td>
+                        <td style="width: 100px;display: -webkit-box; -webkit-box-orient: vertical;"><?=$value->slug?></td>
                         <td class="text-center">
                         <?php
                             if($value->active == 1){
                                ?>
-                                <input type="checkbox"  id="exampleCheck1" checked="checked">
+                                <input type="checkbox"  id="exampleCheck1" checked="checked" disabled>
                                 <?php
                             }
                             else{
                         ?>
-                                <input type="checkbox"  id="exampleCheck1">
+                                <input type="checkbox"  id="exampleCheck1" disabled>
                             <?php
                             }
                             ?>
                         </td>
-                        <td class="text-center"><a class="btn btn-primary btn-shadow text-white button-large-edit"
-                                                   href="NewsCateEdit">Edit <i class="fas fa-edit"></i> </a> <a
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-shadow text-white button-large-edit"
+                                                   href="getById/<?=$value->id?>">Edit <i class="fas fa-edit"></i> </a> <a
                                     class="btn btn-warning btn-shadow text-white button-large-delete"
                                     href="javascript:void(0);" onclick="DeleteRecord()">Del <i class="fas fa-trash"></i></a>
+
                         </td>
                     </tr>
                         <?php

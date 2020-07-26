@@ -1,5 +1,5 @@
 <?php 
-class  post_controller extends model_and_view_admin{
+class  post_controller extends model_and_view_post {
     function createPost(){
         $flag = false;
         $image = "";
@@ -35,7 +35,7 @@ class  post_controller extends model_and_view_admin{
         $category_id = $_POST['category_id'];
         $title = $_POST['title'];
         $intro = $_POST['intro'];
-        $content = $_POST['content'];
+            $content = $_POST['content'];
         $tag = $_POST['tag'];
         $description = $_POST['description'];
         $post_sv=new post_service();
@@ -61,13 +61,13 @@ class  post_controller extends model_and_view_admin{
     function getAll(){
         $postDAO = new post_repository();
         $posts = $postDAO->getAll();
-        
+        $this->view('PostGetAll', $posts);
     }
     
     function getById($id) {
         $postDAO = new post_repository();
         $post = $postDAO->getById($id);
-        print_r($post);
+        $this->view('PostEdit', $post);
         
     }
    
