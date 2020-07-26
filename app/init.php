@@ -23,7 +23,7 @@ require_once 'models/categories.php';
 //controller
 require_once 'controllers/categories_controller.php';
 require_once 'controllers/contacts_controller.php';
-require_once 'controllers/categoires_controller.php';
+require_once 'controllers/categories_controller.php';
 require_once 'controllers/comment_admin.php';
 require_once 'controllers/comment_user.php';
 //service
