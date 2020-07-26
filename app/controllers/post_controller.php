@@ -70,6 +70,8 @@ class  post_controller extends model_and_view_post {
         $this->view('PostEdit', $post);
         
     }
-   
+    function ViewAddPost(){
+        $this->view('PostAdd', "");
+    }
     
 }
