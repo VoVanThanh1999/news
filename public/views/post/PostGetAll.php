@@ -97,11 +97,11 @@ include_once('../public/views/Share/Menu.php');
                                     <?php
                                     if ($value->active == 1) {
                                         ?>
-                                        <input type="checkbox" id="exampleCheck1" checked="checked" disabled>
+                                        <input type="checkbox" id="exampleCheck1" onclick="activatePost(<?= $value->id ?>)" checked="checked" >
                                         <?php
                                     } else {
                                         ?>
-                                        <input type="checkbox" id="exampleCheck1" disabled>
+                                        <input type="checkbox" onclick="activatePost(<?= $value->id ?>)" id="exampleCheck1" >
                                         <?php
                                     }
                                     ?>
@@ -129,7 +129,28 @@ include_once('../public/views/Share/Menu.php');
     $(document).ready(function () {
         $('#listData').dataTable();
     });
-
+    function activatePost(id){
+        alertify.confirm('Delete Comfirm', 'Are you sure to active data?', function () {
+            activateRecord(id);
+        }, function () {
+            alertify.error('Cancel')
+        });
+    }
+    function activateRecord(id){
+        $.ajax({
+            type: "DELETE",
+            url: "./activePost/" + id,
+            dataType: "html",
+            success: function (html) {
+                alertify.success('Activate');
+                getAll();
+            },
+            error: function (req, status, error) {
+                alert(error);
+                alertify.error('Please try again');
+            }
+        });
+    }
     function DeleteRecord(id) {
         alertify.confirm('Delete Comfirm', 'Are you sure to delete selected data?', function () {
             DoDelete(id)
