@@ -72,8 +72,8 @@ include_once('../public/views/Share/Menu.php');
                 <tr>
                     <td class="float-right d-flex align-items-start"><label for="Image" class="">Image</label></td>
                     <td>
-                        <input name="images" id="image" type="file" class="form-control-file" onchange="fucHidden()" multiple>
-                        <img id="myid" src="<?=$data->title?>" alt="new image" style="display:none" />
+                        <input name="file" id="file" type="file" class="form-control-file" onchange="fucHidden()" multiple>
+                        <img id="myid" src="" alt="new image" style="display:none" />
                         <img id="myid2" src="/news/public/assets/images/up-img.png" alt="new image" />
                     </td>
                 </tr>
@@ -114,7 +114,7 @@ include_once('../public/views/Share/Menu.php');
                     <td>
                         <input type="submit" value="Save" class="btn btn-success btn-shadow text-white mr-3 col-3" />
                         <a href="" class="btn btn-warning btn-shadow text-white  align-self-center mr-3 col-3  pt-2"><span>Reset</span> </a>
-                        <a href="GetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
+                        <a href="../GetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
                     </td>
                 </tr>
                 </tbody>
@@ -139,7 +139,7 @@ include_once('../public/views/Share/Menu.php');
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#image").change(function () {
+    $("#file").change(function () {
         display(this);
     });
     function fucHidden() {

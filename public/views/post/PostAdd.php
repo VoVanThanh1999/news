@@ -67,7 +67,7 @@ include_once('../public/views/Share/Menu.php');
                 <tr>
                     <td class="float-right d-flex align-items-start"><label for="Image" class="">Image</label></td>
                     <td>
-                        <input name="images" id="image" type="file" class="form-control-file" onchange="fucHidden()" multiple>
+                        <input name="file" id="file" type="file" class="form-control-file" onchange="fucHidden()" multiple>
                         <img id="myid" src="" alt="new image" style="display:none" />
                         <img id="myid2" src="/news/public/assets/images/up-img.png" alt="new image" />
                     </td>

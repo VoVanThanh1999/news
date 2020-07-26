@@ -39,11 +39,14 @@ class categories_repository {
         return $result;
     }
     function getById($id){
-        $query = "SELECT * FROM categories WHERE id = '$id' LIMIT = 1";
+        $query = "SELECT * FROM categories where id = ".$id."";
         $result = $this->mysql->query($query);
-        $datas = $result->fetch_all();
-        if (count($datas)){
-            return new Categories($datas[0][0], $datas[0][1], $datas[0][2], $datas[0][3], $datas[0][4], $datas[0][5], $datas[0][6]);
+        $categories;
+        while($row = $result->fetch_assoc()) {
+            $categories =  new Categories($row['id'], $row['name'], $row['tag'], $row['description'], $row['icon'], $row['slug'], $row['active']);
+        }
+        if(isset($categories)){
+            return  $categories ;
         }
         return null;
     }
