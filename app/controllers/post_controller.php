@@ -1,5 +1,5 @@
 <?php 
-class  post_controller {
+class  post_controller extends model_and_view_admin{
     function createPost(){
         $flag = false;
         $image = "";
@@ -58,6 +58,18 @@ class  post_controller {
         return  $post_sv->activePost($idpost);
     }
     
+    function getAll(){
+        $postDAO = new post_repository();
+        $posts = $postDAO->getAll();
+        
+    }
+    
+    function getById($id) {
+        $postDAO = new post_repository();
+        $post = $postDAO->getById($id);
+        print_r($post);
+        
+    }
    
     
 }

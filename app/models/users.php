@@ -7,6 +7,15 @@ class users {
     public $gender;
     public $date_of_birth;
     
+    public function __construct($id,$name,$email,$pass_word,$gender,$date_of_birth){
+        $this->id=$id;
+        $this->name=$name;
+        $this->email=$email;
+        $this->pass_word=$pass_word;
+        $this->gender=$gender;
+        $this->date_of_birth=$date_of_birth;
+    }
+    
     public function getId()
     {
         return $this->id;
