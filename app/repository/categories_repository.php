@@ -6,7 +6,7 @@ class categories_repository {
         $this->mysql = new mysqli(hostname, username, password, dbname);
     }
 
-    function getById($id){
+     function getById($id){
         $query = "SELECT * FROM categories where id = ".$id."";
         $result = $this->mysql->query($query);
         $categories;
@@ -17,7 +17,6 @@ class categories_repository {
             return  $categories ;
         }
         return null;
-        
     }
     
     function   getAll(){
@@ -45,6 +44,7 @@ class categories_repository {
         $result = $this->mysql->query($query);
         return $result;
     }
+
     function update(Categories $categories){
         $query = "UPDATE categories SET name ='$categories->name', tag = '$categories->tag', description = '$categories->description', icon = '$categories->icon', slug = '$categories->slug', active = '$categories->active',
                    WHERE id = '$categories->id'";

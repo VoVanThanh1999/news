@@ -1,5 +1,6 @@
 <?php 
-class  post_controller extends model_and_view_admin{
+class  post_controller extends model_and_view_post {
+
     function createPost(){
         $flag = false;
         echo "post";
@@ -7,6 +8,7 @@ class  post_controller extends model_and_view_admin{
         $files = $_FILES['file'];
         print_r($files);
         $fileName = $_FILES['file']['name'];
+        echo $fileName;
         $fileTmpName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
         $fileError = $_FILES['file']['error'];
@@ -32,8 +34,8 @@ class  post_controller extends model_and_view_admin{
             }
         }else{
             echo"You cannot upload files of the type";
-        
-        }    
+        }
+        $id = $_POST['id'];
         $category_id = $_POST['category_id'];
         $title = $_POST['title'];
         $intro = $_POST['intro'];
@@ -43,7 +45,14 @@ class  post_controller extends model_and_view_admin{
         $post_sv=new post_service();
         $slug = $post_sv->to_slug($_POST['slug']);
         if ($flag) {
-            $post_sv->createPost(new posts("",$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
+            if($id == ""){
+                $post_sv->createPost(new posts("",$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
+                header('location: ./getAll');
+            }
+            else{
+                $post_sv->createPost(new posts($id,$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
+                header('location: ./getAll');
+            }
         }else{
             echo "bạn phải upload ảnh";
         }
@@ -63,17 +72,18 @@ class  post_controller extends model_and_view_admin{
     function getAll(){
         $postDAO = new post_repository();
         $posts = $postDAO->getAll();
-        
+        $this->view('PostGetAll', $posts);
     }
     
     function getById($id) {
         $postDAO = new post_repository();
         $post = $postDAO->getById($id);
-        print_r($post);
+        $this->view('PostEdit', $post);
         
     }
-    
-    
-    
+   function ViewAddPost(){
+        $this->view('PostAdd', "");
+    }
+
     
 }

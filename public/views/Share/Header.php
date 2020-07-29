@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 if($_SESSION["name"] == null){
+    session_start();
     header('location: /news/public/login/login');
 }
 ?>

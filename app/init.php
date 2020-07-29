@@ -10,7 +10,7 @@ require_once 'core/app.php';
 require_once 'core/model_and_view_user.php';
 require_once 'core/model_and_view_admin.php';
 require_once 'core/model_and_view_login.php';
-
+require_once 'core/model_and_view_post.php';
 require_once 'core/model_and_view_newscate.php';
 require_once 'core/model_and_view_categories.php';
 //model
@@ -24,9 +24,10 @@ require_once 'models/categories.php';
 //controller
 require_once 'controllers/categories_controller.php';
 require_once 'controllers/contacts_controller.php';
-require_once 'controllers/categoires_controller.php';
+require_once 'controllers/categories_controller.php';
 require_once 'controllers/comment_admin.php';
 require_once 'controllers/comment_user.php';
+require_once 'controllers/post_controller.php';
 
 //service
 require_once 'service/comment_service.php';

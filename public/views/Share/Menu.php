@@ -495,7 +495,7 @@
                             </a>
                         </li>
                         <li >
-                            <a href="#">
+                            <a href="../post_controller/getall">
                                 <i class="metismenu-icon pe-7s-news-paper"></i>News
                             </a>
                         </li>
