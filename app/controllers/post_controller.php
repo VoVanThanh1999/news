@@ -2,8 +2,10 @@
 class  post_controller extends model_and_view_admin{
     function createPost(){
         $flag = false;
+        echo "post";
         $image = "";
         $files = $_FILES['file'];
+        print_r($files);
         $fileName = $_FILES['file']['name'];
         $fileTmpName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
@@ -16,7 +18,7 @@ class  post_controller extends model_and_view_admin{
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
-                    $fileDestination = 'C:\xampp\upload\\'.$fileNameNew;
+                    $fileDestination = '/news/public/views/img/'.$fileNameNew;
                     $image = $fileDestination;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
@@ -70,6 +72,8 @@ class  post_controller extends model_and_view_admin{
         print_r($post);
         
     }
-   
+    
+    
+    
     
 }
