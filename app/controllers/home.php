@@ -14,14 +14,6 @@ class home extends model_and_view_user {
            echo  $page;
     }
     
-    public function test($param){
-        $this->view('trangchu',$param);
-    }
-    
-    public function uploadFiles(){
-        
-    }
-        
     
     
 }
