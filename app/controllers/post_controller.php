@@ -3,8 +3,10 @@ class  post_controller extends model_and_view_post {
 
     function createPost(){
         $flag = false;
+        echo "post";
         $image = "";
         $files = $_FILES['file'];
+        print_r($files);
         $fileName = $_FILES['file']['name'];
         echo $fileName;
         $fileTmpName = $_FILES['file']['tmp_name'];
@@ -18,7 +20,7 @@ class  post_controller extends model_and_view_post {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
-                    $fileDestination = 'C:\xampp\upload\\'.$fileNameNew;
+                    $fileDestination = '/news/public/views/img/'.$fileNameNew;
                     $image = $fileDestination;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
@@ -79,8 +81,9 @@ class  post_controller extends model_and_view_post {
         $this->view('PostEdit', $post);
         
     }
-    function ViewAddPost(){
+   function ViewAddPost(){
         $this->view('PostAdd', "");
     }
+
     
 }

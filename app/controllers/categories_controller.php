@@ -1,6 +1,6 @@
 <?php 
 include_once '../app/init.php';
-class categories_controller extends model_and_view_user {
+class categories_controller extends model_and_view_categories {
 
 
     public function  index() {
@@ -53,5 +53,11 @@ class categories_controller extends model_and_view_user {
         }else{
             echo"Xóa thất bại";
         }
+    }
+    function getCategoriesIsActive(){
+        $categoriesDao = new categories_repository();
+        $categories = $categoriesDao->getCategoriesIsActive();
+        $this->view("categories",$categories);
+        
     }
 }
