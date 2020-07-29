@@ -90,10 +90,6 @@ class Categories
         $this->active = $active;
     }
 
-
-
-
-
 }
 class CategoriesModel{
     private $mysql;

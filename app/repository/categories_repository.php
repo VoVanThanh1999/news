@@ -5,7 +5,7 @@ class categories_repository {
     public function __construct(){
         $this->mysql = new mysqli(hostname, username, password, dbname);
     }
-    
+
     function getById($id){
         $query = "SELECT * FROM categories where id = ".$id."";
         $result = $this->mysql->query($query);
@@ -21,6 +21,7 @@ class categories_repository {
     }
     
     function   getAll(){
+
         $query = "SELECT * FROM categories";
         $result = $this->mysql->query($query);
         $data = [];
@@ -39,7 +40,18 @@ class categories_repository {
         }
         return $data;
     }
-    
+    function addCategories(Categories  $categories){
+        $query = "INSERT INTO categories VALUE('$categories->id', '$categories->name', '$categories->description', '$categories->icon', '$categories->slug', '$categories->active')";
+        $result = $this->mysql->query($query);
+        return $result;
+    }
+    function update(Categories $categories){
+        $query = "UPDATE categories SET name ='$categories->name', tag = '$categories->tag', description = '$categories->description', icon = '$categories->icon', slug = '$categories->slug', active = '$categories->active',
+                   WHERE id = '$categories->id'";
+        $result =$this->mysql->query($query);
+        return $result;
+        
+    }
     function deleteById($id){
         $query ="DELETE FROM categories WHERE id = '".$id."'";
         $result = $this->mysql->query($query);
@@ -52,10 +64,10 @@ class categories_repository {
     function deleteAll(){
         
     }
-    
-    function saveOrUpdate(){
-        
-    }
+
+
+
+
     
     
 }
