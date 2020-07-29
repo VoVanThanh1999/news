@@ -78,7 +78,21 @@ class post_repository
             }
         }
         return $posts;
-        
-        
     }
+    
+    function getPostLatestNews(){
+        $query =" SELECT * FROM post order by id ";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active']);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+    }
+    
+    
+    
 }

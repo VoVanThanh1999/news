@@ -30,6 +30,16 @@ class categories_repository {
         return $data;
     }
     
+    function getCategoriesIsActive(){
+        $query = "SELECT * FROM categories where active =1";
+        $result = $this->mysql->query($query);
+        $data = [];
+        foreach ($result->fetch_all() as $items) {
+            array_push($data, new Categories($items[0], $items[1], $items[2], $items[3], $items[4], $items[5], $items[6]));
+        }
+        return $data;
+    }
+    
     function deleteById($id){
         $query ="DELETE FROM categories WHERE id = '".$id."'";
         $result = $this->mysql->query($query);

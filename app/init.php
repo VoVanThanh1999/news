@@ -10,6 +10,7 @@ require_once 'core/model_and_view_user.php';
 require_once 'core/model_and_view_admin.php';
 require_once 'core/model_and_view_login.php';
 require_once 'core/model_and_view_newscate.php';
+require_once 'core/model_and_view_categories.php';
 //model
 require_once 'models/users.php';
 require_once 'models/posts.php';
@@ -21,6 +22,7 @@ require_once 'models/categories.php';
 require_once 'controllers/categoires_controller.php';
 require_once 'controllers/comment_admin.php';
 require_once 'controllers/comment_user.php';
+
 //service
 require_once 'service/comment_service.php';
 require_once 'service/post_service.php';
