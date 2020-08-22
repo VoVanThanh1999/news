@@ -1,5 +1,5 @@
 <?php
-include_once '../app/init.php';
+include_once 'init.php';
 // author nguyen dinh viet
 class contacts_controller extends model_and_view_user{
 
