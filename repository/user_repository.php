@@ -1,6 +1,6 @@
 
 <?php
-include_once '../app/init.php';
+include_once 'init.php';
 
 class user_repository
 {

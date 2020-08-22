@@ -1,7 +1,7 @@
 <?php 
-include_once '../app/init.php';
+include_once 'init.php';
  /**
-  * @author võ văn thành
+  * @author vÃµ vÄƒn thÃ nh
   *
   */
  class post_service {
@@ -50,13 +50,13 @@ include_once '../app/init.php';
     
     function to_slug($str) {
         $str = trim(mb_strtolower($str));
-        $str = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
-        $str = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
-        $str = preg_replace('/(ì|í|ị|ỉ|ĩ)/', 'i', $str);
-        $str = preg_replace('/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/', 'o', $str);
-        $str = preg_replace('/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/', 'u', $str);
-        $str = preg_replace('/(ỳ|ý|ỵ|ỷ|ỹ)/', 'y', $str);
-        $str = preg_replace('/(đ)/', 'd', $str);
+        $str = preg_replace('/(Ã |Ã¡|áº¡|áº£|Ã£|Ã¢|áº§|áº¥|áº­|áº©|áº«|Äƒ|áº±|áº¯|áº·|áº³|áºµ)/', 'a', $str);
+        $str = preg_replace('/(Ã¨|Ã©|áº¹|áº»|áº½|Ãª|á»�|áº¿|á»‡|á»ƒ|á»…)/', 'e', $str);
+        $str = preg_replace('/(Ã¬|Ã­|á»‹|á»‰|Ä©)/', 'i', $str);
+        $str = preg_replace('/(Ã²|Ã³|á»�|á»�|Ãµ|Ã´|á»“|á»‘|á»™|á»•|á»—|Æ¡|á»�|á»›|á»£|á»Ÿ|á»¡)/', 'o', $str);
+        $str = preg_replace('/(Ã¹|Ãº|á»¥|á»§|Å©|Æ°|á»«|á»©|á»±|á»­|á»¯)/', 'u', $str);
+        $str = preg_replace('/(á»³|Ã½|á»µ|á»·|á»¹)/', 'y', $str);
+        $str = preg_replace('/(Ä‘)/', 'd', $str);
         $str = preg_replace('/[^a-z0-9-\s]/', '', $str);
         $str = preg_replace('/([\s]+)/', '-', $str);
         return $str;

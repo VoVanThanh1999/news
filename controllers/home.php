@@ -1,5 +1,5 @@
 <?php 
-include_once '../app/init.php';
+include_once 'init.php';
 
 class home extends model_and_view_user {
     
