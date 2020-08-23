@@ -15,7 +15,7 @@
                           <div class='col-lg-8 top-post-left'>
             				<div class='feature-image-thumb relative'>
             					<div class='overlay overlay-bg'></div>
-            					<img class='img-fluid' src='/news/public/views/img/top-post1.jpg'
+            					<img class='img-fluid' src=".$row['images']."
             						alt=''>
             				</div>
             				<div class='top-post-details'>

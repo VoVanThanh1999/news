@@ -191,6 +191,6 @@ include_once('public/views/Share/Menu.php');
 </script>
 <!-- -------- Footer share -------------- -->
 <?php
-include_once('../public/views/Share/Footer.php');
+include_once('public/views/Share/Footer.php');
 ?>
 <!-- ---------------End footer share --------------->
