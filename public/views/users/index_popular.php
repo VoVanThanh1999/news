@@ -1,10 +1,10 @@
 
 <!-- Start latest-post Area -->
 <div class="latest-post-wrap">
-	<h4 class="cat-title">Latest News</h4>
+	<h4 class="cat-title">Popular</h4>
 	<?php 
         $conn = new mysqli(hostname, username, password, dbname);
-        $sql = "SELECT * FROM post ORDER BY id DESC limit  4";
+        $sql = "SELECT * FROM post ORDER BY intro DESC limit  4";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // output data of each row
@@ -17,7 +17,7 @@
                 				<img class='img-fluid' src=".$row["images"]." alt=''>
                 			</div>
                 			<ul class='tags'>
-                				<li><a href=''>Later News</a></li>
+                				<li><a href=''>Popular</a></li>
                 			</ul>
                 		</div>
                 		<div class='col-lg-7 post-right'>

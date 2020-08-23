@@ -2,7 +2,7 @@
 
 if($_SESSION["name"] == null){
     session_start();
-    header('location: /news/public/login/login');
+    header('location: /news/login/index');
 }
 ?>
 <!doctype html>

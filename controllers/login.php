@@ -1,6 +1,6 @@
 <?php
 //@author hieu hoang
-include_once '../app/init.php';
+include_once 'init.php';
 class login extends model_and_view_login
 {
     private $mysql;
@@ -27,7 +27,7 @@ class login extends model_and_view_login
                 $_SESSION['email'] = $data[0][2];
                 $_SESSION['id'] = $data[0][0];
                 $_SESSION['name'] = $data[0][1];
-                header('location: /news/public/admin/index');
+                header('location: /news/admin/index');
             } else {
                 header('location: login?error=1');
             }

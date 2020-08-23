@@ -1,11 +1,11 @@
 <!--------------------- Heade share -------------->
 <?php
-include_once('../public/views/Share/Header.php');
+include_once('public/views/Share/Header.php');
 ?>
 <!------------------ End  Heade share -------------->
 <!-- ----------------menu share---------------------->
 <?php
-include_once('../public/views/Share/Menu.php');
+include_once('public/views/Share/Menu.php');
 ?>
 <!--            End menu share-->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@ include_once('../public/views/Share/Menu.php');
         </div>
     </div>
 </div>
-<form method="post" enctype="multipart/form-data" action="/news/public/post_controller/createPost">
+<form method="post" enctype="multipart/form-data" action="/news/post_controller/createPost">
     <div class="row">
         <div class="col-12">
             <table class="table table-borderless">
@@ -134,7 +134,7 @@ include_once('../public/views/Share/Menu.php');
 </script>
 <!-- -------- Footer share -------------- -->
 <?php
-include_once('../public/views/Share/Footer.php');
+include_once('public/views/Share/Footer.php');
 ?>
 <!-- ---------------End footer share --------------->
 

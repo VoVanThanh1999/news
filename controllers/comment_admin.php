@@ -1,4 +1,5 @@
 <?php
+include_once 'init.php';
 class comment_admin extends model_and_view_admin{
     
     
