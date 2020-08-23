@@ -1,13 +1,13 @@
 <!--------------------- Heade share -------------->
 
 <?php
-include_once('../public/views/Share/Header.php');
+include_once('public/views/Share/Header.php');
 ?>
 <!------------------ End  Heade share -------------->
 <!-- ----------------menu share---------------------->
 <div id="listPost">
 <?php
-include_once('../public/views/Share/Menu.php');
+include_once('public/views/Share/Menu.php');
 ?>
 <!--            End menu share-->
 

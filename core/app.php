@@ -7,9 +7,10 @@ class app {
     
     function __construct( ){
         $url = $this->parseUrl();
+        print_r($url);
         $this->controllers = file_exists('../app/controllers/'.$url[0].'.php')?$url[0]:'home';
         unset($url[0]);
-        require_once '../app/controllers/'.$this->controllers. '.php';
+        require_once 'controllers/'.$this->controllers. '.php';
         $this->controller = new $this->controllers;
         if (isset($url[1])) {
             $this->method =method_exists($this->controller, $url[1])?$url[1]:'index';
