@@ -1,7 +1,7 @@
 <?php 
 class model_and_view_user {
     public function model($model){
-        require_once '../models/'.$model.'.php';
+        require_once 'models/'.$model.'.php';
         return new $model();
     }
     

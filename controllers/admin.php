@@ -1,7 +1,8 @@
 <?php 
-include_once '../app/init.php';
+include_once 'init.php';
 class admin extends model_and_view_admin{
     function index() {
+        echo "dsadsa";
         $this->view('index',"");
     }
 //    function NewsCateGetAll() {

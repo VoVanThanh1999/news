@@ -1,4 +1,5 @@
 <?php 
+include_once 'init.php';
 class  post_controller extends model_and_view_post {
 
     function createPost(){
@@ -20,7 +21,7 @@ class  post_controller extends model_and_view_post {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
-                    $fileDestination = '/news/public/views/img/'.$fileNameNew;
+                    $fileDestination = 'C:/xamppp/htdocs/news/public/views/img/'.$fileNameNew;
                     $image = $fileDestination;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
