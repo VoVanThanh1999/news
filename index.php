@@ -1,5 +1,6 @@
 <?php
 require_once 'core/app.php';
+
 class index {
     
     public	 $controller ;
@@ -29,3 +30,4 @@ class index {
     
 }
 $index = new index();
+
