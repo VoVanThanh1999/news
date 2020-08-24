@@ -41,23 +41,9 @@ class user_repository
             $flag = $result;
         } else {
             $query = "  UPDATE users
-                        SET name=?, email=?, pass_word=?,gender=?,date_of_birth=?
-                        WHERE id=? ";
-            $stmt = $this->mysql->prepare($query);
-            $id = $p->id;
-            $name = $p->name;
-            $email = $p->email;
-            $pass_word = $p->pass_word;
-            $gender = $p->gender;
-            $date_of_birth = $p->date_of_birth;
-            $stmt->bind_param("ssdssssss", $name, $email, $pass_word, $gender, $date_of_birth, $id);
-            $stmt->execute();
-            if ($stmt->error) {
-                $flag = false;
-            } else {
-                $flag = true;
-            }
-            $stmt->close();
+                        SET name=$p->name, email=$p->email, pass_word=$p->pass_word,gender=$p->gender,date_of_birth=$p->date_of_birth
+                        WHERE id=$p->id ";
+            $result = $this->mysql->query($query);
         }
         return $flag;
     }

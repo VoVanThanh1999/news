@@ -66,7 +66,7 @@ include_once('public/views/Share/Menu.php');
                     foreach ($data as $value) {
                         ?>
                         <tr role="row" class="odd">
-                            <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
+                            <td tabindex="0" class="sorting_1" ><?= $value->id ?></td>
                             <td><?= $value->name ?></td>
                             <td><?= $value->email ?></td>
                             <td class="text-center">
