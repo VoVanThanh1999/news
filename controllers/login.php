@@ -38,13 +38,14 @@ class login extends model_and_view_login
         $_SESSION['email']=null;
         $_SESSION['id'] = null;
         $_SESSION['name'] = null;
-        header('location: /news/public/login/login');
+        header('location: /news/login/login');
     }
     function Register()
     {
         $this->view('Register', "");
     }
     function SubmitRegister(){
+        session_start();
         $email = $_POST['email'];
         $password = $_POST['password'];
         $name = $_POST['username'];
@@ -66,7 +67,12 @@ class login extends model_and_view_login
                 $query = "INSERT INTO users(name,email,pass_word,gender,date_of_birth) VALUE('$name', '$email', '$password', '$gender', '$date_of_birth')";
                 $result = $this->mysql->query($query);
                 print_r($query);
+                if($_SESSION['id'] ==null){
                 header('location: login');
+                }
+                else{
+                    header('location: /news/admin/UserGetAll');
+                }
                 }
             }
             else{

@@ -45,7 +45,7 @@ class admin extends model_and_view_admin{
                         WHERE id='$id'";
                 $result = $this->mysql->query($query);
                 echo  $gender = $_POST['gender'];
-//                header('location: /news/admin/UserGetAll');
+                header('location: /news/admin/UserGetAll');
             }
             else{
                 header('location: /news/admin/getUserById/'.$id.'?error=1');
