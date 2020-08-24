@@ -483,7 +483,11 @@
                     </ul>
                 </li>
                 <li class="app-sidebar__heading">Website Management</li>
-
+                <li >
+                    <a href="/news/admin/UserGetAll">
+                        <i class="metismenu-icon pe-7s-users"></i>User
+                    </a>
+                </li>
                 <li >
                     <a href="#">
                         <i class="metismenu-icon pe-7s-news-paper"></i>News Management
@@ -491,17 +495,18 @@
                     </a>
                     <ul class="mm-collapse">
                         <li >
-                            <a href="NewsCateGetAll">
+                            <a href="../NewsCateGetAll">
                                 <i class="metismenu-icon pe-7s-box1"></i>NewsCate
                             </a>
                         </li>
                         <li >
-                            <a href="../post_controller/getall">
+                            <a href="/news/post_controller/getall">
                                 <i class="metismenu-icon pe-7s-news-paper"></i>News
                             </a>
                         </li>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </div>

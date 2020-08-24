@@ -25,8 +25,8 @@ include_once('public/views/Share/Menu.php');
         </div>
     </div>
 </div>
-<form method="post" enctype="multipart/form-data" action="/news/public/post_controller/createPost">
-    <div class="row">
+<form method="post" enctype="multipart/form-data" action="/news/post_controller/createPost">
+    <div class="row m-0" >
         <div class="col-12">
             <table class="table table-borderless">
                 <tbody>
@@ -117,6 +117,18 @@ include_once('public/views/Share/Menu.php');
                         <a href="../GetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
                     </td>
                 </tr>
+                <?php
+                if (isset($_GET['error'])) {
+                    if ($_GET['error'] == 0) {
+                        echo 'Vui lòng không để trống bất kì trường nào';
+                    } else if($_GET['error'] == 1){
+                        echo 'mail đã tồn tại vui lòng thử email khác';
+                    }
+                    else{
+                        echo 'vui lòng kiểm tra lại password';
+                    }
+                }
+                ?>
                 </tbody>
             </table>
         </div>
@@ -149,7 +161,7 @@ include_once('public/views/Share/Menu.php');
 </script>
 <!-- -------- Footer share -------------- -->
 <?php
-include_once('../public/views/Share/Footer.php');
+include_once('public/views/Share/Footer.php');
 ?>
 <!-- ---------------End footer share --------------->
 

@@ -31,33 +31,26 @@ class user_repository
         }
         return null;
     }
-
-    function deleteById($id)
-    {}
-
     function saveOrUpdate(users $p)
     {
         $flag = true;
         if ($p->getId() == null) {
-            $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active)
- VALUES ('" . $p->category_id . "', '" . $p->title . "', '" . $p->intro . "','" . $p->content . "','" . $p->images . "','" . $p->tag . "','" . $p->description . "','" . $p->slug . "',0)";
+            $query = "INSERT INTO users ( name, email,pass_word,gender,date_of_birth)
+ VALUES ('" . $p->name . "', '" . $p->email . "', '" . $p->pass_word . "','" . $p->gender . "','" . $p->date_of_birth . "')";
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-            $query = "  UPDATE post
-                        SET title=?, intro=?, content=?,images=?,tag=?,description=?,slug=?,active=?
+            $query = "  UPDATE users
+                        SET name=?, email=?, pass_word=?,gender=?,date_of_birth=?
                         WHERE id=? ";
             $stmt = $this->mysql->prepare($query);
             $id = $p->id;
-            $title = $p->title;
-            $intro = $p->intro;
-            $content = $p->content;
-            $images = $p->images;
-            $tag = $p->tag;
-            $description = $p->description;
-            $slug = $p->slug;
-            $active = $p->active;
-            $stmt->bind_param("ssdssssss", $title, $intro, $content, $images, $tag, $description, $slug, $active, $id);
+            $name = $p->name;
+            $email = $p->email;
+            $pass_word = $p->pass_word;
+            $gender = $p->gender;
+            $date_of_birth = $p->date_of_birth;
+            $stmt->bind_param("ssdssssss", $name, $email, $pass_word, $gender, $date_of_birth, $id);
             $stmt->execute();
             if ($stmt->error) {
                 $flag = false;
@@ -67,5 +60,23 @@ class user_repository
             $stmt->close();
         }
         return $flag;
+    }
+    function getAll()
+    {
+        $query =" SELECT * FROM users  ";
+        $result = $this->mysql->query($query);
+        $users = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $user = new users($row['id'],$row['name'],$row['email'],$row['pass_word'],$row['gender'],$row['date_of_birth']);
+                array_push($users,$user);
+            }
+        }
+        return $users;
+    }
+    function deleteById($id){
+        $query = " DELETE FROM users WHERE id='".$id."' ";
+        $result = $this->mysql->query($query);
+        return $result;
     }
 }
