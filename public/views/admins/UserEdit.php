@@ -27,7 +27,8 @@ include_once('public/views/Share/Menu.php');
 <?php
 
 ?>
-<form method="post" enctype="multipart/form-data" action="/news/admin/createrUser">
+
+<form method="post" action="/news/admin/createrUser">
     <div class="row m-0">
         <div class="col-1"></div>
         <div class="col-8">
@@ -35,7 +36,7 @@ include_once('public/views/Share/Menu.php');
                 <tbody>
                 <tr >
                     <td><label for="Title" class="mt-2 float-right">id</label></td>
-                    <td><input name="id" id="title" placeholder="Enter title...." type="text" value="<?=$data->id?>" class="form-control col-6"></td>
+                    <td><input name="id" id="title" placeholder="Enter title...." type="text" value="<?=$data->id?>" style="pointer-events: none;" class="form-control col-6"></td>
                 </tr>
                 <tr>
                     <td><label for="Title" class="mt-2 float-right">Name</label></td>
@@ -57,13 +58,12 @@ include_once('public/views/Share/Menu.php');
                             if($data->gender = 0){?>
                                 <option value="0" selected>Nam</option>
                                 <option value="1" >Nữ</option>
-
                         <?php
                          } else{
                             ?>
                                 <option value="0" >Nam</option>
                                 <option value="1" selected>Nữ</option>
-                        ?>
+
                         <?php } ?>
                         </select>
                     </td>
@@ -91,8 +91,8 @@ include_once('public/views/Share/Menu.php');
                     <td></td>
                     <td>
                         <input type="submit" value="Save" class="btn btn-success btn-shadow text-white mr-3 col-3" />
-                        <a href="javascript:void(0)" onclick="Reset()" class="btn btn-warning btn-shadow text-white  align-self-center mr-3 col-3  pt-2"><span>Reset</span> </a>
-                        <a href="NewsCateGetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
+                        <a href=""class="btn btn-warning btn-shadow text-white  align-self-center mr-3 col-3  pt-2"><span>Reset</span> </a>
+                        <a href="../UserGetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
                     </td>
                 </tr>
                 </tbody>
@@ -119,6 +119,7 @@ include_once('public/views/Share/Menu.php');
         document.getElementById('myid2').style.display = "none";
         document.getElementById('myid').style.display = "block";
     }
+
 </script>
 <!-- -------- Footer share -------------- -->
 <?php

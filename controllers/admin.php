@@ -26,24 +26,30 @@ class admin extends model_and_view_admin{
         $this->view('UserEdit', $user);
     }
     function createrUser(){
-        $flag = false;
         $id = $_POST['id'];
         $email = $_POST['email'];
         $password = $_POST['pass_word'];
         $name = $_POST['name'];
         $gender = $_POST['gender'];
         $date_of_birth = $_POST['date_of_birth'];
-        if ($flag) {
-            if($id == ""){
-                $post_sv->createPost(new posts("",$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
-                header('location: ./getAll');
+        if(empty($email) && empty($password)&& empty($name)&& empty($gender)&&empty($date_of_birth) ){
+            header('/news/admin/getUserById/'.$id.'?error=0');
+        }
+        else{
+            $checkMail = "select * from users where email='$email'";
+            $resultMail = $this->mysql->query($checkMail);
+            $data = $resultMail->fetch_all();
+            if(count($data) == 0){
+                $query = "  UPDATE users
+                        SET email='$email', pass_word=$password, name='$name',gender= $gender,date_of_birth='$date_of_birth'
+                        WHERE id='$id'";
+                $result = $this->mysql->query($query);
+                echo  $gender = $_POST['gender'];
+//                header('location: /news/admin/UserGetAll');
             }
             else{
-                $post_sv->createPost(new posts($id,$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
-                header('location: ./getAll');
+                header('location: /news/admin/getUserById/'.$id.'?error=1');
             }
-        }else{
-            echo "bạn phải upload ảnh";
         }
     }
 }
