@@ -176,7 +176,7 @@ if($_SESSION["name"] == null){
                             </div>
                             <div class="widget-content-left  ml-3 header-user-info">
                                 <div class="widget-heading"> <?php print_r( $_SESSION["name"])?></div>
-                                <div class="widget-subheading"><a href="/news/public/login/logout">Logout</a></div>
+                                <div class="widget-subheading"><a href="/news/login/logout">Logout</a></div>
                             </div>
                         </div>
                     </div>

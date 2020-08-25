@@ -88,10 +88,10 @@ include_once('public/views/Share/Menu.php');
                             <tr role="row" class="odd">
                                 <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
                                 <td><?= $value->category_id ?></td>
-                                <td><?= $value->title ?></td>
-                                <td><span><?= $value->images ?></span></td>
+                                <td><span><?= $value->title ?></span></td>
+                                <td><img src="/news/public/views/img/<?= $value->images ?>" alt=""></td>
                                 <td style="width: 100px;display: -webkit-box; -webkit-box-orient: vertical;"><?= $value->tag ?></td>
-                                <td><?= $value->description ?></td>
+                                <td><span><?= $value->description ?></span></td>
                                 <td style="width: 100px;display: -webkit-box; -webkit-box-orient: vertical;"><?= $value->slug ?></td>
                                 <td class="text-center">
                                     <?php

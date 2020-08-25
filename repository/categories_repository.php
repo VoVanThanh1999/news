@@ -9,7 +9,6 @@ class categories_repository {
      function getById($id){
         $query = "SELECT * FROM categories where id = ".$id."";
         $result = $this->mysql->query($query);
-        $categories;
         while($row = $result->fetch_assoc()) {
             $categories =  new Categories($row['id'], $row['name'], $row['tag'], $row['description'], $row['icon'], $row['slug'], $row['active']);
         }
@@ -40,17 +39,16 @@ class categories_repository {
         return $data;
     }
     function addCategories(Categories  $categories){
-        $query = "INSERT INTO categories VALUE('$categories->id', '$categories->name', '$categories->description', '$categories->icon', '$categories->slug', '$categories->active')";
+        $query = "INSERT INTO categories(name,tag, description,icon, slug, active) VALUE('$categories->name', '$categories->tag','$categories->description', '$categories->icon', '$categories->slug', '$categories->active')";
         $result = $this->mysql->query($query);
         return $result;
     }
 
     function update(Categories $categories){
-        $query = "UPDATE categories SET name ='$categories->name', tag = '$categories->tag', description = '$categories->description', icon = '$categories->icon', slug = '$categories->slug', active = '$categories->active',
+        $query = "UPDATE categories SET name ='$categories->name', tag = '$categories->tag', description = '$categories->description', icon = '$categories->icon', slug = '$categories->slug', active = '$categories->active'
                    WHERE id = '$categories->id'";
         $result =$this->mysql->query($query);
         return $result;
-        
     }
     function deleteById($id){
         $query ="DELETE FROM categories WHERE id = '".$id."'";
