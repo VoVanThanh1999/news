@@ -499,7 +499,7 @@
                     </ul>
                 </li>
                 <li >
-                    <a href="/news/admin/ContactGetAll">
+                    <a href="/news/admin/GetAllContact">
                         <i class="metismenu-icon pe-7s-network"></i>Contact
                     </a>
                 </li>

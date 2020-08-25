@@ -39,4 +39,5 @@ require_once 'repository/categories_repository.php';
 require_once 'repository/configs_repository.php';
 require_once 'repository/comments_repository.php';
 require_once 'repository/user_repository.php';
+require_once 'repository/contacts_repository.php';
 

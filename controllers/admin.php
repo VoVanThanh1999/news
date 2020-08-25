@@ -14,27 +14,23 @@ class admin extends model_and_view_admin
     {
         $this->view('index', "");
     }
-
     function UserGetAll()
     {
         $userDAO = new user_repository();
         $users = $userDAO->getAll();
         $this->view('UserGetAll', $users);
     }
-
     function deleteUser($iduser)
     {
         $userDao = new user_repository();
         return $userDao->deleteById($iduser);
     }
-
     function getUserById($id)
     {
         $userDAO = new user_repository();
         $user = $userDAO->getById($id);
         $this->view('UserEdit', $user);
     }
-
     function createrUser()
     {
         $id = $_POST['id'];
@@ -60,27 +56,23 @@ class admin extends model_and_view_admin
             }
         }
     }
-
     function getAllNewsCate()
     {
         $newsCateDAO = new categories_repository();
         $category = $newsCateDAO->getAll();
         $this->view('NewsCateGetAll', $category);
     }
-
     function deleteNewsCate($id)
     {
         $newsCateDAO = new categories_repository();
         return $newsCateDAO->deleteById($id);
     }
-
     function getNewsCateById($id)
     {
         $newsCateDAO = new categories_repository();
         $category = $newsCateDAO->getById($id);
         $this->view('NewsCateEdit', $category);
     }
-
     function updateNewsCate()
     {
         $id = $_POST['id'];
@@ -99,12 +91,10 @@ class admin extends model_and_view_admin
             header('location: /news/admin/getAllNewsCate');
         }
     }
-
     function createrViewsCate()
     {
         $this->view('NewsCateAdd', "");
     }
-
     function createrNewsCate()
     {
         $name = $_POST['name'];
@@ -121,10 +111,57 @@ class admin extends model_and_view_admin
             header('location: /news/admin/getAllNewsCate');
         }
     }
-
-    function ContactGetAll(){
+    function GetAllContact(){
         $contactsDAO = new contacts_repository();
         $contacts = $contactsDAO->getAll();
-        $this->view('NewsCateGetAll', $contacts);
+        $this->view('ContactsGetAll', $contacts);
+    }
+    function createrViewsContact(){
+        $this->view('ContactsAdd', "");
+    }
+    function createrContact(){
+        $full_name = $_POST['full_name'];
+        $email = $_POST['email'];
+        $title = $_POST['title'];
+        $phone_number = $_POST['phone_number'];
+        $content = $_POST['content'];
+        $status = $_POST['status'];
+        $active = $_POST['active'];
+        if (empty($full_name) && empty($email) && empty($title) && empty($phone_number) && empty($content)) {
+            header('location:/news/admin/createrViewsContact?error=0');
+        } else {
+            $contactsDAO = new contacts_repository();
+            $contactsDAO->add(new contacts("",$full_name,$email,$title,$phone_number,$content,$status,$active));
+            header('location: /news/admin/GetAllContact');
+        }
+    }
+    function getContactById($id){
+        $contactsDAO = new contacts_repository();
+        $contact = $contactsDAO->getById($id);
+        $this->view('ContactsEdit', $contact);
+    }
+    function updateContact(){
+        $id = $_POST['id'];
+        $full_name = $_POST['full_name'];
+        $email = $_POST['email'];
+        $title = $_POST['title'];
+        $phone_number = $_POST['phone_number'];
+        $content = $_POST['content'];
+        $status = $_POST['status'];
+        $active = $_POST['active'];
+        echo $status ;
+        echo $active ;
+        if (empty($full_name) && empty($email) && empty($title) && empty($phone_number) && empty($content)) {
+            header('location:/news/admin/createrViewsContact?error=0');
+        } else {
+            $contactsDAO = new contacts_repository();
+            $contactsDAO->update(new contacts($id,$full_name,$email,$phone_number,$title,$content,$status,$active));
+            header('location: /news/admin/GetAllContact');
+        }
+    }
+    function deleteContact($id)
+    {
+        $contactDao = new contacts_repository();
+        return $contactDao->deteteById($id);
     }
 }
