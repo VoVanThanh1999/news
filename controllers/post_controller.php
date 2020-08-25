@@ -21,8 +21,10 @@ class  post_controller extends model_and_view_post {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
-                    $fileDestination = 'C:/xamppp/htdocs/news/public/views/img/'.$fileNameNew;
-                    $image = $fileNameNew;
+
+                    $fileDestination = 'C:/xampp/htdocs/news/public/views/img/'.$fileNameNew;
+                    $image = '/news/public/views/img/'.$fileNameNew;
+
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
                 }else{

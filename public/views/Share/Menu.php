@@ -470,20 +470,16 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">Menu</li>
                 <li>
-                    <a href="#">
+                    <a href="/news/admin/index">
                         <i class="metismenu-icon pe-7s-rocket"></i>Dashboards
-                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
-                    <ul class="mm-collapse">
-                        <li>
-                            <a href="index.html">
-                                <i class="metismenu-icon"></i>Analytics
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="app-sidebar__heading">Website Management</li>
-
+                <li >
+                    <a href="/news/admin/UserGetAll">
+                        <i class="metismenu-icon pe-7s-users"></i>User
+                    </a>
+                </li>
                 <li >
                     <a href="#">
                         <i class="metismenu-icon pe-7s-news-paper"></i>News Management
@@ -491,16 +487,21 @@
                     </a>
                     <ul class="mm-collapse">
                         <li >
-                            <a href="NewsCateGetAll">
+                            <a href="/news/admin/getAllNewsCate">
                                 <i class="metismenu-icon pe-7s-box1"></i>NewsCate
                             </a>
                         </li>
                         <li >
-                            <a href="../post_controller/getall">
+                            <a href="/news/post_controller/getall">
                                 <i class="metismenu-icon pe-7s-news-paper"></i>News
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li >
+                    <a href="/news/admin/GetAllContact">
+                        <i class="metismenu-icon pe-7s-network"></i>Contact
+                    </a>
                 </li>
             </ul>
         </div>

@@ -13,7 +13,11 @@ require_once 'core/model_and_view_login.php';
 require_once 'core/model_and_view_post.php';
 require_once 'core/model_and_view_newscate.php';
 require_once 'core/model_and_view_categories.php';
+<<<<<<< HEAD
 require_once 'core/model_and_view_chitiet.php';
+=======
+require_once 'core/Abtract.php';
+>>>>>>> 045d481ea8c19fda5f650a8aab6f6c0b158844b9
 //model
 require_once 'models/users.php';
 require_once 'models/posts.php';
@@ -39,4 +43,5 @@ require_once 'repository/categories_repository.php';
 require_once 'repository/configs_repository.php';
 require_once 'repository/comments_repository.php';
 require_once 'repository/user_repository.php';
+require_once 'repository/contacts_repository.php';
 

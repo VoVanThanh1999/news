@@ -1,17 +1,15 @@
 <!--------------------- Heade share -------------->
-
 <?php
 include_once('public/views/Share/Header.php');
 ?>
 <!------------------ End  Heade share -------------->
 <!-- ----------------menu share---------------------->
 <div id="listPost">
-<?php
-include_once('public/views/Share/Menu.php');
-?>
-<!--            End menu share-->
-
-    <div class="pb-4 ">
+    <?php
+    include_once('public/views/Share/Menu.php');
+    ?>
+    <!--            End menu share-->
+    <div class="pb-4">
         <div class="app-page-title">
             <div class="page-title-wrapper">
                 <div class="page-title-heading">
@@ -19,7 +17,7 @@ include_once('public/views/Share/Menu.php');
                         <i class="pe-7s-cash icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Post Management
+                        User Management
                     </div>
                 </div>
             </div>
@@ -31,7 +29,7 @@ include_once('public/views/Share/Menu.php');
                 <div class="col-sm-12 col-md-6">
                     <div class="dataTables_length" id="example1_length">
                         <label>
-                            <a class="btn btn-primary btn-shadow text-white mr-2" href="ViewAddPost">Add News <i
+                            <a class="btn btn-primary btn-shadow text-white mr-2" href="../login/register">Add User <i
                                         class="fas fa-plus"></i></a>
                             <a class="btn btn-danger btn-shadow text-white">Bulk Delete <i class="fas fa-trash"></i></a>
                         </label>
@@ -51,34 +49,22 @@ include_once('public/views/Share/Menu.php');
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Category
+                                aria-label="Browser: activate to sort column ascending">Name
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Browser: activate to sort column ascending">Title
+                                aria-label="Platform(s): activate to sort column ascending">email
+                            </th>
+                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
+                                colspan="1"
+                                aria-label="Engine version: activate to sort column ascending">Gender
+                            </th>
+                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
+                                colspan="1"
+                                aria-label="Engine version: activate to sort column ascending">Date Of Brith
                             </th>
 
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Images
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Tag
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Description
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">slug
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">active
-                            </th>
-                            <th class="text-center">Action</th>
+                            <th class="text-center" style="width: 150px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -87,28 +73,26 @@ include_once('public/views/Share/Menu.php');
                             ?>
                             <tr role="row" class="odd">
                                 <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
-                                <td><?= $value->category_id ?></td>
-                                <td><span><?= $value->title ?></span></td>
-                                <td><img src="/news/public/views/img/<?= $value->images ?>" alt=""></td>
-                                <td style="width: 100px;display: -webkit-box; -webkit-box-orient: vertical;"><?= $value->tag ?></td>
-                                <td><span><?= $value->description ?></span></td>
-                                <td style="width: 100px;display: -webkit-box; -webkit-box-orient: vertical;"><?= $value->slug ?></td>
+                                <td><?= $value->name ?></td>
+                                <td><?= $value->email ?></td>
                                 <td class="text-center">
                                     <?php
-                                    if ($value->active == 1) {
+                                    if ($value->gender == 1) {
                                         ?>
-                                        <input type="checkbox" id="exampleCheck1" onclick="activatePost(<?= $value->id ?>)" checked="checked" >
+                                        <span>Nữ</span>
                                         <?php
                                     } else {
                                         ?>
-                                        <input type="checkbox" onclick="activatePost(<?= $value->id ?>)" id="exampleCheck1" >
+                                        <span>Nam</span>
                                         <?php
                                     }
                                     ?>
                                 </td>
+                                <td><?= $value->date_of_birth ?></td>
+
                                 <td class="text-center">
                                     <a class="btn btn-primary btn-shadow text-white button-large-edit"
-                                       href="getById/<?= $value->id ?>">Edit <i class="fas fa-edit"></i> </a> <a
+                                       href="getUserById/<?= $value->id ?>">Edit <i class="fas fa-edit"></i> </a> <a
                                             class="btn btn-warning btn-shadow text-white button-large-delete"
                                             href="javascript:void(0);" onclick="DeleteRecord(<?= $value->id ?>)">Del <i
                                                 class="fas fa-trash"></i></a>
@@ -129,28 +113,7 @@ include_once('public/views/Share/Menu.php');
     $(document).ready(function () {
         $('#listData').dataTable();
     });
-    function activatePost(id){
-        alertify.confirm('Delete Comfirm', 'Are you sure to active data?', function () {
-            activateRecord(id);
-        }, function () {
-            alertify.error('Cancel')
-        });
-    }
-    function activateRecord(id){
-        $.ajax({
-            type: "DELETE",
-            url: "./activePost/" + id,
-            dataType: "html",
-            success: function (html) {
-                alertify.success('Activate');
-                getAll();
-            },
-            error: function (req, status, error) {
-                alert(error);
-                alertify.error('Please try again');
-            }
-        });
-    }
+
     function DeleteRecord(id) {
         alertify.confirm('Delete Comfirm', 'Are you sure to delete selected data?', function () {
             DoDelete(id)
@@ -162,11 +125,11 @@ include_once('public/views/Share/Menu.php');
     function DoDelete(id) {
         $.ajax({
             type: "DELETE",
-            url: "./deletePost/" + id,
+            url: "./deleteUser/" + id,
             dataType: "html",
             success: function (html) {
                 alertify.success('Deleted');
-                getAll()
+                getAll();
             },
             error: function (req, status, error) {
                 alert(error);
@@ -177,7 +140,7 @@ include_once('public/views/Share/Menu.php');
     function getAll() {
         $.ajax({
             type: "DELETE",
-            url: "GetAll",
+            url: "UserGetAll",
             dataType: "html",
             success: function (html) {
                 $("div#listPost").empty();
