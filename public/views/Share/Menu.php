@@ -503,6 +503,11 @@
                         <i class="metismenu-icon pe-7s-network"></i>Contact
                     </a>
                 </li>
+                <li >
+                    <a href="/news/admin/GetAllComment">
+                        <i class="metismenu-icon pe-7s-comment"></i>Comment
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

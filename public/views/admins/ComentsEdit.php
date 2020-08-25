@@ -36,16 +36,50 @@ include_once('public/views/Share/Menu.php');
                     <td><input name="id" id="id" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->id?>" style="pointer-events: none;"></td>
                 </tr>
                 <tr>
-                    <td><label for="Title" class="mt-2 float-right">User Id</label></td>
-                    <td><input name="user_id" id="title" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->user_id?>"></td>
+                    <td><label for="Title" class="mt-2 float-right">User</label></td>
+                    <td>
+                        <select class="form-control col-6" id="user_id" name="user_id">
+                            <?php
+                            $mysql = new mysqli("112.78.2.94", "vie65_dbwebsite", "qwerty123#!", "vie65506_dbwebsitenews");
+                            $query = "SELECT * FROM users";
+                            $result = $mysql->query($query);
+                            foreach ($result->fetch_all() as $items) {
+                                if($items[0] == $data->user_id){
+                                    echo "<option value='$items[0]' selected='selected'>".$items[1]."</option>";
+                                }
+                                else{
+                                    echo "<option value='$items[0]'>".$items[1]."</option>";
+                                }
+                            }
+                            ?>
+
+                        </select>
+                    </td>
                 </tr>
                 <tr>
-                    <td> <label for="CreateDate" class="mt-2 float-right">Post Id</label></td>
-                    <td> <input name="post_id" id="" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->post_id?>"></td>
+                    <td> <label for="CreateDate" class="mt-2 float-right">Post</label></td>
+                    <td>
+                        <select class="form-control col-6" id="post_id" name="post_id">
+                            <?php
+                            $mysql = new mysqli("112.78.2.94", "vie65_dbwebsite", "qwerty123#!", "vie65506_dbwebsitenews");
+                            $query = "SELECT * FROM post";
+                            $result = $mysql->query($query);
+                            foreach ($result->fetch_all() as $items) {
+                                if($items[0] == $data->post_id){
+                                    echo "<option value='$items[0]' selected='selected'>".$items[2]."</option>";
+                                }
+                                else{
+                                    echo "<option value='$items[0]'>".$items[2]."</option>";
+                                }
+                            }
+                            ?>
+
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Content</label></td>
-                    <td>  <textarea id="summernote" name="content"><?=$data->content?></textarea></td>
+                    <td> <textarea id="summernote" name="content"><?=$data->content?></textarea></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Status</label></td>
@@ -53,7 +87,7 @@ include_once('public/views/Share/Menu.php');
                     <?php
                         if($data->status == 1){
                     ?>
-                            <input type="checkbox" name="status" value="1" id="status" checked="checked" >
+                            <input type="checkbox" name="status" value="1" id="status" checked="true" >
                         <?php }
                         else{?>
                             <input type="checkbox" name="status" value="0" id="status" >
@@ -66,7 +100,7 @@ include_once('public/views/Share/Menu.php');
                     <?php
                          if($data->active == 1){
                     ?>
-                            <input type="checkbox" name="active"  id="active" value="1" checked="checked" >
+                            <input type="checkbox" name="active"  id="active" value="1" checked="true" >
                         <?php }
                         else{?>
                             <input type="checkbox" name="active"  id="active" value="0">
@@ -107,17 +141,21 @@ include_once('public/views/Share/Menu.php');
     $("#active").change(function(){
         if($("#active").prop("checked") ==true){
             $("#active").val("1");
+            $("#active").prop("checked",true) ;
         }
         else{
             $("#active").val("0");
+            $("#active").prop("checked",false) ;
         }
     });
     $("#status").change(function(){
         if($("#status").prop("checked") ==true){
             $("#status").val("1");
+            $("#status").prop("checked",true);
         }
         else{
             $("#status").val("0");
+            $("#status").prop("checked",false);
         }
     });
 </script>s

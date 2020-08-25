@@ -31,7 +31,7 @@ include_once('public/views/Share/Header.php');
                         <label>
                             <a class="btn btn-primary btn-shadow text-white mr-2" href="../login/register">Add User <i
                                         class="fas fa-plus"></i></a>
-                            <a class="btn btn-danger btn-shadow text-white">Bulk Delete <i class="fas fa-trash"></i></a>
+<!--                            <a class="btn btn-danger btn-shadow text-white">Bulk Delete <i class="fas fa-trash"></i></a>-->
                         </label>
                     </div>
                 </div>

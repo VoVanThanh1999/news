@@ -39,9 +39,9 @@ class comments_repository {
         $result = $this->mysql->query($query);
         return $result;
     }
-    
     function saveOrUpdate(comments $p) {
       //  $user_id,$post_id,$content,$status,$active
+
         $flag = true;
         if ($p->getId() == null) {
             echo "save";
@@ -49,7 +49,6 @@ class comments_repository {
                         VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."','".$p->status."',0)";
             $result = $this->mysql->query($query);
             $flag = $result;
-         
         } else {
             $query = "  UPDATE comments
                         SET user_id=?, post_id=?, content=?,status_s=?,active=?
@@ -61,9 +60,8 @@ class comments_repository {
             $content= $p->content;
             $status_s = $p->status;
             $active=$p->active;
-          
-            $stmt->bind_param("ssdddd",$user_id,$post_id,$content,$status_s,$active,$id);
-            $stmt->execute();
+            $stmt->bind_param("ssdddd",$id,$user_id,$post_id,$content,$status_s,$active);
+                $stmt->execute();
             if ($stmt->error) {
                 $flag = false;
             }else{

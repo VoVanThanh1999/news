@@ -30,10 +30,4 @@ class comment_service {
         $commentDAO = new comments_repository();
         $commentDAO->deleteById($id);
     }
-    
-    
-    
-    
-   
-  
 }

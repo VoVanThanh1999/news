@@ -164,4 +164,36 @@ class admin extends model_and_view_admin
         $contactDao = new contacts_repository();
         return $contactDao->deteteById($id);
     }
+    function GetAllComment(){
+        $commentDao = new comments_repository();
+        $comments = $commentDao->getALL();
+        $this->view('CommentsGetAll', $comments);
+    }
+    function getCommentById($id){
+        $commentDAO = new comments_repository();
+        $comment = $commentDAO->getById($id);
+        $this->view('ComentsEdit', $comment);
+    }
+    function updateComment(){
+        $id = $_POST['id'];
+        $user_id = $_POST['user_id'];
+        $post_id = $_POST['post_id'];
+        $content = $_POST['content'];
+        $status = $_POST['status'];
+        $active = $_POST['active'];
+//        echo $_POST['status'];
+        $comment_sv=new comment_service();
+        if($id == ""){
+            $comment_sv->createComment(new comments("",$user_id,$post_id,$content,$status,$active));
+            header('location: /news/admin/GetAllComment');
+        }
+        else{
+            $comment_sv->createComment(new comments($id,$user_id,$post_id,$content,$status,$active));
+//            header('location: /news/admin/GetAllComment');
+        }
+    }
+    function deleteComment($id){
+        $comment_sv=new comment_service();
+        return $comment_sv->deleteComment($id);
+    }
 }
