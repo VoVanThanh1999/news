@@ -25,6 +25,21 @@ class post_repository
         }
         return null;
     }
+    
+    function getByIdCategories($id){
+        $query =" SELECT * FROM post WHERE category_id = ".$id ." ";
+        $result = $this->mysql->query($query);
+        $post;
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active']);
+            }
+        }
+        if (isset($post)) {
+            return $post;
+        }
+        return null;
+    }
 
     function deleteById($id){
         $query = " DELETE FROM post WHERE id='".$id."' "; 
@@ -35,8 +50,8 @@ class post_repository
     function saveOrUpdate(posts $p){
         $flag = true;
         if ($p->getId() == null) {
-            $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active)
- VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0)";
+            $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment)
+ VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0,0)";
             $result = $this->mysql->query($query);
             $flag = $result;
            

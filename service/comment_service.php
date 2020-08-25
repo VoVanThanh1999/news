@@ -20,9 +20,14 @@ class comment_service {
     public function activeCommentById($id){
         $commentDAO = new comments_repository();
         $comment = $commentDAO->getById($id);
+        $postDAO = new post_repository();
         if (isset($comment)){
+            $postDetails = $postDAO->getByIdCategories($id);
+            print_r($postDetails);
+            $postDetails->setCount_conment($postDetails->getCount_conment()+1);
             $comment->setActive(1);
             $commentDAO->saveOrUpdate($comment);
+            $postDAO->saveOrUpdate($postDetails);
         }
     }
     

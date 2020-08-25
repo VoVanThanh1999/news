@@ -44,9 +44,8 @@ class comments_repository {
       //  $user_id,$post_id,$content,$status,$active
         $flag = true;
         if ($p->getId() == null) {
-            echo "save";
             $query = "INSERT INTO comments (user_id, post_id, content,status_s,active)
-                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."','".$p->status."',0)";
+                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0)";
             $result = $this->mysql->query($query);
             $flag = $result;
          
@@ -59,6 +58,7 @@ class comments_repository {
             $user_id = $p->user_id;
             $post_id = $p->post_id;
             $content= $p->content;
+            echo $content;
             $status_s = $p->status;
             $active=$p->active;
           

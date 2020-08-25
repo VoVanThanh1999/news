@@ -15,14 +15,15 @@
                           <div class='col-lg-8 top-post-left'>
             				<div class='feature-image-thumb relative'>
             					<div class='overlay overlay-bg'></div>
-            					<img class='img-fluid' src=".$row['images']."
-            						alt=''>
+
+            					<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
+
             				</div>
             				<div class='top-post-details'>
             					<ul class='tags'>
             						<li><a href=''>Food Habit</a></li>
             					</ul>
-            					<a href='image-post.html'>
+            					<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
             						<h3>".$row['title']."</h3>
             					</a>
             					<ul class='meta'>
@@ -47,7 +48,7 @@
             						<ul class='tags'>
             							<li><a href=''>Food Habit</a></li>
             						</ul>
-            						<a href='image-post.html'>
+            						<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
             							<h4>".$row['title']."</h4>
             						</a>
             						<ul class='meta'>
