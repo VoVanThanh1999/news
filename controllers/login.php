@@ -66,7 +66,6 @@ class login extends model_and_view_login
                 else{
                 $query = "INSERT INTO users(name,email,pass_word,gender,date_of_birth) VALUE('$name', '$email', '$password', '$gender', '$date_of_birth')";
                 $result = $this->mysql->query($query);
-                print_r($query);
                 if($_SESSION['id'] ==null){
                 header('location: login');
                 }

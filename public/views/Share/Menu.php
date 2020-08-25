@@ -487,7 +487,7 @@
                     </a>
                     <ul class="mm-collapse">
                         <li >
-                            <a href="../NewsCateGetAll">
+                            <a href="/news/admin/getAllNewsCate">
                                 <i class="metismenu-icon pe-7s-box1"></i>NewsCate
                             </a>
                         </li>
@@ -498,7 +498,11 @@
                         </li>
                     </ul>
                 </li>
-
+                <li >
+                    <a href="/news/admin/ContactGetAll">
+                        <i class="metismenu-icon pe-7s-network"></i>Contact
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
