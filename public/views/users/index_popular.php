@@ -14,14 +14,14 @@
                 		<div class='col-lg-5 post-left'>
                 			<div class='feature-img relative'>
                 				<div class='overlay overlay-bg'></div>
-                				<img class='img-fluid' src=".$row["images"]." alt=''>
+                				<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
                 			</div>
                 			<ul class='tags'>
                 				<li><a href=''>Popular</a></li>
                 			</ul>
                 		</div>
                 		<div class='col-lg-7 post-right'>
-                			<a href='image-post.html'>
+                			<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
                 				<h4>".$row["title"]."</h4>
                 			</a>
                 			<ul class='meta'>

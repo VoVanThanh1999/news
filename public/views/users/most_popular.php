@@ -9,17 +9,17 @@
                         while ($row = $result->fetch_assoc()) {
                             echo "
                                <div class='single-list flex-row d-flex'>
-                            		<div class='thumb'>
-                            			<img src='/news/public/views/img/m4.jpg' alt=''>
+                            		<div class='thumb' style='max-width: 200px; height: auto;'>
+                            			<img  class='img-fluid' src='/news/public/views/img/".$row['images']."' alt=''style='' >
                             		</div>
                             		<div class='details'>
-                            			<a href=''>
+                            			<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
                             				<h6>".$row['title']."</h6>
                             			</a>
                             			<ul class='meta'>
                             				<li><a href=''><span class='lnr lnr-calendar-full'></span>03
                             													April, 2018</a></li>
-                            				<li><a href=''><span class='lnr lnr-bubble'></span>".$row['title']." conment</a></li>
+                            				<li><a href=''><span class='lnr lnr-bubble'></span>".$row['count_conment']." </a></li>
                             			</ul>
                             		</div>
                             	</div>
