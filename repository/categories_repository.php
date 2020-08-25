@@ -5,7 +5,6 @@ class categories_repository {
     public function __construct(){
         $this->mysql = new mysqli(hostname, username, password, dbname);
     }
-
      function getById($id){
         $query = "SELECT * FROM categories where id = ".$id."";
         $result = $this->mysql->query($query);
@@ -17,9 +16,8 @@ class categories_repository {
         }
         return null;
     }
-    
-    function   getAll(){
 
+    function getAll(){
         $query = "SELECT * FROM categories";
         $result = $this->mysql->query($query);
         $data = [];
@@ -28,7 +26,7 @@ class categories_repository {
         }
         return $data;
     }
-    
+
     function getCategoriesIsActive(){
         $query = "SELECT * FROM categories where active =1";
         $result = $this->mysql->query($query);
@@ -58,14 +56,8 @@ class categories_repository {
         }
         return false;
     }
-    
+
     function deleteAll(){
-        
+
     }
-
-
-
-
-    
-    
 }

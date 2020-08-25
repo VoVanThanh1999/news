@@ -18,8 +18,9 @@ class contacts_repository
     }
     function add(contacts $contacts){
         $query = "INSERT INTO contacts (full_name, email, phone_number,title,content,status_s,actvie)
-                    VALUES ('".$contacts->full_name."','".$contacts->email."',".$contacts->phone_number.",'".$contacts->title."','".$contacts->content."','".$contacts->status."',0)";
+                    VALUES ('$contacts->full_name','$contacts->email','$contacts->phone_number','$contacts->title','$contacts->content',$contacts->status,$contacts->active)";
         $result = $this->mysql->query($query);
+        echo $query;
         return $result;
     }
 
@@ -39,8 +40,8 @@ class contacts_repository
     }
 
     function update(contacts $contacts){
-        $query = "UPDATE contacts SET full_name = '".$contacts->full_name."', email = '".$contacts->email."', phone_number = '".$contacts->phone_number."', title = '".$contacts->title."', content = '".$contacts->content."', status_s = '".$contacts->status."', actvie = '".$contacts->active."'
-        WHERE id = '".$contacts->id."'";
+        $query = "UPDATE contacts SET full_name = '$contacts->full_name', email = '$contacts->email', phone_number = '$contacts->phone_number', title = '$contacts->title', content = '$contacts->content', status = '$contacts->status', active = '$contacts->active'
+        WHERE id = '$contacts->id'";
         $result = $this->mysql->query($query);
         return $result;
     }
