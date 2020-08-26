@@ -7,7 +7,6 @@ class  post_controller extends model_and_view_post {
         echo "post";
         $image = "";
         $files = $_FILES['file'];
-        print_r($files);
         $fileName = $_FILES['file']['name'];
         echo $fileName;
         $fileTmpName = $_FILES['file']['tmp_name'];
@@ -17,7 +16,8 @@ class  post_controller extends model_and_view_post {
         $fileExt = explode('.',$fileName);
         $fileActualExt = strtolower(end($fileExt));
         $allowed = array('jpg','jpeg','png','pdf');
-            if (in_array($fileActualExt,$allowed)) {
+
+        if (in_array($fileActualExt,$allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
@@ -25,16 +25,14 @@ class  post_controller extends model_and_view_post {
                     $image = $fileNameNew;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
-                }else{
-                    echo"You cannot upload files of the type";
-                }
-            }else{
-                echo"You cannot upload files of the type";
-              
-            }
-        }else{
-            echo"You cannot upload files of the type";
+                }else{ echo"You cannot upload files of the type";}
+            }else{ echo"You cannot upload files of the type";}
         }
+        elseif ($_POST['image'] !=""){
+            $image = $_POST['image'];
+            $flag = true;
+        }
+        else{ echo"You cannot upload files of the type"; }
         $id = $_POST['id'];
         $category_id = $_POST['category_id'];
         $title = $_POST['title'];
@@ -58,7 +56,6 @@ class  post_controller extends model_and_view_post {
         }
        
     }
-    
     function deletePost($idpost){
         $post_sv=new post_service();
         return $post_sv->deletePost($idpost);
@@ -84,6 +81,4 @@ class  post_controller extends model_and_view_post {
    function ViewAddPost(){
         $this->view('PostAdd', "");
     }
-
-    
 }

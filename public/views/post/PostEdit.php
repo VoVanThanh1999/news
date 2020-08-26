@@ -74,9 +74,10 @@ include_once('public/views/Share/Menu.php');
                     <td>
                         <input name="file" id="file" type="file" class="form-control-file" onchange="fucHidden()" multiple>
                         <img id="myid" src="" alt="new image" style="display:none" />
-                        <img id="myid2" src="/news/public/assets/images/up-img.png" alt="new image" />
+                        <img id="myid2" src="/news/public/views/img/<?=$data->images?>" alt="new image" style="width: 200px" />
+                        <input type="text" name="image" style="display:none;" value="<?=$data->images?>">
                     </td>
-                </tr>
+                </tr>s
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Tag</label></td>
                     <td><input name="tag" placeholder="Enter tag...." type="text" value="<?=$data->tag?>" class="form-control col-6"></td>
