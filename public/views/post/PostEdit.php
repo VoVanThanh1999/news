@@ -59,7 +59,7 @@ include_once('public/views/Share/Menu.php');
                 </tr>
                 <tr>
                     <td><label for="Title" class="mt-2  float-right">Title</label></td>
-                    <td><input name="title" id="title" placeholder="Enter title...." type="text" value="<?=$data->title?>" class="form-control col-6"></td>
+                    <td><input name="title"  placeholder="Enter title...." type="text" value="<?=$data->title?>" class="form-control col-6"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Intro</label></td>
@@ -79,19 +79,19 @@ include_once('public/views/Share/Menu.php');
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Tag</label></td>
-                    <td><input name="tag" id="title" placeholder="Enter tag...." type="text" value="<?=$data->tag?>" class="form-control col-6"></td>
+                    <td><input name="tag" placeholder="Enter tag...." type="text" value="<?=$data->tag?>" class="form-control col-6"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Description</label></td>
-                    <td><input name="description" id="title" placeholder="Enter description...." type="text" value="<?=$data->description?>" class="form-control col-6"></td>
+                    <td><input name="description"  placeholder="Enter description...." type="text" value="<?=$data->description?>" class="form-control col-6"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Count comment</label></td>
-                    <td><input name="count_comment" id="title" placeholder="Enter count comment...." type="number" value="<?=$data->count_conment?>" class="form-control col-6"></td>
+                    <td><input name="count_comment"  placeholder="Enter count comment...." type="number" value="<?=$data->count_conment?>" class="form-control col-6"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Slug</label></td>
-                    <td><input name="slug" id="title" placeholder="Enter slug...." type="text" value="<?=$data->slug?>" class="form-control col-6"></td>
+                    <td><input name="slug"  placeholder="Enter slug...." type="text" value="<?=$data->slug?>" class="form-control col-6"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Activate</label></td>

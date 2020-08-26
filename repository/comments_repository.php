@@ -50,28 +50,24 @@ class comments_repository {
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-            $query = "  UPDATE comments
-                        SET user_id=?, post_id=?, content=?,status_s=?,active=?
-                        WHERE id=? ";
-            $stmt =  $this->mysql->prepare($query);
-            $id= $p->id;
-            $user_id = $p->user_id;
-            $post_id = $p->post_id;
-            $content= $p->content;
-            $status_s = $p->status;
-            $active=$p->active;
-            $stmt->bind_param("ssdddd",$id,$user_id,$post_id,$content,$status_s,$active);
-                $stmt->execute();
-            if ($stmt->error) {
-                $flag = false;
-            }else{
-                $flag = true;
-            }
-            $stmt->close();
+            $query = "UPDATE comments SET user_id ='$p->user_id', post_id = '$p->post_id', content = '".$p->content."', status_s = '$p->status', active = '$p->active'
+                   WHERE id = '$p->id'";
+
+            $result =$this->mysql->query($query);
         }
         return $flag;
     }
-    
+    function update(comments $p){
+        $id= $p->id;
+        $user_id = $p->user_id;
+        $post_id = $p->post_id;
+        $content= $p->content;
+        $status_s = $p->status;
+        $active=$p->active;
+        $query = "UPDATE comments SET user_id ='$user_id', post_id = '$post_id', content = '$content', status_s = $status_s, active = $active
+                   WHERE id = $id";
+        $result =$this->mysql->query($query);
+    }
     function getByIdPost($idPost){
         
     }

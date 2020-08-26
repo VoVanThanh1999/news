@@ -22,12 +22,11 @@ class  post_controller extends model_and_view_post {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
                     $fileDestination = 'C:/xampp/htdocs/news/public/views/img/'.$fileNameNew;
-                    $image = '/news/public/views/img/'.$fileNameNew;
+                    $image = $fileNameNew;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
                 }else{
                     echo"You cannot upload files of the type";
-                 
                 }
             }else{
                 echo"You cannot upload files of the type";
@@ -45,6 +44,7 @@ class  post_controller extends model_and_view_post {
         $description = $_POST['description'];
         $post_sv=new post_service();
         $slug = $post_sv->to_slug($_POST['slug']);
+        echo $content;
         if ($flag) {
             if($id == ""){
                 $post_sv->createPost(new posts("",$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));

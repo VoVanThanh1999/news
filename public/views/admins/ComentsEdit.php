@@ -158,7 +158,7 @@ include_once('public/views/Share/Menu.php');
             $("#status").prop("checked",false);
         }
     });
-</script>s
+</script>
 <!-- -------- Footer share -------------- -->
 <?php
 include_once('public/views/Share/Footer.php');
