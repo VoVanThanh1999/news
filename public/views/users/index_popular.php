@@ -4,7 +4,7 @@
 	<h4 class="cat-title">Popular</h4>
 	<?php 
         $conn = new mysqli(hostname, username, password, dbname);
-        $sql = "SELECT * FROM post ORDER BY intro DESC limit  4";
+        $sql = "SELECT * FROM post ORDER BY count_conment DESC limit  4";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // output data of each row

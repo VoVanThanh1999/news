@@ -8,6 +8,7 @@ class comment_user extends model_and_view_user {
     }
     
     public function createComment(){
+
         if (isset($_SESSION['id'])) {      
             $user_id = $_SESSION['id'];
             $post_id = $_POST['post_id'];
