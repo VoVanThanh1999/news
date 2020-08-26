@@ -49,12 +49,6 @@ class comments_repository {
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-<<<<<<< HEAD
-            $query = "UPDATE comments SET user_id ='$p->user_id', post_id = '$p->post_id', content = '".$p->content."', status_s = '$p->status', active = '$p->active'
-                   WHERE id = '$p->id'";
-
-            $result =$this->mysql->query($query);
-=======
             $query = "  UPDATE comments
                         SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?
                         WHERE id=? ";
@@ -75,7 +69,6 @@ class comments_repository {
                 $flag = true;
             }
             $stmt->close();
->>>>>>> 9d0900c7bfb6d64598fbfd264edb2ab809060186
         }
         return $flag;
     }
