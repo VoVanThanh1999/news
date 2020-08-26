@@ -21,7 +21,7 @@ class  post_controller extends model_and_view_post {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
-                    $fileDestination = 'C:/xamppp/htdocs/news/public/views/img/'.$fileNameNew;
+                    $fileDestination = 'C:/xampp/htdocs/news/public/views/img/'.$fileNameNew;
                     $image = $fileNameNew;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
@@ -44,7 +44,6 @@ class  post_controller extends model_and_view_post {
         $description = $_POST['description'];
         $post_sv=new post_service();
         $slug = $post_sv->to_slug($_POST['slug']);
-        echo $content;
         if ($flag) {
             if($id == ""){
                 $post_sv->createPost(new posts("",$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
