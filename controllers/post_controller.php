@@ -16,7 +16,6 @@ class  post_controller extends model_and_view_post {
         $fileExt = explode('.',$fileName);
         $fileActualExt = strtolower(end($fileExt));
         $allowed = array('jpg','jpeg','png','pdf');
-
         if (in_array($fileActualExt,$allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
@@ -40,21 +39,22 @@ class  post_controller extends model_and_view_post {
         $content = $_POST['content'];
         $tag = $_POST['tag'];
         $description = $_POST['description'];
+        if (isset($_POST['active'])) $active = 1;
+        else  $active = 0;
         $post_sv=new post_service();
         $slug = $post_sv->to_slug($_POST['slug']);
-        if ($flag) {
-            if($id == ""){
-                $post_sv->createPost(new posts("",$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
-                header('location: ./getAll');
+            if ($flag) {
+                if($id == ""){
+                    $post_sv->createPost(new posts("",$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,$active));
+                    header('location: ./getAll');
+                }
+                else{
+                    $post_sv->createPost(new posts($id,$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,$active));
+                    header('location: ./getAll');
+                }
+            }else{
+                echo "bạn phải upload ảnh";
             }
-            else{
-                $post_sv->createPost(new posts($id,$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,0));
-                header('location: ./getAll');
-            }
-        }else{
-            echo "bạn phải upload ảnh";
-        }
-       
     }
     function deletePost($idpost){
         $post_sv=new post_service();
