@@ -25,7 +25,8 @@ class post_repository
         }
         return null;
     }
-
+    
+   
     function deleteById($id){
         $query = " DELETE FROM post WHERE id='".$id."' "; 
         $result = $this->mysql->query($query);
@@ -33,16 +34,16 @@ class post_repository
     }
 
     function saveOrUpdate(posts $p){
+ 
         $flag = true;
         if ($p->getId() == null) {
-            $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active)
- VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0)";
+            $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment)
+ VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0,0)";
             $result = $this->mysql->query($query);
             $flag = $result;
-           
         } else {
             $query = "  UPDATE post 
-                        SET title=?, intro=?, content=?,images=?,tag=?,description=?,slug=?,active=?
+                        SET title=?, intro=?, content=?,images=?,tag=?,description=?,count_conment=?,slug=?,active=?
                         WHERE id=? ";
             $stmt =  $this->mysql->prepare($query);
             $id= $p->id;
@@ -54,7 +55,9 @@ class post_repository
             $description=$p->description;
             $slug=$p->slug;
             $active = $p->active;
-            $stmt->bind_param("ssdssssss",$title , $intro ,$content,$images,$tag,$description,$slug,$active,$id);
+            $count_conment = $p->count_conment;
+            echo $count_conment;
+            $stmt->bind_param("ssssssssss",$title , $intro ,$content,$images,$tag,$description,$count_conment,$slug,$active,$id);
             $stmt->execute();
             if ($stmt->error) {
                 $flag = false;

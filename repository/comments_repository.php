@@ -44,16 +44,38 @@ class comments_repository {
 
         $flag = true;
         if ($p->getId() == null) {
-            echo "save";
-            $query = "INSERT INTO comments (user_id, post_id, content,status_s,active)
-                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."','".$p->status."',0)";
+            $query = "INSERT INTO comments (user_id, post_id, content,status_s,active,name_user)
+                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0,'".$p->name_user."')";
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
+<<<<<<< HEAD
             $query = "UPDATE comments SET user_id ='$p->user_id', post_id = '$p->post_id', content = '".$p->content."', status_s = '$p->status', active = '$p->active'
                    WHERE id = '$p->id'";
 
             $result =$this->mysql->query($query);
+=======
+            $query = "  UPDATE comments
+                        SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?
+                        WHERE id=? ";
+            $stmt =  $this->mysql->prepare($query);
+            $id= $p->id;
+            $user_id = $p->user_id;
+            $post_id = $p->post_id;
+            $content= $p->content;
+            echo $content;
+            $status_s = $p->status;
+            $active=$p->active;
+            $name_user = $p->name_user;
+            $stmt->bind_param("ssssssd",$user_id,$post_id,$content,$status_s,$active,$name_user,$id);
+            $stmt->execute();
+            if ($stmt->error) {
+                $flag = false;
+            }else{
+                $flag = true;
+            }
+            $stmt->close();
+>>>>>>> 9d0900c7bfb6d64598fbfd264edb2ab809060186
         }
         return $flag;
     }

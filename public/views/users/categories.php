@@ -8,12 +8,18 @@
 				<li class="menu-has-children"><a href="">Category </a>
 					<ul>
 						<?php
-						foreach ($datas as $data){
-						    foreach ($data as $value) {
-						        echo "<li><a href=".$value->name.">".$value->name."</a></li>";   
+						$conn = new mysqli(hostname, username, password, dbname);
+						$sql = "SELECT * FROM categories WHERE active = 1;";
+						$result = $conn->query($sql);
+						if ($result->num_rows > 0) {
+						    // output data of each row
+						    while($row = $result->fetch_assoc()) {
+						        echo "<li><a href=".$row['name'].">".$row['name']."</a></li>"; 	        
 						    }
-						   
-						}?>
+						} else {
+						    echo "0 results";
+						}						
+						?>
 						
 					</ul></li>
 				<li><a href="about.html">About</a></li>

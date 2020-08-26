@@ -11,11 +11,12 @@
                         while ($row = $result->fetch_assoc()) {
                             echo "
                                 <div class='single-post d-flex flex-row'>
-                                	<div class='thumb'>
-                                		<img src='/news/public/views/img/e2.jpg' alt=''>
+                                	<div class='thumb' style='max-width: 200px; height: auto;'>
+                                		<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
                                 	</div>
                                 	<div class='detail'>
-                                		<a href='image-post.html'><h6>".$row['title']."</h6></a>
+                                		<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
+                                        <h6>".$row['title']."</h6></a>
                                 		<ul class='meta'>
                                 			<li><a href=''><span class='lnr lnr-calendar-full'></span>03
                                 								April, 2018</a></li>

@@ -13,7 +13,9 @@ require_once 'core/model_and_view_login.php';
 require_once 'core/model_and_view_post.php';
 require_once 'core/model_and_view_newscate.php';
 require_once 'core/model_and_view_categories.php';
+require_once 'core/model_and_view_chitiet.php';
 require_once 'core/Abtract.php';
+
 //model
 require_once 'models/users.php';
 require_once 'models/posts.php';

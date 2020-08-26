@@ -16,11 +16,11 @@ if ($result->num_rows > 0) {
                 <div class='feature-post relative'>
             		<div class='feature-img relative'>
             			<div class='overlay overlay-bg'></div>
-            			<img class='img-fluid' src='/news/public/views/img/f1.jpg' alt=''>
+            			<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
             		</div>
             		<div class='details'>
             			<ul class='tags'>
-            				<li><a href=''>Popular</a></li>
+            				<li><a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>Popular</a></li>
             			</ul>
             			<a href='image-post.html'>
             				<h3>".$row['title'].".</h3>
@@ -41,21 +41,21 @@ if ($result->num_rows > 0) {
         			<div class='feature-img-wrap relative'>
         				<div class='feature-img relative'>
         					<div class='overlay overlay-bg'></div>
-        					<img class='img-fluid' src='/news/public/views/img/f2.jpg' alt=''>
+        					<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
         				</div>
         				<ul class='tags'>
         					<li><a href=''>Travel</a></li>
         				</ul>
         			</div>
         			<div class='details'>
-        				<a href='image-post.html'>
-        					<h4>A Discount Toner Cartridge Is Better Than Ever.</h4>
+        				<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
+        						<h4>".$row['title'].".</h4>
         				</a>
         				<ul class='meta'>
         					<li><a href=''><span class='lnr lnr-user'></span>Mark wiens</a></li>
         					<li><a href=''><span class='lnr lnr-calendar-full'></span>03
         							April, 2018</a></li>
-        					<li><a href=''><span class='lnr lnr-bubble'></span>06 </a></li>
+        						<li><a href=''><span class='lnr lnr-bubble'>".$row['count_conment']."</span></a></li>
         				</ul>
         				<p class='excert'>Lorem ipsum dolor sit amet, consecteturadip
         					isicing elit, sed do eiusmod tempor incididunt ed do eius.</p>
