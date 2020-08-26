@@ -87,10 +87,6 @@ include_once('public/views/Share/Menu.php');
                     <td><input name="description"  placeholder="Enter description...." type="text" value="<?=$data->description?>" class="form-control col-6"></td>
                 </tr>
                 <tr>
-                    <td> <label for="CreateDate" class="mt-2 float-right">Count comment</label></td>
-                    <td><input name="count_comment"  placeholder="Enter count comment...." type="number" value="<?=$data->count_conment?>" class="form-control col-6"></td>
-                </tr>
-                <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Slug</label></td>
                     <td><input name="slug"  placeholder="Enter slug...." type="text" value="<?=$data->slug?>" class="form-control col-6"></td>
                 </tr>
