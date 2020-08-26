@@ -128,7 +128,7 @@
             						        echo "<li><a href=''>".$row['name']."</a></li>";
             						    }
             						} 					
-            					?>		
+            					       ?>		
 									</ul>
 									<a href="#">
 										<h3><?php echo "$datas->title"?></h3>
@@ -141,7 +141,9 @@
 									<p>
 									<?php echo "$datas->content"?>
 									</p>
-								<blockquote><?php echo "$datas->description"?>.</blockquote>
+									
+									<blockquote><?php echo "$datas->description"?>.</blockquote>
+								
 								<div class="comment-sec-area">
 									<div class="container">
 										<div class="row flex-column">

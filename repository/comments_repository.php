@@ -44,14 +44,14 @@ class comments_repository {
       //  $user_id,$post_id,$content,$status,$active
         $flag = true;
         if ($p->getId() == null) {
-            $query = "INSERT INTO comments (user_id, post_id, content,status_s,active)
-                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0)";
+            $query = "INSERT INTO comments (user_id, post_id, content,status_s,active,name_user)
+                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0,'".$p->name_user."')";
             $result = $this->mysql->query($query);
             $flag = $result;
          
         } else {
             $query = "  UPDATE comments
-                        SET user_id=?, post_id=?, content=?,status_s=?,active=?
+                        SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?
                         WHERE id=? ";
             $stmt =  $this->mysql->prepare($query);
             $id= $p->id;
@@ -61,8 +61,8 @@ class comments_repository {
             echo $content;
             $status_s = $p->status;
             $active=$p->active;
-          
-            $stmt->bind_param("ssdddd",$user_id,$post_id,$content,$status_s,$active,$id);
+            $name_user = $p->name_user;
+            $stmt->bind_param("ssssssd",$user_id,$post_id,$content,$status_s,$active,$name_user,$id);
             $stmt->execute();
             if ($stmt->error) {
                 $flag = false;

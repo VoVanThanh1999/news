@@ -49,13 +49,13 @@ if ($result->num_rows > 0) {
         			</div>
         			<div class='details'>
         				<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
-        					<h4>A Discount Toner Cartridge Is Better Than Ever.</h4>
+        						<h4>".$row['title'].".</h4>
         				</a>
         				<ul class='meta'>
         					<li><a href=''><span class='lnr lnr-user'></span>Mark wiens</a></li>
         					<li><a href=''><span class='lnr lnr-calendar-full'></span>03
         							April, 2018</a></li>
-        					<li><a href=''><span class='lnr lnr-bubble'></span>06 </a></li>
+        						<li><a href=''><span class='lnr lnr-bubble'>".$row['count_conment']."</span></a></li>
         				</ul>
         				<p class='excert'>Lorem ipsum dolor sit amet, consecteturadip
         					isicing elit, sed do eiusmod tempor incididunt ed do eius.</p>

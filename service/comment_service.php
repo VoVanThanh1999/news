@@ -12,6 +12,8 @@ class comment_service {
         $postDAO = new post_repository();
         $commentDAO = new comments_repository();
         if ($userDAO->getById($cm->getUser_id())!=null && $postDAO->getById($cm->getPost_id()) != null) {
+            $userDeltails = $userDAO->getById($cm->getUser_id());
+            $cm->setName_user($userDeltails->getName());
             return $commentDAO->saveOrUpdate($cm);
         }
         return false;
@@ -21,13 +23,15 @@ class comment_service {
         $commentDAO = new comments_repository();
         $comment = $commentDAO->getById($id);
         $postDAO = new post_repository();
-        if (isset($comment)){
-            $postDetails = $postDAO->getByIdCategories($id);
-            print_r($postDetails);
-            $postDetails->setCount_conment($postDetails->getCount_conment()+1);
+        $userDAO = new user_repository();
+        $postDetails = $postDAO->getById($comment->getPost_id());
+        $userDeltails = $userDAO->getById($comment->getUser_id());
+        if (isset($comment) && $comment->getActive()==0){
             $comment->setActive(1);
-            $commentDAO->saveOrUpdate($comment);
+            $comment->setName_user($userDeltails->getName());
+            $postDetails->setCount_conment($postDetails->getCount_conment()+1); 
             $postDAO->saveOrUpdate($postDetails);
+            $commentDAO->saveOrUpdate($comment);
         }
     }
     
