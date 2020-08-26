@@ -40,8 +40,9 @@ class contacts_repository
     }
 
     function update(contacts $contacts){
-        $query = "UPDATE contacts SET full_name = '$contacts->full_name', email = '$contacts->email', phone_number = '$contacts->phone_number', title = '$contacts->title', content = '$contacts->content', status = '$contacts->status', active = '$contacts->active'
-        WHERE id = '$contacts->id'";
+        $query = "UPDATE contacts SET full_name = '$contacts->full_name', email = '$contacts->email', phone_number = '$contacts->phone_number', title = '$contacts->title', content = '$contacts->content', status = $contacts->status, active = $contacts->active
+        WHERE id = $contacts->id";
+        print_r($query);
         $result = $this->mysql->query($query);
         return $result;
     }

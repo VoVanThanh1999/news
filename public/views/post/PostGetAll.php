@@ -97,11 +97,11 @@ include_once('public/views/Share/Menu.php');
                                     <?php
                                     if ($value->active == 1) {
                                         ?>
-                                        <input type="checkbox" id="exampleCheck1" onclick="activatePost(<?= $value->id ?>)" checked="checked" >
+                                        <input type="checkbox" id="exampleCheck1" onclick="activatePost(<?= $value->id ?>)" checked="checked" style="pointer-events: none" >
                                         <?php
                                     } else {
                                         ?>
-                                        <input type="checkbox" onclick="activatePost(<?= $value->id ?>)" id="exampleCheck1" >
+                                        <input type="checkbox" onclick="activatePost(<?= $value->id ?>)" id="exampleCheck1" style="pointer-events: none">
                                         <?php
                                     }
                                     ?>

@@ -90,12 +90,13 @@ class admin extends model_and_view_admin
         $icon = $_POST['icon'];
         $ab = new Abtract();
         $slug = $ab->to_slug($_POST['slug']);
-        $active = $_POST['active'];
+        if (isset($_POST['active'])) $active = 1;
+        else  $active = 0;
         if (empty($name) && empty($tag) && empty($description) && empty($slug)) {
             header('location:/news/admin/getNewsCateById/' . $id . '?error=0');
         } else {
             $newsCateDAO = new categories_repository();
-            $category = $newsCateDAO->update(new Categories($id, $name, $tag, $description, $icon, $slug, 0));
+            $category = $newsCateDAO->update(new Categories($id, $name, $tag, $description, $icon, $slug, $active));
             header('location: /news/admin/getAllNewsCate');
         }
     }
@@ -111,13 +112,15 @@ class admin extends model_and_view_admin
         $tag = $_POST['tag'];
         $description = $_POST['description'];
         $icon = $_POST['icon'];
+        if (isset($_POST['active'])) $active = 1;
+        else  $active = 0;
         $ab = new Abtract();
         $slug = $ab->to_slug($_POST['slug']);
         if (empty($name) && empty($tag) && empty($description) && empty($slug)) {
             header('location:/news/admin/createrViewsCate?error=0');
         } else {
             $newsCateDAO = new categories_repository();
-            $newsCateDAO->addCategories(new Categories("", $name, $tag, $description, $icon, $slug, 0));
+            $newsCateDAO->addCategories(new Categories("", $name, $tag, $description, $icon, $slug, $active));
             header('location: /news/admin/getAllNewsCate');
         }
     }
@@ -167,8 +170,10 @@ class admin extends model_and_view_admin
         $title = $_POST['title'];
         $phone_number = $_POST['phone_number'];
         $content = $_POST['content'];
-        $status = $_POST['status'];
-        $active = $_POST['active'];
+        if (isset($_POST['status']))  $status = 1;
+        else  $status = 0;
+        if (isset($_POST['active'])) $active = 1;
+        else  $active = 0;
         echo $status;
         echo $active;
         if (empty($full_name) && empty($email) && empty($title) && empty($phone_number) && empty($content)) {
@@ -206,14 +211,12 @@ class admin extends model_and_view_admin
         $user_id = $_POST['user_id'];
         $post_id = $_POST['post_id'];
         $content = $_POST['content'];
-        if (isset($_POST['status']))  $status = 0;
-        else  $status = 1;
-        if (isset($_POST['active'])) $active = 0;
-        else  $active = 1;
+        if (isset($_POST['status']))  $status = 1;
+        else  $status = 0;
+        if (isset($_POST['active'])) $active = 1;
+        else  $active = 0;
         $comment = new comments_repository();
         $comment->update(new comments($id, $user_id, $post_id, $content, $status, $active));
-        echo $active;
-        echo $status;
         header('location: /news/admin/GetAllComment');
     }
 

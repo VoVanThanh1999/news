@@ -25,8 +25,7 @@ class post_repository
         }
         return null;
     }
-    
-   
+
     function deleteById($id){
         $query = " DELETE FROM post WHERE id='".$id."' "; 
         $result = $this->mysql->query($query);
@@ -38,33 +37,14 @@ class post_repository
         $flag = true;
         if ($p->getId() == null) {
             $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment)
- VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0,0)";
+ VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0,$p->active)";
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-            $query = "  UPDATE post 
-                        SET title=?, intro=?, content=?,images=?,tag=?,description=?,count_conment=?,slug=?,active=?
-                        WHERE id=? ";
-            $stmt =  $this->mysql->prepare($query);
-            $id= $p->id;
-            $title = $p->title;
-            $intro = $p->intro;
-            $content= $p->content;
-            $images = $p->images;
-            $tag=$p->tag;
-            $description=$p->description;
-            $slug=$p->slug;
-            $active = $p->active;
-            $count_conment = $p->count_conment;
-            echo $count_conment;
-            $stmt->bind_param("ssssssssss",$title , $intro ,$content,$images,$tag,$description,$count_conment,$slug,$active,$id);
-            $stmt->execute();
-            if ($stmt->error) {
-                $flag = false;
-            }else{
-                $flag = true;
-            }
-            $stmt->close();
+            $query = "UPDATE post SET category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description', slug = '$p->slug', active = $p->active
+                   WHERE id = $p->id";
+            $result = $this->mysql->query($query);
+            $flag = $result;
         }
         return $flag;
     }
@@ -95,7 +75,12 @@ class post_repository
         }
         return $posts;
     }
-    
+    function activePost(){
+        $query = "UPDATE post SET category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description', slug = '$p->slug', active = $p->active
+                   WHERE id = $p->id";
+        $result = $this->mysql->query($query);
+        $flag = $result;
+    }
     
     
 }

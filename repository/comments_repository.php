@@ -78,7 +78,7 @@ class comments_repository {
         $post_id = $p->post_id;
         $content= $p->content;
         $status_s = $p->status;
-        $active=$p->active;
+        $active= $p->active;
         $query = "UPDATE comments SET user_id ='$user_id', post_id = '$post_id', content = '$content', status_s = $status_s, active = $active
                    WHERE id = $id";
         $result =$this->mysql->query($query);

@@ -37,14 +37,14 @@ class categories_repository {
         return $data;
     }
     function addCategories(Categories  $categories){
-        $query = "INSERT INTO categories(name,tag, description,icon, slug, active) VALUE('$categories->name', '$categories->tag','$categories->description', '$categories->icon', '$categories->slug', '$categories->active')";
+        $query = "INSERT INTO categories(name,tag, description,icon, slug, active) VALUE('$categories->name', '$categories->tag','$categories->description', '$categories->icon', '$categories->slug', $categories->active)";
         $result = $this->mysql->query($query);
         return $result;
     }
 
     function update(Categories $categories){
-        $query = "UPDATE categories SET name ='$categories->name', tag = '$categories->tag', description = '$categories->description', icon = '$categories->icon', slug = '$categories->slug', active = '$categories->active'
-                   WHERE id = '$categories->id'";
+        $query = "UPDATE categories SET name ='$categories->name', tag = '$categories->tag', description = '$categories->description', icon = '$categories->icon', slug = '$categories->slug', active = $categories->active
+                   WHERE id = $categories->id";
         $result =$this->mysql->query($query);
         return $result;
     }

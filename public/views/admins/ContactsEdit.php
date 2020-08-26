@@ -25,7 +25,7 @@ include_once('public/views/Share/Menu.php');
         </div>
     </div>
 </div>
-<form method="post"  action="/news/admin/updateComment">
+<form method="post"  action="/news/admin/updateContact">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-8">
@@ -33,15 +33,23 @@ include_once('public/views/Share/Menu.php');
                 <tbody>
                 <tr>
                     <td><label for="Title" class="mt-2 float-right">Id</label></td>
-                    <td><input name="id" id="id" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->id?>" style="pointer-events: none;"></td>
+                    <td><input name="id" id="a" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->id?>" style="pointer-events: none"></td>
                 </tr>
                 <tr>
-                    <td><label for="Title" class="mt-2 float-right">User Id</label></td>
-                    <td><input name="user_id" id="title" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->user_id?>"></td>
+                    <td><label for="Title" class="mt-2 float-right">Full Name</label></td>
+                    <td><input name="full_name" id="title" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->full_name?>"></td>
                 </tr>
                 <tr>
-                    <td> <label for="CreateDate" class="mt-2 float-right">Post Id</label></td>
-                    <td> <input name="post_id" id="" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->post_id?>"></td>
+                    <td> <label for="CreateDate" class="mt-2 float-right">Email</label></td>
+                    <td> <input name="email" id="createDate" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->email?>"></td>
+                </tr>
+                <tr>
+                    <td> <label for="CreateDate" class="mt-2 float-right">Phone Number</label></td>
+                    <td> <input name="phone_number" id="" placeholder="Please enter text" type="number" class="form-control" value="<?=$data->phone_number?>"></td>
+                </tr>
+                <tr>
+                    <td> <label for="CreateDate" class="mt-2 float-right">Title</label></td>
+                    <td> <input name="title" id="" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->title?>"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Content</label></td>
@@ -50,27 +58,27 @@ include_once('public/views/Share/Menu.php');
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Status</label></td>
                     <td>
-                    <?php
+                        <?php
                         if($data->status == 1){
-                    ?>
-                            <input type="checkbox" name="status" value="1" id="status" checked="checked" >
+                            ?>
+                            <input type="checkbox" name="status" value="1" id="status" checked="true" >
                         <?php }
                         else{?>
                             <input type="checkbox" name="status" value="0" id="status" >
-                      <?php  }?>
+                        <?php  }?>
                     </td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Active</label></td>
                     <td>
-                    <?php
-                         if($data->active == 1){
-                    ?>
-                            <input type="checkbox" name="active"  id="active" value="1" checked="checked" >
+                        <?php
+                        if($data->active == 1){
+                            ?>
+                            <input type="checkbox" name="active"  id="active" value="1" checked="true" >
                         <?php }
                         else{?>
                             <input type="checkbox" name="active"  id="active" value="0">
-                      <?php  }?>
+                        <?php  }?>
                     </td>
                 </tr>
                 <tr>
@@ -107,20 +115,24 @@ include_once('public/views/Share/Menu.php');
     $("#active").change(function(){
         if($("#active").prop("checked") ==true){
             $("#active").val("1");
+            $("#active").prop("checked",true) ;
         }
         else{
             $("#active").val("0");
+            $("#active").prop("checked",false) ;
         }
     });
     $("#status").change(function(){
         if($("#status").prop("checked") ==true){
             $("#status").val("1");
+            $("#status").prop("checked",true);
         }
         else{
             $("#status").val("0");
+            $("#status").prop("checked",false);
         }
     });
-</script>s
+</script>
 <!-- -------- Footer share -------------- -->
 <?php
 include_once('public/views/Share/Footer.php');

@@ -57,12 +57,12 @@ include_once('public/views/Share/Menu.php');
                     <td><?php
                         if($data->active == 1){
                             ?>
-                            <input type="checkbox" name="active"  id="exampleCheck1" checked="checked" >
+                            <input type="checkbox" name="active"  id="active" checked="checked" >
                             <?php
                         }
                         else{
                             ?>
-                            <input type="checkbox"  name="active" id="exampleCheck1" >
+                            <input type="checkbox"  name="active" id="active" >
                             <?php
                         }
                         ?>
@@ -92,6 +92,18 @@ include_once('public/views/Share/Menu.php');
         <div class="col-3"></div>
     </div>
 </form>
+<script>
+    $("#active").change(function(){
+        if($("#active").prop("checked") ==true){
+            $("#active").val("1");
+            $("#active").prop("checked",true) ;
+        }
+        else{
+            $("#active").val("0");
+            $("#active").prop("checked",false) ;
+        }
+    });
+</script>
 <!-- -------- Footer share -------------- -->
 <?php
 include_once('public/views/Share/Footer.php');
