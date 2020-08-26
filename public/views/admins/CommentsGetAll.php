@@ -17,7 +17,7 @@ include_once('public/views/Share/Header.php');
                         <i class="pe-7s-cash icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Contacts Management
+                        Comment Management
                     </div>
                 </div>
             </div>
@@ -29,8 +29,8 @@ include_once('public/views/Share/Header.php');
                 <div class="col-sm-12 col-md-6">
                     <div class="dataTables_length" id="example1_length">
                         <label>
-                            <a class="btn btn-primary btn-shadow text-white mr-2" href="createrViewsContact">Add News <i
-                                        class="fas fa-plus"></i></a>
+<!--                            <a class="btn btn-primary btn-shadow text-white mr-2" href="createrViewsContact">Add Comment <i-->
+<!--                                        class="fas fa-plus"></i></a>-->
 <!--                            <a class="btn btn-danger btn-shadow text-white">Bulk Delete <i class="fas fa-trash"></i></a>-->
                         </label>
                     </div>
@@ -49,19 +49,11 @@ include_once('public/views/Share/Header.php');
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Browser: activate to sort column ascending">Full Name
+                                aria-label="Browser: activate to sort column ascending">User Id
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Platform(s): activate to sort column ascending">Email
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Phone Number
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Title
+                                aria-label="Platform(s): activate to sort column ascending">Post Id
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -85,10 +77,8 @@ include_once('public/views/Share/Header.php');
                             ?>
                             <tr role="row" class="odd">
                                 <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
-                                <td><?= $value->full_name ?></td>
-                                <td><?= $value->email ?></td>
-                                <td><?= $value->phone_number ?></td>
-                                <td><?= $value->title ?></td>
+                                <td><?= $value->user_id ?></td>
+                                <td><?= $value->post_id ?></td>
                                 <td><span><?= $value->content ?></span></td>
                                 <td>
                                     <?php
@@ -118,7 +108,7 @@ include_once('public/views/Share/Header.php');
                                 </td>
                                 <td class="text-center"><a
                                             class="btn btn-primary btn-shadow text-white button-large-edit"
-                                            href="getContactById/<?= $value->id ?>">Edit <i class="fas fa-edit"></i> </a> <a
+                                            href="getCommentById/<?= $value->id ?>">Edit <i class="fas fa-edit"></i> </a> <a
                                             class="btn btn-warning btn-shadow text-white button-large-delete"
                                             href="javascript:void(0);" onclick="DeleteRecord(<?= $value->id ?>)">Del <i
                                                 class="fas fa-trash"></i></a>
@@ -150,7 +140,7 @@ include_once('public/views/Share/Header.php');
     function DoDelete(id) {
         $.ajax({
             type: "DELETE",
-            url: "/news/admin/deleteContact/" + id,
+            url: "/news/admin/deleteComment/" + id,
             dataType: "html",
             success: function (html) {
                 alertify.success('Deleted');
@@ -164,7 +154,7 @@ include_once('public/views/Share/Header.php');
     function getAll() {
         $.ajax({
             type: "DELETE",
-            url: "/news/admin/GetAllContact",
+            url: "/news/admin/GetAllComment",
             dataType: "html",
             success: function (html) {
                 $("div#listPost").empty();

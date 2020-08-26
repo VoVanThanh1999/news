@@ -39,16 +39,15 @@ class comments_repository {
         $result = $this->mysql->query($query);
         return $result;
     }
-    
     function saveOrUpdate(comments $p) {
       //  $user_id,$post_id,$content,$status,$active
+
         $flag = true;
         if ($p->getId() == null) {
             $query = "INSERT INTO comments (user_id, post_id, content,status_s,active,name_user)
                         VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0,'".$p->name_user."')";
             $result = $this->mysql->query($query);
             $flag = $result;
-         
         } else {
             $query = "  UPDATE comments
                         SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?
@@ -73,7 +72,17 @@ class comments_repository {
         }
         return $flag;
     }
-    
+    function update(comments $p){
+        $id= $p->id;
+        $user_id = $p->user_id;
+        $post_id = $p->post_id;
+        $content= $p->content;
+        $status_s = $p->status;
+        $active=$p->active;
+        $query = "UPDATE comments SET user_id ='$user_id', post_id = '$post_id', content = '$content', status_s = $status_s, active = $active
+                   WHERE id = $id";
+        $result =$this->mysql->query($query);
+    }
     function getByIdPost($idPost){
         
     }

@@ -33,7 +33,7 @@ include_once('public/views/Share/Menu.php');
                         <label>
                             <a class="btn btn-primary btn-shadow text-white mr-2" href="ViewAddPost">Add News <i
                                         class="fas fa-plus"></i></a>
-                            <a class="btn btn-danger btn-shadow text-white">Bulk Delete <i class="fas fa-trash"></i></a>
+<!--                            <a class="btn btn-danger btn-shadow text-white">Bulk Delete <i class="fas fa-trash"></i></a>-->
                         </label>
                     </div>
                 </div>
