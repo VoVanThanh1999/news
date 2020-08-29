@@ -6,6 +6,7 @@ class comment_admin extends model_and_view_admin{
     public function activeCommentById($id){
        $comment_sv = new comment_service();    
        $comment_sv->activeCommentById($id);
+       header('location: /news/chitiet/baiviet/slug/54');
     }
     
     public function deleteComment($id){

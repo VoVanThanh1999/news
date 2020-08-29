@@ -37,6 +37,13 @@ class comment_service {
     
     public function deleteComment($id){
         $commentDAO = new comments_repository();
-        $commentDAO->deleteById($id);
+        $comment = $commentDAO->getById($id);
+        $postDetails = $postDAO->getById($comment->getPost_id());
+        if (isset($comment) && $comment->getActive()==0){
+            $postDetails->setCount_conment($postDetails->getCount_conment()-1);
+            $postDAO->saveOrUpdate($postDetails);
+            $commentDAO->deleteById($id);
+        }
+      
     }
 }
