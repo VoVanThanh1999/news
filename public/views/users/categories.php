@@ -14,7 +14,7 @@
 						if ($result->num_rows > 0) {
 						    // output data of each row
 						    while($row = $result->fetch_assoc()) {
-						        echo "<li><a href=".$row['name'].">".$row['name']."</a></li>"; 	        
+						        echo "<li><a href=/news/home/getByCategories/1/".$row['id']." >".$row['name']."</a></li>"; 	        
 						    }
 						} else {
 						    echo "0 results";

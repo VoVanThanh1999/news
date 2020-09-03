@@ -19,7 +19,7 @@ include_once('public/views/Share/Menu.php');
                     <i class="pe-7s-cash icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>
-                   Add Contacts
+                  	Chi tiết Contact
                 </div>
             </div>
         </div>
@@ -32,61 +32,48 @@ include_once('public/views/Share/Menu.php');
             <table class="table table-borderless">
                 <tbody>
                 <tr>
-                    <td><label for="Title" class="mt-2 float-right">Id</label></td>
-                    <td><input name="id" id="a" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->id?>" style="pointer-events: none"></td>
-                </tr>
+                
+                    <td><input hidden="true" name="full_name" id="idContact" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->id?>"></td>
+                </tr>            
                 <tr>
                     <td><label for="Title" class="mt-2 float-right">Full Name</label></td>
-                    <td><input name="full_name" id="title" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->full_name?>"></td>
+                    <td><input disabled="disabled" name="full_name" id="title" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->full_name?>"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Email</label></td>
-                    <td> <input name="email" id="createDate" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->email?>"></td>
+                    <td> <input disabled="disabled" name="email" id="emailClient" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->email?>"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Phone Number</label></td>
-                    <td> <input name="phone_number" id="" placeholder="Please enter text" type="number" class="form-control" value="<?=$data->phone_number?>"></td>
+                    <td> <input disabled="disabled" name="phone_number" id="" placeholder="Please enter text" type="number" class="form-control" value="<?=$data->phone_number?>"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Title</label></td>
-                    <td> <input name="title" id="" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->title?>"></td>
+                    <td> <input disabled="disabled"  name="title" id="titleContact" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->title?>"></td>
                 </tr>
                 <tr>
-                    <td> <label for="CreateDate" class="mt-2 float-right">Content</label></td>
-                    <td>  <textarea id="summernote" name="content"><?=$data->content?></textarea></td>
+                    <td> <label for="content" class="mt-2 float-right">Content</label></td>
+                    <td>  <input class="form-control" id="content"  name="content" value="<?php echo $datas->content?>"></td>
                 </tr>
                 <tr>
-                    <td> <label for="CreateDate" class="mt-2 float-right">Status</label></td>
-                    <td>
-                        <?php
+                	<?php
                         if($data->status == 1){
-                            ?>
-                            <input type="checkbox" name="status" value="1" id="status" checked="true" >
-                        <?php }
-                        else{?>
-                            <input type="checkbox" name="status" value="0" id="status" >
-                        <?php  }?>
-                    </td>
+                           echo " <td> <label for='content' class='mt-2 float-right'>Reply</label></td>";
+                           echo " <td><textarea  class='form-control' id='content'  name='' >".$datas->reply." </textarea></td>";
+                        }else{
+                            echo " <td> <label for='content' class='mt-2 float-right'>Reply</label></td>";
+                            echo " <td><textarea  class='form-control' id='summernote'  name='' > </textarea></td>";
+                        }
+                     ?>
+                
                 </tr>
-                <tr>
-                    <td> <label for="CreateDate" class="mt-2 float-right">Active</label></td>
-                    <td>
-                        <?php
-                        if($data->active == 1){
-                            ?>
-                            <input type="checkbox" name="active"  id="active" value="1" checked="true" >
-                        <?php }
-                        else{?>
-                            <input type="checkbox" name="active"  id="active" value="0">
-                        <?php  }?>
-                    </td>
-                </tr>
+               
                 <tr>
                     <td></td>
                     <td><?php
                         if (isset($_GET['error'])) {
                             if ($_GET['error'] == 0) {
-                                echo 'Vui lòng không để trống';
+                                echo 'Vui lÃ²ng khÃ´ng Ä‘á»ƒ trá»‘ng';
                             }
                         }
                         ?></td>
@@ -94,9 +81,8 @@ include_once('public/views/Share/Menu.php');
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" value="Save" class="btn btn-success btn-shadow text-white mr-3 col-3" />
-                        <a href="#" onclick="Reset()" class="btn btn-warning btn-shadow text-white  align-self-center mr-3 col-3  pt-2"><span>Reset</span> </a>
-                        <a href="GetAllContact" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
+                        <input id="reply"  value="Reply" class="btn btn-success btn-shadow text-white mr-3 col-3" />
+                        <a href="/news/admin/GetAllContact" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
                     </td>
                 </tr>
                 </tbody>
@@ -131,6 +117,29 @@ include_once('public/views/Share/Menu.php');
             $("#status").val("0");
             $("#status").prop("checked",false);
         }
+    });
+
+    $('#reply').click(function(){
+    	var c = confirm("Xác nhận reply !");
+    	if (c==true) {
+        	debugger;
+			var idContact = $('#idContact').val();
+			var subject = $('#titleContact').val();
+			var content = $('#content').val();
+			var mailClient = $('#emailClient').val();
+			var Object = {'idContact':idContact,'subject':subject,'content':content,'mailClient':mailClient};
+			var urlResource = 'localhost/news/contacts_controller/reply_email';
+			
+			$.ajax({
+				url: '/news/contacts_controller/reply_email',
+				data:Object,
+				method:'POST'
+		
+				
+			}).done(function(result) {
+				alert(result);
+			});
+		}
     });
 </script>
 <!-- -------- Footer share -------------- -->

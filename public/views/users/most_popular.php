@@ -9,7 +9,7 @@
                         while ($row = $result->fetch_assoc()) {
                             echo "
                                <div class='single-list flex-row d-flex'>
-                            		<div class='thumb' style='max-width: 200px; height: auto;'>
+                            		<div class='thumb' style='max-width: 100px; height: auto;'>
                             			<img  class='img-fluid' src='/news/public/views/img/".$row['images']."' alt=''style='' >
                             		</div>
                             		<div class='details'>
@@ -17,8 +17,7 @@
                             				<h6>".$row['title']."</h6>
                             			</a>
                             			<ul class='meta'>
-                            				<li><a href=''><span class='lnr lnr-calendar-full'></span>03
-                            													April, 2018</a></li>
+                            				<li><a href=''><span class='lnr lnr-calendar-full'></span>".$row['date']." </a></li>
                             				<li><a href=''><span class='lnr lnr-bubble'></span>".$row['count_conment']." </a></li>
                             			</ul>
                             		</div>

@@ -106,10 +106,25 @@ include_once('public/views/Share/Header.php');
                                     }
                                     ?>
                                 </td>
-                                <td class="text-center"><a
-                                            class="btn btn-primary btn-shadow text-white button-large-edit"
-                                            href="getCommentById/<?= $value->id ?>">Edit <i class="fas fa-edit"></i> </a> <a
+                                <td class="text-center">
+                                	<?php 
+                                	if($value->active==0){
+                                	    echo"<a
+                                            class='btn btn-primary btn-shadow text-white button-large-edit'
+                                            href='/news/comment_admin/activeCommentById/".$value->id."'>Active <i class='fas fa-edit'></i> </a> ";
+                                	}else{
+                                	    echo"<a
+                                            class='btn btn-secondary btn-shadow text-white button-large-edit'
+                                            href='/news/comment_admin/disableCommentById/".$value->id."'>Disable <i class='fas fa-edit'></i> </a> ";
+                                	}
+                                	    
+                                	    
+                                	    
+                                	 ?>
+                                	
+                                            <a
                                             class="btn btn-warning btn-shadow text-white button-large-delete"
+                                            
                                             href="javascript:void(0);" onclick="DeleteRecord(<?= $value->id ?>)">Del <i
                                                 class="fas fa-trash"></i></a>
                                 </td>

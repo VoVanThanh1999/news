@@ -1,3 +1,4 @@
+
 <div class="comment-list">
 	<?php 
         $conn = new mysqli(hostname, username, password, dbname);
@@ -10,13 +11,15 @@
                 <div class='single-comment justify-content-between d-flex'>
                     <div class='user justify-content-between d-flex'>
                         <div class='thumb'>
-                         <img src='img/blog/c1.jpg' alt=''>
+                         <img style='width:63px' class='img-fluid' src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSACxjGXP1NZVNCW08rEadF-ZSn8oj1yvA0Ig&usqp=CAU' alt=''>
                         </div>
                         <div class='desc'>
                             <h5>
                              <a href=''>".$row['name_user']."</a>
                             </h5>
-                            <p class='date'>December 4, 2017 at 3:12 pm</p>
+                            <p>
+                             <a href=''>".$row['date']."</a>
+                            </p>
                             <p class=comment'>".$row['content']."</p>
                         </div>
                     </div>  
