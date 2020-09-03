@@ -24,21 +24,14 @@ class  post_controller extends model_and_view_post {
                     $image = $fileNameNew;
                         move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
-                }else{
-                    echo '<script language="javascript">';
-                    echo 'alert("Bạn không thể tải ảnh lên")';
-                    echo '</script>';}
-            }else{ echo '<script language="javascript">';
-                echo 'alert("Bạn không thể tải ảnh lên")';
-                echo '</script>';}
+                }else{header('location: /news/post_controller/ViewAddPost?error=2');}
+            }else{ header('location: /news/post_controller/ViewAddPost?error=2');}
         }
         elseif ($_POST['image'] !=""){
             $image = $_POST['image'];
             $flag = true;
         }
-        else{ echo '<script language="javascript">';
-            echo 'alert("Bạn không thể tải ảnh lên")';
-            echo '</script>'; }
+        else{ header('location: /news/post_controller/ViewAddPost?error=2'); }
         $category_id = $_POST['category_id'];
         $title = $_POST['title'];
         $intro = $_POST['intro'];
@@ -46,11 +39,11 @@ class  post_controller extends model_and_view_post {
         $tag = $_POST['tag'];
         $description = $_POST['description'];
         $date =$_POST['date_up_post'];
-        if(empty($title)&&empty($category_id)&&empty($intro)&&empty($content)){
-            if (isset($_POST['active'])) $active = 1;
-            else  $active = 0;
-            $post_sv=new post_service();
-            $slug = $post_sv->to_slug($_POST['slug']);
+        if (isset($_POST['active'])) $active = 1;
+        else  $active = 0;
+        $post_sv=new post_service();
+        $slug = $post_sv->to_slug($_POST['slug']);
+        if($title !="" && $category_id != "" && $intro !="" && $content !=""){
             if ($flag) {
                 if($id == ""){
                     $date = date("Y/m/d");
@@ -63,16 +56,10 @@ class  post_controller extends model_and_view_post {
                 }
             }else{
                 if($id == ""){
-                    header('location: /news/post_controller/ViewAddPost?error=2');
-                    echo '<script language="javascript">';
-                    echo 'alert("Bạn phải upload ảnh")';
-                    echo '</script>';
+                    header('location: /news/post_controller/ViewAddPost?error=0');
                 }
                 else{
-                    header('location: /news/post_controller/getById/'.id.'?error=0');
-                    echo '<script language="javascript">';
-                    echo 'alert("Bạn phải upload ảnh")';
-                    echo '</script>';
+                    header('location: /news/post_controller/getById/'.$id.'?error=0');
                 }
 
             }
@@ -82,7 +69,7 @@ class  post_controller extends model_and_view_post {
                 header('location: /news/post_controller/ViewAddPost?error=1');
             }
             else{
-                header('location: /news/post_controller/getById/'.id.'?error=1');
+                header('location: /news/post_controller/getById/'.$id.'?error=1');
             }
         }
 
