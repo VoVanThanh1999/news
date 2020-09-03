@@ -93,6 +93,25 @@ include_once('public/views/Share/Menu.php');
                 <tr>
                     <td></td>
                     <td>
+                        <?php
+                        if (isset($_GET['error'])) {
+                            if ($_GET['error'] == 0) {
+                                echo '<p style="color: #ff0000">Bạn phải upload ảnh</p>';
+                            } else if($_GET['error'] == 1){
+                                echo '<p style="color: #ff0000">Vui lòng không để trống</p>';
+                            }else if($_GET['error'] == 2){
+                                echo '<p style="color: #ff0000">Bạn không thể tải ảnh lên</p>';
+                            }
+                            else{
+                                echo '<p style="color: #ff0000">Có lỗi vui lòng load lại trang</p>';
+                            }
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
                         <input type="submit" value="Save" class="btn btn-success btn-shadow text-white mr-3 col-3" />
                         <a href="" class="btn btn-warning btn-shadow text-white  align-self-center mr-3 col-3  pt-2"><span>Reset</span> </a>
                         <a href="GetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
