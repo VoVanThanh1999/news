@@ -113,23 +113,31 @@ include_once('public/views/Share/Menu.php');
                 <tr>
                     <td></td>
                     <td>
+                        <?php
+                        if (isset($_GET['error'])) {
+                            if ($_GET['error'] == 0) {
+                                echo '<p style="color: red">Bạn phải upload ảnh</p>';
+                            } else if($_GET['error'] == 1){
+                                echo '<p style="color: red">Vui lòng không để trống</p>';
+                            }else if($_GET['error'] == 2){
+                                echo '<p style="color: red">Bạn không thể tải ảnh lên</p>';
+                            }
+                            else{
+                                echo '<p style="color: red">Có lỗi vui lòng load lại trang</p>';
+                            }
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
                         <input type="submit" value="Save" class="btn btn-success btn-shadow text-white mr-3 col-3" />
                         <a href="" class="btn btn-warning btn-shadow text-white  align-self-center mr-3 col-3  pt-2"><span>Reset</span> </a>
                         <a href="../GetAll" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
                     </td>
                 </tr>
-                <?php
-                if (isset($_GET['error'])) {
-                    if ($_GET['error'] == 0) {
-                        echo 'Vui lòng không để trống bất kì trường nào';
-                    } else if($_GET['error'] == 1){
-                        echo 'mail đã tồn tại vui lòng thử email khác';
-                    }
-                    else{
-                        echo 'vui lòng kiểm tra lại password';
-                    }
-                }
-                ?>
+
                 </tbody>
             </table>
         </div>

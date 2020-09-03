@@ -23,10 +23,11 @@ class login extends model_and_view_login
             $sql_query = "select * from users where email='$email' ";
             $result = $this->mysql->query($sql_query);
             $data = $result->fetch_all();
-            session_start();
+            print_r( password_hash('12345',PASSWORD_DEFAULT));
             if (count($data) > 0) {
                     if(password_verify($password, $data[0][3]))
                     {
+                        session_start();
                         $_SESSION['email'] = $data[0][2];
                         $_SESSION['id'] = $data[0][0];
                         $_SESSION['name'] = $data[0][1];
@@ -71,7 +72,7 @@ class login extends model_and_view_login
                     header('location: Register?error=2');
                 }
                 else{
-                $password = password_hash ($password,PASSWORD_DEFAULT);
+                $password = password_hash($password,PASSWORD_DEFAULT);
 //                echo $password;
                 $query = "INSERT INTO users(name,email,pass_word,gender,date_of_birth) VALUE('$name', '$email', '$password', $gender, '$date_of_birth')";
                 echo $query;
