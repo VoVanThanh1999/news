@@ -102,30 +102,37 @@
 								?></h4>
 								<div class="loadListPost">
 									<?php 
+									$conn = new mysqli(hostname, username, password, dbname);
+									$sql = "SELECT * FROM categories WHERE id = ".$datas[0]->category_id ."";
+									$result = $conn->query($sql);
+									$nameCategories = '';
+									if ($result->num_rows > 0) {
+									    while($row = $result->fetch_assoc()) {
+									        $nameCategories = $row['name'];
+									    }
+									}
     								foreach ($datas as $data){
     								    echo "
                                         <div class='single-latest-post row align-items-center'>
         									<div class='col-lg-5 post-left'>
         										<div class='feature-img relative'>
         											<div class='overlay overlay-bg'></div>
-        											<img class='img-fluid' src='img/l1.jpg' alt=''>
+        											<img class='img-fluid' src='/news/public/views/img/".$data->images."' alt=''>
         										</div>
         										<ul class='tags'>
-        											<li><a href=''>Lifestyle</a></li>
+        											<li><a >".$nameCategories."</a></li>
         										</ul>
         									</div>
         									<div class='col-lg-7 post-right'>
-        										<a href='image-post.html'>
-        											<h4>A Discount Toner Cartridge Is
-        											Better Than Ever.</h4>
+        										<a href='/news/chitiet/baiviet/".$data->slug."/".$data->id."'>
+        											<h4>".$data->title."</h4>
         										</a>
         										<ul class='meta'>
-        											<li><a href='#'><span class='lnr lnr-user'></span>Mark wiens</a></li>
-        											<li><a href='#'><span class='lnr lnr-calendar-full'></span>03 April, 2018</a></li>
-        											<li><a href='#'><span class='lnr lnr-bubble'></span>06 Comments</a></li>
+        											<li><a href='#'><span class='lnr lnr-calendar-full'></span>".$data->date."</a></li>
+        											<li><a href='#'><span class='lnr lnr-bubble'></span>".$data->count_conment."</a></li>
         										</ul>
         										<p class='excert'>
-        											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+        											".$data->description."
         										</p>
         									</div>
         								</div>
@@ -137,15 +144,14 @@
 								
 								<div class="load-more">
 									<button class="primary-btn" id="loadPost" >Load More Posts</button>
-								</div>
-								
+								</div>	
 							</div>
 					</div>
 					<div class="col-lg-4">
 						<div class="sidebars-area">
-						 <!-- Start Editor’s  -->
+						 <!-- Start Editorâ€™s  -->
 						 <?php include_once 'public/views/users/edictors.php';?>
-						 <!-- Editor’s Pick -->
+						 <!-- Editorâ€™s Pick -->
 							
 							<div class="single-sidebar-widget ads-widget">
 								<img class="img-fluid" src="img/sidebar-ads.jpg" alt="">
@@ -303,46 +309,51 @@
 	<script src="/news/public/views/js/main.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
-		var limit = 1;
+		var limit = 2;
 		$( "#loadPost" ).click(function() {
-			alert(limit);
 			$.ajax({
 				url: '/news/home/getByCategoriesLimit/'+limit+'/'+<?php echo $datas[0]->category_id?>,
 				data:Object,
 				method:'POST'
 			}).done(function(result) {
 				limit++;
-				if(limit == '2'){
-					$(".loadListPost").html('');
-				}	
+				$(".loadListPost").html('');	
 				var posts = JSON.parse(result);				
 				for(var i = 0;i<posts.length;i++){
-					$('.loadListPost').append("` 
-						<div class='single-latest-post row align-items-center'>
-							<div class='col-lg-5 post-left'>
-							<div class='feature-img relative'>
-								<div class='overlay overlay-bg'></div>
-								<img class='img-fluid' src='img/l1.jpg' alt=''>
+					$('.loadListPost').append(` 
+						<div class="single-latest-post row align-items-center">
+							<div class="col-lg-5 post-left">
+							<div class="feature-img relative">
+								<div class="overlay overlay-bg"></div>
+								<img class="img-fluid" src="/news/public/views/img/`+posts[i].images+`" alt=''>
 							</div>
-							<ul class='tags'>
-								<li><a href=''>Lifestyle</a></li>
+							<ul class="tags">
+								<li><a href=><?php 
+								    $conn = new mysqli(hostname, username, password, dbname);
+									$sql = "SELECT * FROM categories WHERE id = ".$datas[0]->category_id ."";
+									$result = $conn->query($sql);
+									$nameCategories = '';
+									if ($result->num_rows > 0) {
+									    while($row = $result->fetch_assoc()) {
+									        echo $row['name'];
+									    }
+									}?></a></li>
 							</ul>
 						</div>
-						<div class='col-lg-7 post-right'>
-							<a href='image-post.html'>
-								<h4>A Discount Toner Cartridge Is
-								Better Than Ever.</h4>
+						<div class="col-lg-7 post-right">
+						
+							<a href="/news/chitiet/baiviet/`+posts[i].slug+`/`+posts[i].id+`">
+								<h4>`+posts[i].title+`.</h4>
 							</a>
-							<ul class='meta'>
-								<li><a href='#'><span class='lnr lnr-user'></span>Mark wiens</a></li>
-								<li><a href='#'><span class='lnr lnr-calendar-full'></span>03 April, 2018</a></li>
-								<li><a href='#'><span class='lnr lnr-bubble'></span>06 Comments</a></li>
+							<ul class="meta">
+								<li><a href=""><span class="lnr lnr-calendar-full"></span>`+posts[i].date+`</a></li>
+								<li><a href=""><span class="lnr lnr-bubble"></span>`+posts[i].count_conment+`</a></li>
 							</ul>
-							<p class='excert'>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+							<p class="excert">
+							`+posts[i].description+`
 							</p>
 						</div>
-					</div>`");
+					</div>`);
 				}
 				
 			});

@@ -71,7 +71,7 @@ class post_repository
         $posts = array();
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],'',$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
                 array_push($posts,$post);
             }
         }
