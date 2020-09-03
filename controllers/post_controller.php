@@ -38,7 +38,7 @@ class  post_controller extends model_and_view_post {
         $content = $_POST['content'];
         $tag = $_POST['tag'];
         $description = $_POST['description'];
-        $date =$_POST['date_up_post'];
+
         if (isset($_POST['active'])) $active = 1;
         else  $active = 0;
         $post_sv=new post_service();
@@ -51,6 +51,7 @@ class  post_controller extends model_and_view_post {
                     header('location: ./getAll');
                 }
                 else{
+                    $date =$_POST['date_up_post'];
                     $post_sv->createPost(new posts($id,$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,$active,$date));
                     header('location: ./getAll');
                 }

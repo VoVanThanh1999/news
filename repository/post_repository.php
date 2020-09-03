@@ -38,7 +38,6 @@ class post_repository
         if ($p->getId() == null) {
             $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment,date)
  VALUES ('$p->category_id', '$p->title', '$p->intro','$p->content','$p->images.','$p->tag','$p->description','$p->slug',0,$p->active,'$p->date')";
-            echo ($query);
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
