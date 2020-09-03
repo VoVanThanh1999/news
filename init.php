@@ -44,11 +44,6 @@ require_once 'repository/comments_repository.php';
 require_once 'repository/user_repository.php';
 require_once 'repository/contacts_repository.php';
 // MAILER
-
-<<<<<<< HEAD
-
-=======
 //require_once 'php_mailer/PHPMailer.php';
 //require_once 'php_mailer/SMTP.php';
 //require_once 'php_mailer/PHPMailerAutoload.php';
->>>>>>> 412b01f0b65fdc1f5153439807a548f9a7a10289
