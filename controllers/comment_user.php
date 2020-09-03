@@ -8,17 +8,17 @@ class comment_user extends model_and_view_user {
     }
     
     public function createComment(){
-
-        if (isset($_SESSION['id'])) {      
-            $user_id = $_SESSION['id'];
-            $post_id = $_POST['post_id'];
-            $content = $_POST['content'];
-            $comment_sv = new comment_service();
-            $comment_sv->createComment(new comments("",$user_id,$post_id,$content,0,0));
-            header('location: /news/chitiet/baiviet/slug/'.$post_id );
-        }else{
-            header('location: /news/login/index');
-        }
+        $data = json_decode(json_encode($_POST));
+        $user_id = 0;
+        $post_id = $data->post_id;
+        $content = $data->content;
+        $nameUser = $data->nameUser;
+        $email = $data->email;
+        $subject = $data->subject;
+        $comment_sv = new comment_service();   
+        $date = date("Y/m/d");
+        $comment_sv->createComment(new comments("",$user_id,$post_id,$content,0,0,$nameUser,$subject,$email,$date));
+        header('location: /news/chitiet/baiviet/slug/'.$post_id );  
     }
     
    

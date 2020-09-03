@@ -6,6 +6,7 @@ class posts {
     public $intro;
     public $content;
     public $images;
+    public $date;
     public $tag;
     public $description;
     public $count_conment;
@@ -16,7 +17,7 @@ class posts {
         
     }
     
-    function  __construct($id,$category_id,$title,$intro,$content,$images,$tag,$description,$count_conment,$slug,$active) {
+    function  __construct($id,$category_id,$title,$intro,$content,$images,$tag,$description,$count_conment,$slug,$active,$date) {
         $this->id=$id;
         $this->category_id=$category_id;
         $this->title=$title;
@@ -28,6 +29,7 @@ class posts {
         $this->description=$description;
         $this->slug=$slug;
         $this->active = $active;
+        $this->date = $date;
     }
     
     public function getId()
@@ -140,6 +142,22 @@ class posts {
     {
         $this->active = $active;
     }
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
 
     
     

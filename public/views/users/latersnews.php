@@ -25,9 +25,8 @@
                 				<h4>".$row["title"]."</h4>
                 			</a>
                 			<ul class='meta'>
-                				<li><a href=''><span class='lnr lnr-user'></span>Mark wiens</a></li>
-                				<li><a href=''><span class='lnr lnr-calendar-full'></span>03 April,
-                						2018</a></li>
+                			
+                				<li><a href=''><span class='lnr lnr-calendar-full font-weight-light'></span>".$row["date"]."</a></li>
                 				<li><a href=''><span class='lnr lnr-bubble'></span>".$row["count_conment"]." comments</a></li>
                 			</ul>
                 			<p class='excert'>".$row["description"]."</p>

@@ -12,7 +12,8 @@
 <!--</div>-->
 <!--</div>-->
 <script type="text/javascript" src="/news/public/assets/js/main.js"></script>
-<script src="/news/public/assets/js/site.js" asp-append-version="true"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/news/public/assets/js/site.js" ></script>
 <script src="/news/public/assets/lib/datatables/datatables/jquery.dataTables.min.js"></script>
 <script src="/news/public/assets/lib/datatables/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/news/public/assets/lib/datatables/datatables-responsive/js/dataTables.responsive.min.js"></script>

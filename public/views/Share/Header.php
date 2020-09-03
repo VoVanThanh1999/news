@@ -35,6 +35,7 @@ if($_SESSION["name"] == null){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link href="/news/public/assets/lib/datatables/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
     <link href="/news/public/assets/lib/datatables/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet"/>
+	
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">

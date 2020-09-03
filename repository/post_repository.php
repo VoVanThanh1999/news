@@ -17,7 +17,7 @@ class post_repository
         $post;
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active']);
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
             }
         } 
         if (isset($post)) {
@@ -36,12 +36,12 @@ class post_repository
  
         $flag = true;
         if ($p->getId() == null) {
-            $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment)
- VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0,$p->active)";
+            $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment,date)
+ VALUES ('".$p->category_id."', '".$p->title."', '".$p->intro."','".$p->content."','".$p->images."','".$p->tag."','".$p->description."','".$p->slug."',0,$p->active,'".$p->date."')";
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-            $query = "UPDATE post SET category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description', slug = '$p->slug', active = $p->active
+            $query = "UPDATE post SET count_conment = '$p->count_conment', category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description', slug = '$p->slug', active = $p->active,date = $p->date 
                    WHERE id = $p->id";
             $result = $this->mysql->query($query);
             $flag = $result;
@@ -56,7 +56,20 @@ class post_repository
         $posts = array();
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active']);
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+    }
+    
+    function getPostLimitByCategoires($limit,$idCategories){
+        $query =" SELECT * FROM post where category_id = ".$idCategories."  LIMIT ".$limit."";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
                 array_push($posts,$post);
             }
         }
@@ -69,7 +82,7 @@ class post_repository
         $posts = array();
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active']);
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
                 array_push($posts,$post);
             }
         }

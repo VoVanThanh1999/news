@@ -7,7 +7,73 @@ class comments{
     public $status;
     public $active;
     public $name_user;
+    public $subject;
+    public $email;
+    public $date;
     
+    public function __construct($id,$user_id,$post_id,$content,$status,$active,$name_user,$subject,$email,$date){
+        $this->id=$id;
+        $this->user_id=$user_id;
+        $this->post_id=$post_id;
+        $this->content=$content;
+        $this->status=$status;
+        $this->active=$active;
+        $this->name_user=$name_user;
+        $this->subject=$subject;
+        $this->email=$email;
+        $this->date=$date;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+   
+    
+    /**
+     * @return mixed
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
     /**
      * @return mixed
      */
@@ -119,14 +185,10 @@ class comments{
     {
         $this->name_user = $name_user;
     }
-
-    public function __construct($id,$user_id,$post_id,$content,$status,$active){
-        $this->id=$id;
-        $this->user_id=$user_id;
-        $this->post_id=$post_id;
-        $this->content=$content;
-        $this->status=$status;
-        $this->active=$active;
-    }
+    
+    
+    
+    
+   
 
 }
