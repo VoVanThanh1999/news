@@ -28,7 +28,7 @@ include_once('public/views/Share/Menu.php');
         <div class="col-8">
             <table class="table table-borderless">
                 <tbody>
-                <tr>
+                <tr hidden="hidden">
                     <td><label for="Title" class="mt-2 float-right">ID</label></td>
                     <td><input name="id" id="title" placeholder="Please enter text" type="text" class="form-control" value="<?= $data->id?>" style="pointer-events: none;"></td>
                 </tr>

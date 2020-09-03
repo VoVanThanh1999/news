@@ -34,7 +34,7 @@ include_once('public/views/Share/Menu.php');
         <div class="col-10">
             <table class="table table-borderless">
                 <tbody>
-                <tr >
+                <tr hidden="hidden">
                     <td><label for="Title" class="mt-2 float-right">id</label></td>
                     <td><input name="id" id="title" placeholder="Enter title...." type="text" value="<?=$data->id?>" style="pointer-events: none;" class="form-control col-6"></td>
                 </tr>
