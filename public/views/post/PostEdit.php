@@ -35,12 +35,12 @@ include_once('public/views/Share/Menu.php');
                     <td><input name="id" id="title" placeholder="Enter title...." type="text" value="<?=$data->id?>" class="form-control col-6"></td>
                 </tr>
                 <tr>
-                    <td><label for="Title" class="mt-2  float-right">Title</label></td>
+                    <td><label for="Title" class="mt-2  float-right">Categories</label></td>
                     <td>
                         <div class="form-group">
                             <select class="form-control col-6" id="categories" name="category_id">
                                 <?php
-                                $mysql = new mysqli("112.78.2.94", "vie65_dbwebsite", "qwerty123#!", "vie65506_dbwebsitenews");
+                                $mysql = new mysqli("112.78.2.36", "vie65_dbwebsite", "qwerty123#!", "vie65506_dbwebsitenews");
                                 $query = "SELECT * FROM categories";
                                 $result = $mysql->query($query);
                                 foreach ($result->fetch_all() as $items) {
@@ -77,7 +77,7 @@ include_once('public/views/Share/Menu.php');
                         <img id="myid2" src="/news/public/views/img/<?=$data->images?>" alt="new image" style="width: 200px" />
                         <input type="text" name="image" style="display:none;" value="<?=$data->images?>">
                     </td>
-                </tr>s
+                </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Tag</label></td>
                     <td><input name="tag" placeholder="Enter tag...." type="text" value="<?=$data->tag?>" class="form-control col-6"></td>
