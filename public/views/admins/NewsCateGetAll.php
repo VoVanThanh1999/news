@@ -59,10 +59,10 @@ include_once('public/views/Share/Header.php');
                                 colspan="1"
                                 aria-label="Engine version: activate to sort column ascending">Description
                             </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">icon
-                            </th>
+<!--                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"-->
+<!--                                colspan="1"-->
+<!--                                aria-label="Engine version: activate to sort column ascending">icon-->
+<!--                            </th>-->
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
                                 aria-label="Engine version: activate to sort column ascending">slug
@@ -83,7 +83,6 @@ include_once('public/views/Share/Header.php');
                                 <td><?= $value->name ?></td>
                                 <td><?= $value->tag ?></td>
                                 <td><?= $value->description ?></td>
-                                <td><?= $value->icon ?></td>
                                 <td><?= $value->slug ?></td>
                                 <td class="text-center">
                                     <?php

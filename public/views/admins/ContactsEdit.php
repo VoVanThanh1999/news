@@ -31,8 +31,7 @@ include_once('public/views/Share/Menu.php');
         <div class="col-8">
             <table class="table table-borderless">
                 <tbody>
-                <tr>
-                
+                <tr hidden="hidden">
                     <td><input hidden="true" name="full_name" id="idContact" placeholder="Please enter text" type="text" class="form-control" value="<?=$data->id?>"></td>
                 </tr>            
                 <tr>
@@ -73,7 +72,7 @@ include_once('public/views/Share/Menu.php');
                     <td><?php
                         if (isset($_GET['error'])) {
                             if ($_GET['error'] == 0) {
-                                echo 'Vui lÃ²ng khÃ´ng Ä‘á»ƒ trá»‘ng';
+                                echo 'Vui lòng không được để trống';
                             }
                         }
                         ?></td>
