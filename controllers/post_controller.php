@@ -4,7 +4,6 @@ class  post_controller extends model_and_view_post {
 
     function createPost(){
         $flag = false;
-        echo "post";
         $image = "";
         $files = $_FILES['file'];
         $fileName = $_FILES['file']['name'];
@@ -20,9 +19,9 @@ class  post_controller extends model_and_view_post {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
                     $fileNameNew = uniqid('',true).".".$fileActualExt;
-                    $fileDestination = 'C:/xamppp/htdocs/news/public/views/img/'.$fileNameNew;
+                    $fileDestination = 'C:/xampp/htdocs/news/public/views/img/'.$fileNameNew;
                     $image = $fileNameNew;
-                    move_uploaded_file($fileTmpName,$fileDestination);
+                        move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
                 }else{ echo"You cannot upload files of the type";}
             }else{ echo"You cannot upload files of the type";}
@@ -39,6 +38,7 @@ class  post_controller extends model_and_view_post {
         $content = $_POST['content'];
         $tag = $_POST['tag'];
         $description = $_POST['description'];
+        $date =$_POST['date_up_post'];
         if (isset($_POST['active'])) $active = 1;
         else  $active = 0;
         $post_sv=new post_service();

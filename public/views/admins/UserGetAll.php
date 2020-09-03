@@ -122,6 +122,7 @@ include_once('public/views/Share/Header.php');
         });
     }
 
+    var href = window.location.href;
     function DoDelete(id) {
         $.ajax({
             type: "DELETE",
@@ -129,7 +130,7 @@ include_once('public/views/Share/Header.php');
             dataType: "html",
             success: function (html) {
                 alertify.success('Deleted');
-                getAll();
+                window.location.href = href;
             },
             error: function (req, status, error) {
                 alert(error);
@@ -137,20 +138,6 @@ include_once('public/views/Share/Header.php');
         });
     }
 
-    function getAll() {
-        $.ajax({
-            type: "DELETE",
-            url: "UserGetAll",
-            dataType: "html",
-            success: function (html) {
-                $("div#listPost").empty();
-                $("div#listPost").html(html);
-            },
-            error: function (req, status, error) {
-                alert(error);
-            }
-        });
-    }
 </script>
 <!-- -------- Footer share -------------- -->
 <?php

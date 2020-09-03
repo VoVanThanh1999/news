@@ -43,7 +43,7 @@ class admin extends model_and_view_admin
         $name = $_POST['name'];
         $gender = $_POST['gender'];
         $date_of_birth = $_POST['date_of_birth'];
-        if (empty($email) && empty($password) && empty($name) && empty($gender) && empty($date_of_birth)) {
+        if (empty($email) && empty($name) && empty($gender) && empty($date_of_birth)) {
             header('/news/admin/getUserById/' . $id . '?error=0');
         } else {
             $checkMail = "select * from users where email='$email'";
@@ -51,16 +51,42 @@ class admin extends model_and_view_admin
             $data = $resultMail->fetch_all();
             if (count($data) == 0) {
                 $query = "  UPDATE users
-                        SET email='$email', pass_word=$password, name='$name',gender= $gender,date_of_birth='$date_of_birth'
+                    SET email='$email', name='$name',gender= $gender,date_of_birth='$date_of_birth'
+                    WHERE id='$id'";
+                $result = $this->mysql->query($query);
+                header('location: /news/admin/UserGetAll');
+            }
+            elseif ($password != ""){
+                $password = password_hash($password,PASSWORD_DEFAULT);
+                $query = "  UPDATE users
+                        SET email='$email', name='$name',pass_word='$password',gender= $gender,date_of_birth='$date_of_birth'
                         WHERE id='$id'";
                 $result = $this->mysql->query($query);
                 header('location: /news/admin/UserGetAll');
-            } else {
+            }
+            else {
                 header('location: /news/admin/getUserById/' . $id . '?error=1');
             }
         }
     }
+    function forgotPass(){
+        $email = $_POST['email'];
+        $password = $_POST['pass_word'];
+        $checkMail = "select * from users where email='$email'";
+        $resultMail = $this->mysql->query($checkMail);
+        $data = $resultMail->fetch_all();
+        if (count($data) == 0) {
+            if ($password != "") {
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                $query = "  UPDATE users
+                        SET pass_word='$password'
+                        WHERE email='$email'";
+                $result = $this->mysql->query($query);
+                header('location: /news/admin/UserGetAll');
+            }
+        }
 
+    }
     function getAllNewsCate()
     {
         $newsCateDAO = new categories_repository();

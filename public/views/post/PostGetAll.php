@@ -126,6 +126,7 @@ include_once('public/views/Share/Menu.php');
     </div>
 </div>
 <script>
+    var href = window.location.href;
     $(document).ready(function () {
         $('#listData').dataTable();
     });
@@ -166,7 +167,7 @@ include_once('public/views/Share/Menu.php');
             dataType: "html",
             success: function (html) {
                 alertify.success('Deleted');
-                getAll()
+                window.location.href = href;
             },
             error: function (req, status, error) {
                 alert(error);
