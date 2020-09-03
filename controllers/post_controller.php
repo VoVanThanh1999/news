@@ -3,6 +3,7 @@ include_once 'init.php';
 class  post_controller extends model_and_view_post {
 
     function createPost(){
+        $id = $_POST['id'];
         $flag = false;
         $image = "";
         $files = $_FILES['file'];
@@ -23,15 +24,21 @@ class  post_controller extends model_and_view_post {
                     $image = $fileNameNew;
                         move_uploaded_file($fileTmpName,$fileDestination);
                     $flag = true;
-                }else{ echo"You cannot upload files of the type";}
-            }else{ echo"You cannot upload files of the type";}
+                }else{
+                    echo '<script language="javascript">';
+                    echo 'alert("Bạn không thể tải ảnh lên")';
+                    echo '</script>';}
+            }else{ echo '<script language="javascript">';
+                echo 'alert("Bạn không thể tải ảnh lên")';
+                echo '</script>';}
         }
         elseif ($_POST['image'] !=""){
             $image = $_POST['image'];
             $flag = true;
         }
-        else{ echo"You cannot upload files of the type"; }
-        $id = $_POST['id'];
+        else{ echo '<script language="javascript">';
+            echo 'alert("Bạn không thể tải ảnh lên")';
+            echo '</script>'; }
         $category_id = $_POST['category_id'];
         $title = $_POST['title'];
         $intro = $_POST['intro'];
@@ -39,10 +46,11 @@ class  post_controller extends model_and_view_post {
         $tag = $_POST['tag'];
         $description = $_POST['description'];
         $date =$_POST['date_up_post'];
-        if (isset($_POST['active'])) $active = 1;
-        else  $active = 0;
-        $post_sv=new post_service();
-        $slug = $post_sv->to_slug($_POST['slug']);
+        if(empty($title)&&empty($category_id)&&empty($intro)&&empty($content)){
+            if (isset($_POST['active'])) $active = 1;
+            else  $active = 0;
+            $post_sv=new post_service();
+            $slug = $post_sv->to_slug($_POST['slug']);
             if ($flag) {
                 if($id == ""){
                     $date = date("Y/m/d");
@@ -54,8 +62,30 @@ class  post_controller extends model_and_view_post {
                     header('location: ./getAll');
                 }
             }else{
-                echo "bạn phải upload ảnh";
+                if($id == ""){
+                    header('location: /news/post_controller/ViewAddPost?error=2');
+                    echo '<script language="javascript">';
+                    echo 'alert("Bạn phải upload ảnh")';
+                    echo '</script>';
+                }
+                else{
+                    header('location: /news/post_controller/getById/'.id.'?error=0');
+                    echo '<script language="javascript">';
+                    echo 'alert("Bạn phải upload ảnh")';
+                    echo '</script>';
+                }
+
             }
+        }
+        else{
+            if($id == ""){
+                header('location: /news/post_controller/ViewAddPost?error=1');
+            }
+            else{
+                header('location: /news/post_controller/getById/'.id.'?error=1');
+            }
+        }
+
     }
     function deletePost($idpost){
         $post_sv=new post_service();
