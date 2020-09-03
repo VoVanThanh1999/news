@@ -1,4 +1,5 @@
 <?php 
+
 //connect with sql
 define('hostname','112.78.2.94');
 define('username','vie65_dbwebsite');
