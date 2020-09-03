@@ -1,6 +1,6 @@
 <?php 
 //connect with sql
-define('hostname','112.78.2.36');
+define('hostname','112.78.2.94');
 define('username','vie65_dbwebsite');
 define('password','qwerty123#!');
 define('dbname','vie65506_dbwebsitenews');
@@ -44,6 +44,4 @@ require_once 'repository/user_repository.php';
 require_once 'repository/contacts_repository.php';
 // MAILER
 
-require_once 'php_mailer/PHPMailer.php';
-require_once 'php_mailer/SMTP.php';
-require_once 'php_mailer/PHPMailerAutoload.php';
+
