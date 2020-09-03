@@ -33,7 +33,7 @@ class post_repository
     }
 
     function saveOrUpdate(posts $p){
- 
+
         $flag = true;
         if ($p->getId() == null) {
             $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment,date)
@@ -42,7 +42,7 @@ class post_repository
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-            $query = "UPDATE post SET count_conment = '$p->count_conment', category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description', slug = '$p->slug', active = $p->active,date = $p->date 
+            $query = "UPDATE post SET category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description',  slug = '$p->slug', active = $p->active  
                    WHERE id = $p->id";
             $result = $this->mysql->query($query);
             $flag = $result;

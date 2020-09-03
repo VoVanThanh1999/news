@@ -90,6 +90,10 @@ include_once('public/views/Share/Menu.php');
                     <td> <label for="CreateDate" class="mt-2 float-right">Slug</label></td>
                     <td><input name="slug"  placeholder="Enter slug...." type="text" value="<?=$data->slug?>" class="form-control col-6"></td>
                 </tr>
+                <tr hidden="hidden">
+                    <td><input name="date_up_post"  placeholder="Enter slug...." type="text" value="<?=$data->date?>" class="form-control col-6"></td>
+                    <td><input name="count_conment"  placeholder="Enter slug...." type="text" value="<?=$data->count_conment?>" class="form-control col-6"></td>
+                </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Activate</label></td>
                     <td><?php

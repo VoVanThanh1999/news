@@ -4,7 +4,6 @@ class  post_controller extends model_and_view_post {
 
     function createPost(){
         $flag = false;
-        echo "post";
         $image = "";
         $files = $_FILES['file'];
         $fileName = $_FILES['file']['name'];
@@ -39,6 +38,7 @@ class  post_controller extends model_and_view_post {
         $content = $_POST['content'];
         $tag = $_POST['tag'];
         $description = $_POST['description'];
+        $date =$_POST['date_up_post'];
         if (isset($_POST['active'])) $active = 1;
         else  $active = 0;
         $post_sv=new post_service();
