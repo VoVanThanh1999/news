@@ -31,7 +31,7 @@ include_once('public/views/Share/Menu.php');
 <form method="post" action="/news/admin/createrUser">
     <div class="row m-0">
         <div class="col-1"></div>
-        <div class="col-8">
+        <div class="col-10">
             <table class="table table-borderless">
                 <tbody>
                 <tr >
@@ -48,7 +48,7 @@ include_once('public/views/Share/Menu.php');
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">PassWord</label></td>
-                    <td> <input name="pass_word" id="" placeholder="placeholder" type="text" value="<?=$data->pass_word?>" class="form-control"></td>
+                    <td> <input name="pass_word" id="" placeholder="Fogot Pass" type="text" value="" class="form-control"></td>
                 </tr>
                 <tr>
                     <td> <label for="CreateDate" class="mt-2 float-right">Gender</label></td>
@@ -80,6 +80,8 @@ include_once('public/views/Share/Menu.php');
                                 echo 'Vui lòng không để trống bất kì trường nào';
                             } else if($_GET['error'] == 1){
                                 echo 'mail đã tồn tại vui lòng thử email khác';
+                            } else if($_GET['error'] == 1){
+                                echo 'Sửa password thành công';
                             }
                             else{
                                 echo 'vui lòng kiểm tra lại password';
@@ -98,7 +100,6 @@ include_once('public/views/Share/Menu.php');
                 </tbody>
             </table>
         </div>
-        <div class="col-3"></div>
     </div>
 </form>
 <script>
