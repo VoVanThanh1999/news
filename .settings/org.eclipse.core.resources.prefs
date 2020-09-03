@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+encoding//public/views/admins/ContactsEdit.php=UTF-8
+encoding//public/views/admins/ContactsGetAll.php=UTF-8
 encoding//public/views/users/chi_tiet_bai_viet.php=UTF-8
+encoding//public/views/users/contact.php=UTF-8
 encoding//service/post_service.php=UTF-8

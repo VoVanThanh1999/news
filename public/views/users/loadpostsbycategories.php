@@ -71,154 +71,100 @@
 					</div>
 					<div
 						class="col-lg-8 col-md-8 col-sm-12 logo-right no-padding ads-banner">
-						<img class="img-fluid" src="<?php echo "/news/public/views/img/".$data->images ?> " alt="">
+						<img class="img-fluid" src="/news/public/views/img/banner-ad.jpg" alt="">
 					</div>
 				</div>
 			</div>
 		</div>
 		<?php include_once 'public/views/users/categories.php';?>
 	</header>
+
 	<div class="site-main-container">
-			<!-- Start top-post Area -->
-			<section class="top-post-area pt-10">
-				<div class="container no-padding">
-					<div class="row">
-						
-						<div class="col-lg-12" >
-							
-							<div class="hero-nav-area" style="background-image: url('<?php echo "/news/public/views/img/".$data->images ?> ');">
-								<?php
-            						$conn = new mysqli(hostname, username, password, dbname);
-            						$sql = "SELECT * FROM categories WHERE id = ".$datas->category_id."";
-            						$result = $conn->query($sql);
-            						if ($result->num_rows > 0) {
-            						    while($row = $result->fetch_assoc()) {
-            						        echo "  <h1 class='   '>".$row['name']."</h1>";
-            						    }
-            						} 					
-            					?>
-							
-								<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span><a href="#">Post Types </a><span class="lnr lnr-arrow-right"></span><a href="standard-post.html">Standard Post </a></p>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<div class="news-tracker-wrap">
-								<h6><span>Breaking News:</span>   <a href="#">Xem tin tức mới tại đây</a></h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End top-post Area -->
-			<!-- Start latest-post Area -->
-			<section class="latest-post-area pb-120">
-				<div class="container no-padding">
-					<div class="row">
-						<div class="col-lg-8 post-list">
-							<!-- Start single-post Area -->
-							<div class="single-post-wrap">
-								<div class="content-wrap">
-									<ul class="tags">
-									<?php
-            						$conn = new mysqli(hostname, username, password, dbname);
-            						$sql = "SELECT * FROM categories WHERE id = ".$datas->category_id."";
-            						$result = $conn->query($sql);
-            						if ($result->num_rows > 0) {
-            						    while($row = $result->fetch_assoc()) {
-            						        echo "<li><a href=''>".$row['name']."</a></li>";
-            						    }
-            						} 					
-            					       ?>		
-									</ul>
-									<a href="#">
-										<h3><?php echo "$datas->title"?></h3>
-									</a>
-									<ul class="meta pb-20">
-										
-										<li><a href="#"><span class="lnr lnr-calendar-full"></span><?php echo $datas->date?></a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span><?php echo "$datas->count_conment"?> conment</a></li>
-									</ul>
-									<p>
-									<?php echo "$datas->content"?>
-									</p>
-									
-									<blockquote><?php echo "$datas->description"?>.</blockquote>
-									<div>
-    									<ul class="mt-5">
-											<?php   
-											   $tags=  explode(" ",$datas->tag);
-											   foreach($tags as $val){
-											      echo "  <li class='btn border'>".$val."</li>";
-											   }
-											?>
-    								
-    									</ul>
-									</div>
-								<div class="comment-sec-area">
-									<div class="container">
-										<div class="row flex-column">
-											<h6><?php echo "$datas->count_conment" ?> conment</h6>
-												<!-- Start conment  -->
-                        						 <?php include_once 'public/views/users/conment_details.php';?>
-                        						<!-- End conment -->
-										</div>
-									</div>
+		<!-- Start top-post Area -->
+		<?php include_once 'public/views/users/post_area.php';?>
+		<!-- End top-post Area -->
+		<!-- Start latest-post Area -->
+		<section class="latest-post-area pb-120">
+			<div class="container no-padding">
+				<div class="row">
+					<div class="col-lg-8 post-list">
+						<!-- Start latest-post Area -->
+							<div class="latest-post-wrap">
+								<h4 class="cat-title"><?php							
+    								$conn = new mysqli(hostname, username, password, dbname);
+    								$sql = "SELECT * FROM categories WHERE id = ".$datas[0]->category_id ."";
+    								$result = $conn->query($sql);
+    								if ($result->num_rows > 0) {
+    								    while($row = $result->fetch_assoc()) {
+    								        echo $row['name'];
+    								    }
+    								}	
+								?></h4>
+								<div class="loadListPost">
+									<?php 
+    								foreach ($datas as $data){
+    								    echo "
+                                        <div class='single-latest-post row align-items-center'>
+        									<div class='col-lg-5 post-left'>
+        										<div class='feature-img relative'>
+        											<div class='overlay overlay-bg'></div>
+        											<img class='img-fluid' src='img/l1.jpg' alt=''>
+        										</div>
+        										<ul class='tags'>
+        											<li><a href=''>Lifestyle</a></li>
+        										</ul>
+        									</div>
+        									<div class='col-lg-7 post-right'>
+        										<a href='image-post.html'>
+        											<h4>A Discount Toner Cartridge Is
+        											Better Than Ever.</h4>
+        										</a>
+        										<ul class='meta'>
+        											<li><a href='#'><span class='lnr lnr-user'></span>Mark wiens</a></li>
+        											<li><a href='#'><span class='lnr lnr-calendar-full'></span>03 April, 2018</a></li>
+        											<li><a href='#'><span class='lnr lnr-bubble'></span>06 Comments</a></li>
+        										</ul>
+        										<p class='excert'>
+        											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+        										</p>
+        									</div>
+        								</div>
+        								";
+    								}
+								        
+								 ?>
 								</div>
-							</div>
-							<div class="comment-form">
-								<h4>Post Comment</h4>
 								
-						
-									<input id="post_id" name="post_id" type="hidden" value=<?php echo $data->id?>>
-									<div class="form-group form-inline">
-										<div class="form-group col-lg-6 col-md-12 name">
-											<input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'" name="name">
-										</div>
-										<div class="form-group col-lg-6 col-md-12 email">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-										</div>
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-									</div>
-									<div class="form-group">
-										<textarea class="form-control mb-10" rows="5" id="content" name="content" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"></textarea>
-									</div>
-									<div  class="  primary-btn text-uppercase" id="post_conment" onclick="sendMessage()">Post Comment </div>
-							
+								<div class="load-more">
+									<button class="primary-btn" id="loadPost" >Load More Posts</button>
+								</div>
+								
 							</div>
-						</div>
-						<!-- End single-post Area -->
 					</div>
 					<div class="col-lg-4">
 						<div class="sidebars-area">
-							<div class="single-sidebar-widget editors-pick-widget">
-								<!-- Start Editor’s  -->
-        						 <?php include_once 'public/views/users/edictors.php';?>
-        						 <!-- Editor’s Pick -->
-								
-							</div>
+						 <!-- Start Editor�s  -->
+						 <?php include_once 'public/views/users/edictors.php';?>
+						 <!-- Editor�s Pick -->
+							
 							<div class="single-sidebar-widget ads-widget">
 								<img class="img-fluid" src="img/sidebar-ads.jpg" alt="">
 							</div>
 							<div class="single-sidebar-widget newsletter-widget">
 								<h6 class="title">Newsletter</h6>
-								<p>
-									Here, I focus on a range of items
-									andfeatures that we use in life without
-									giving them a second thought.
-								</p>
+								<p>Here, I focus on a range of items andfeatures that we use in
+									life without giving them a second thought.</p>
 								<div class="form-group d-flex flex-row">
 									<div class="col-autos">
 										<div class="input-group">
-											<input class="form-control" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" type="text">
+											<input class="form-control" placeholder="Email Address"
+												onfocus="this.placeholder = ''"
+												onblur="this.placeholder = 'Email Address'" type="text">
 										</div>
 									</div>
 									<a href="#" class="bbtns">Subcribe</a>
 								</div>
-								<p>
-									You can unsubscribe us at any time
-								</p>
+								<p>You can unsubscribe us at any time</p>
 							</div>
 							 <!--start most popular -->
 							  <?php include_once 'public/views/users/most_popular.php';?>
@@ -226,33 +172,33 @@
 							<div class="single-sidebar-widget social-network-widget">
 								<h6 class="title">Social Networks</h6>
 								<ul class="social-list">
-									<li class="d-flex justify-content-between align-items-center fb">
+									<li
+										class="d-flex justify-content-between align-items-center fb">
 										<div class="icons d-flex flex-row align-items-center">
 											<i class="fa fa-facebook" aria-hidden="true"></i>
 											<p>983 Likes</p>
-										</div>
-										<a href="#">Like our page</a>
+										</div> <a href="#">Like our page</a>
 									</li>
-									<li class="d-flex justify-content-between align-items-center tw">
+									<li
+										class="d-flex justify-content-between align-items-center tw">
 										<div class="icons d-flex flex-row align-items-center">
 											<i class="fa fa-twitter" aria-hidden="true"></i>
 											<p>983 Followers</p>
-										</div>
-										<a href="#">Follow Us</a>
+										</div> <a href="#">Follow Us</a>
 									</li>
-									<li class="d-flex justify-content-between align-items-center yt">
+									<li
+										class="d-flex justify-content-between align-items-center yt">
 										<div class="icons d-flex flex-row align-items-center">
 											<i class="fa fa-youtube-play" aria-hidden="true"></i>
 											<p>983 Subscriber</p>
-										</div>
-										<a href="#">Subscribe</a>
+										</div> <a href="#">Subscribe</a>
 									</li>
-									<li class="d-flex justify-content-between align-items-center rs">
+									<li
+										class="d-flex justify-content-between align-items-center rs">
 										<div class="icons d-flex flex-row align-items-center">
 											<i class="fa fa-rss" aria-hidden="true"></i>
 											<p>983 Subscribe</p>
-										</div>
-										<a href="#">Subscribe</a>
+										</div> <a href="#">Subscribe</a>
 									</li>
 								</ul>
 							</div>
@@ -263,7 +209,7 @@
 		</section>
 		<!-- End latest-post Area -->
 	</div>
-	
+
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
 		<div class="container">
@@ -337,33 +283,6 @@
 			</div>
 		</div>
 	</footer>
-	<script type="text/javascript">
-		function sendMessage(){
-			var c = confirm("Xác nhậ gửi tin nhắn !");
-	    	if (c==true) {
-				var post_id = $('#post_id').val();			
-			    var content = $('#content').val();
-			    var nameUser = $('#name').val();
-			    var email = $('#email').val();			        
-			    var subject = $('#subject').val();
-			    if(post_id == ''||content == ''||nameUser == ''||email==''||subject==''){
-				    alert('Không được để trống các trường');
-				}else{
-					var Object = {'post_id':post_id,'content':content,'nameUser':nameUser,'email':email,'subject':subject};	
-					$.ajax({
-						url: '/news/comment_user/createComment',
-						data:Object,
-						method:'POST'
-					}).done(function(result) {
-						alert('Gui tin nhan thanh cong');
-					});
-				}
-			}
-		}
-	
-	 
-	</script>
-	
 	<!-- End footer Area -->
 	<script src="/news/public/views/js/vendor/jquery-2.2.4.min.js"></script>
 	<script
@@ -383,6 +302,54 @@
 	<script src="/news/public/views/js/mail-script.js"></script>
 	<script src="/news/public/views/js/main.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		var limit = 1;
+		$( "#loadPost" ).click(function() {
+			alert(limit);
+			$.ajax({
+				url: '/news/home/getByCategoriesLimit/'+limit+'/'+<?php echo $datas[0]->category_id?>,
+				data:Object,
+				method:'POST'
+			}).done(function(result) {
+				limit++;
+				if(limit == '2'){
+					$(".loadListPost").html('');
+				}	
+				var posts = JSON.parse(result);				
+				for(var i = 0;i<posts.length;i++){
+					$('.loadListPost').append("` 
+						<div class='single-latest-post row align-items-center'>
+							<div class='col-lg-5 post-left'>
+							<div class='feature-img relative'>
+								<div class='overlay overlay-bg'></div>
+								<img class='img-fluid' src='img/l1.jpg' alt=''>
+							</div>
+							<ul class='tags'>
+								<li><a href=''>Lifestyle</a></li>
+							</ul>
+						</div>
+						<div class='col-lg-7 post-right'>
+							<a href='image-post.html'>
+								<h4>A Discount Toner Cartridge Is
+								Better Than Ever.</h4>
+							</a>
+							<ul class='meta'>
+								<li><a href='#'><span class='lnr lnr-user'></span>Mark wiens</a></li>
+								<li><a href='#'><span class='lnr lnr-calendar-full'></span>03 April, 2018</a></li>
+								<li><a href='#'><span class='lnr lnr-bubble'></span>06 Comments</a></li>
+							</ul>
+							<p class='excert'>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+							</p>
+						</div>
+					</div>`");
+				}
+				
+			});
+		
+		});
+	</script>
 </body>
+
 </html>
 

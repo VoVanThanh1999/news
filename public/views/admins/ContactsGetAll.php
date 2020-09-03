@@ -49,7 +49,7 @@ include_once('public/views/Share/Header.php');
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Browser: activate to sort column ascending">Full Name
+                                aria-label="Browser: activate to sort column ascending">Họ tên
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -57,25 +57,14 @@ include_once('public/views/Share/Header.php');
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Phone Number
-                            </th>
+                                aria-label="Engine version: activate to sort column ascending">Số ĐT
+                            </th>                
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Title
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Content
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Status
+                                aria-label="Engine version: activate to sort column ascending">Reply
                             </th>
 
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Active
-                            </th>
+                           
                             <th class="text-center" style="width: 150px">Action</th>
                         </tr>
                         </thead>
@@ -87,9 +76,7 @@ include_once('public/views/Share/Header.php');
                                 <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
                                 <td><?= $value->full_name ?></td>
                                 <td><?= $value->email ?></td>
-                                <td><?= $value->phone_number ?></td>
-                                <td><?= $value->title ?></td>
-                                <td><span><?= $value->content ?></span></td>
+                                <td><?= $value->phone_number ?></td>                                      
                                 <td>
                                     <?php
                                     if ($value->status == 1) {
@@ -103,22 +90,10 @@ include_once('public/views/Share/Header.php');
                                     }
                                     ?>
                                 </td>
-                                <td class="text-center">
-                                    <?php
-                                    if ($value->active == 1) {
-                                        ?>
-                                        <input type="checkbox" id="active" checked="checked" style="pointer-events: none">
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <input type="checkbox" id="active" style="pointer-events: none">
-                                        <?php
-                                    }
-                                    ?>
-                                </td>
+                                
                                 <td class="text-center"><a
                                             class="btn btn-primary btn-shadow text-white button-large-edit"
-                                            href="getContactById/<?= $value->id ?>">Edit <i class="fas fa-edit"></i> </a> <a
+                                            href="getContactById/<?= $value->id ?>">Details <i class="fas fa-edit"></i> </a> <a
                                             class="btn btn-warning btn-shadow text-white button-large-delete"
                                             href="javascript:void(0);" onclick="DeleteRecord(<?= $value->id ?>)">Del <i
                                                 class="fas fa-trash"></i></a>

@@ -12,15 +12,16 @@ class contacts_repository
         $result = $this->mysql->query($query);
         $datas = [];
         foreach ($result->fetch_all() as $value){
-            array_push($datas , new contacts($value[0],$value[1],$value[2],$value[3],$value[4],$value[5],$value[6],$value[7]));
+            array_push($datas , new contacts($value[0],$value[1],$value[2],$value[3],$value[4],$value[5],$value[6],$value[7],$value[8]));
         }
         return $datas;
     }
-    function add(contacts $contacts){
-        $query = "INSERT INTO contacts (full_name, email, phone_number,title,content,status_s,actvie)
-                    VALUES ('$contacts->full_name','$contacts->email','$contacts->phone_number','$contacts->title','$contacts->content',$contacts->status,$contacts->active)";
+    function add(contacts $p){
+        print_r($p);
+        $query = "INSERT INTO contacts (full_name, email, phone_number,title,content,status,active,reply)
+                    VALUES ('".$p->full_name."','".$p->email."','".$p->phone_number."','".$p->title."','".$p->content."',0,0,'".$p->reply."')";
+    
         $result = $this->mysql->query($query);
-        echo $query;
         return $result;
     }
 
@@ -34,15 +35,14 @@ class contacts_repository
         $result = $this->mysql->query($query);
         $data = $result->fetch_all();
         if (count($data)) {
-            return new contacts($data[0][0], $data[0][1], $data[0][2], $data[0][3], $data[0][4], $data[0][5], $data[0][6], $data[0][7]);
+            return new contacts($data[0][0], $data[0][1], $data[0][2], $data[0][3], $data[0][4], $data[0][5], $data[0][6], $data[0][7],$data[0][8]);
         }
         return null;
     }
 
     function update(contacts $contacts){
-        $query = "UPDATE contacts SET full_name = '$contacts->full_name', email = '$contacts->email', phone_number = '$contacts->phone_number', title = '$contacts->title', content = '$contacts->content', status = $contacts->status, active = $contacts->active
+        $query = "UPDATE contacts SET full_name = '$contacts->full_name', email = '$contacts->email', phone_number = '$contacts->phone_number', title = '$contacts->title', content = '$contacts->content', status = $contacts->status, active = $contacts->active, reply = $contacts->reply
         WHERE id = $contacts->id";
-        print_r($query);
         $result = $this->mysql->query($query);
         return $result;
     }

@@ -14,7 +14,7 @@ class comments_repository {
         $result = $this->mysql->query($query);
         $comment;
         while($row = $result->fetch_assoc()) {
-            $comment =  new comments($row['id'], $row['user_id'], $row['post_id'], $row['content'], $row['status_s'], $row['active']);
+            $comment =  new comments($row['id'], $row['user_id'], $row['post_id'], $row['content'], $row['status_s'], $row['active'],$row['name_user'],$row['subject'],$row['email'],$row['date']);
         }
         if(isset($comment)){
             return  $comment ;
@@ -28,7 +28,7 @@ class comments_repository {
         $result = $this->mysql->query($query);
         $comments = array();
         while($row = $result->fetch_assoc()) {
-            $comment =  new comments($row['id'], $row['user_id'], $row['post_id'], $row['content'], $row['status_s'], $row['active']);
+            $comment =  new comments($row['id'], $row['user_id'], $row['post_id'], $row['content'], $row['status_s'], $row['active'],$row['name_user'],$row['subject'],$row['email'],$row['date']);
             array_push($comments,$comment);
         }
         return  $comments;
@@ -42,18 +42,18 @@ class comments_repository {
     function saveOrUpdate(comments $p) {
       //  $user_id,$post_id,$content,$status,$active
 
-        $flag = true;
+       $flag = true;
         if ($p->getId() == null) {
-            $query = "INSERT INTO comments (user_id, post_id, content,status_s,active,name_user)
-                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0,'".$p->name_user."')";
+            $query = "INSERT INTO comments (user_id, post_id, content,status_s,active,name_user,subject,email,date)
+                        VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0,'".$p->name_user."','".$p->subject."','".$p->email."','".$p->date."')";
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
+            print_r($p);
             $query = "  UPDATE comments
-                        SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?
+                        SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?,subject=?,email=?
                         WHERE id=? ";
             $stmt =  $this->mysql->prepare($query);
-            $id= $p->id;
             $user_id = $p->user_id;
             $post_id = $p->post_id;
             $content= $p->content;
@@ -61,7 +61,9 @@ class comments_repository {
             $status_s = $p->status;
             $active=$p->active;
             $name_user = $p->name_user;
-            $stmt->bind_param("ssssssd",$user_id,$post_id,$content,$status_s,$active,$name_user,$id);
+            $subject = $p->subject;
+            $email = $p->email;
+            $stmt->bind_param("sssssssss",$user_id,$post_id,$content, $p->status,$p->active,$name_user,$subject,$email,$p->id);
             $stmt->execute();
             if ($stmt->error) {
                 $flag = false;
@@ -70,7 +72,7 @@ class comments_repository {
             }
             $stmt->close();
         }
-        return $flag;
+        return $flag; 
     }
     function update(comments $p){
         $id= $p->id;
@@ -79,7 +81,9 @@ class comments_repository {
         $content= $p->content;
         $status_s = $p->status;
         $active= $p->active;
-        $query = "UPDATE comments SET user_id ='$user_id', post_id = '$post_id', content = '$content', status_s = $status_s, active = $active
+        $subject =$p->subject;
+        $email = $p->email;
+        $query = "UPDATE comments SET user_id ='$user_id', post_id = '$post_id', content = '$content', status_s = '$status_s', active = '$active',name_user='$name_user',subject='$subject',email='$subject'
                    WHERE id = $id";
         $result =$this->mysql->query($query);
     }

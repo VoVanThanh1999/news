@@ -1,4 +1,4 @@
-
+	
 
 
 <div class="popular-post-wrap">
@@ -26,9 +26,8 @@ if ($result->num_rows > 0) {
             				<h3>".$row['title'].".</h3>
             			</a>
             			<ul class='meta'>
-            				<li><a href=''><span class='lnr lnr-user'></span>Mark wiens</a></li>
-            				<li><a href=''><span class='lnr lnr-calendar-full'></span>03 April,
-            						2018</a></li>
+            				
+            				<li><a href=''><span class='lnr lnr-calendar-full'></span>".$row['date']."</a></li>
             				<li><a href=''><span class='lnr lnr-bubble'>".$row['count_conment']."</span></a></li>
             			</ul>
             		</div>
@@ -52,10 +51,9 @@ if ($result->num_rows > 0) {
         						<h4>".$row['title'].".</h4>
         				</a>
         				<ul class='meta'>
-        					<li><a href=''><span class='lnr lnr-user'></span>Mark wiens</a></li>
-        					<li><a href=''><span class='lnr lnr-calendar-full'></span>03
-        							April, 2018</a></li>
-        						<li><a href=''><span class='lnr lnr-bubble'>".$row['count_conment']."</span></a></li>
+
+        					<li><a href=''><span class='lnr lnr-calendar-full'></span>".$row['date']."</a></li>
+        						<li><a href=''><span class='lnr lnr-bubble'></span>".$row['count_conment']."</a></li>
         				</ul>
         				<p class='excert'>Lorem ipsum dolor sit amet, consecteturadip
         					isicing elit, sed do eiusmod tempor incididunt ed do eius.</p>
