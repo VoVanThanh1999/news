@@ -29,7 +29,22 @@ class home extends model_and_view_user {
         print_r(json_encode($posts));
     }
     
-    public function utf8_for_xml($string){
+
+
+    public function searchByName(){
+        $postDAO = new post_repository();
+        $param =  $_GET['param'];
+        $posts = $postDAO->getPostByLikeTitle($param);
+        $this->view('searchByName', $posts);  
+    }
+    
+    public function searchByNameLimit($limit,$param){
+        $postDAO = new post_repository();
+        $postDAO->getPostByLikeTitleLimit($limit,$param);
+        print_r(json_encode($posts));
+    }
+    
+    function utf8_for_xml($string){
         return preg_replace('/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u',
             ' ', $string);
     }
