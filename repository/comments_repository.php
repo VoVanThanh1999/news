@@ -49,7 +49,6 @@ class comments_repository {
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-            print_r($p);
             $query = "  UPDATE comments
                         SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?,subject=?,email=?
                         WHERE id=? ";

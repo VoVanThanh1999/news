@@ -29,9 +29,39 @@ class home extends model_and_view_user {
         print_r(json_encode($posts));
     }
     
-    function utf8_for_xml($string){
+    public function utf8_for_xml($string){
         return preg_replace('/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u',
             ' ', $string);
+    }
+    
+    public function laterNews(){
+        $postDAO = new post_repository();
+        $posts = $postDAO->getPostLaterNews();
+        $this->view('loadpostlatternews', $posts);  
+    }
+    
+    public function getPostLaterNewsLimit($limit){
+        $postDAO = new post_repository();
+        $posts = $postDAO->getPostLaterNewsLimit($limit*2);
+        print_r(json_encode($posts));
+    }
+    
+    public function popularNews(){
+        $postDAO = new post_repository();
+        $posts = $postDAO->getPostPopular();
+        $this->view('loadpostpopular', $posts);  
+    }
+    
+    public function getPostPopularNewsLimit($limit){
+        $postDAO = new post_repository();
+        $posts = $postDAO->getPostPopularLimit($limit*2);
+        print_r(json_encode($posts));
+    }
+    
+   
+    
+    public function about(){
+        $this->view('about', "");
     }
  
    

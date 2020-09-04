@@ -17,7 +17,7 @@
                 				<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
                 			</div>
                 			<ul class='tags'>
-                				<li><a href=''>Popular</a></li>
+                				<li><a href='/news/home/popularNews'>Popular</a></li>
                 			</ul>
                 		</div>
                 		<div class='col-lg-7 post-right'>

@@ -20,9 +20,9 @@ if ($result->num_rows > 0) {
             		</div>
             		<div class='details'>
             			<ul class='tags'>
-            				<li><a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>Popular</a></li>
+            				<li><a href='/news/home/popularNews'>Popular</a></li>
             			</ul>
-            			<a href='image-post.html'>
+            			<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
             				<h3>".$row['title'].".</h3>
             			</a>
             			<ul class='meta'>
@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
         					<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
         				</div>
         				<ul class='tags'>
-        					<li><a href=''>Travel</a></li>
+        					<li><a href='/news/home/popularNews'>Popular</a></li>
         				</ul>
         			</div>
         			<div class='details'>

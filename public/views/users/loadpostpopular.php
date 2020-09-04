@@ -35,7 +35,49 @@
 <link rel="stylesheet" href="/news/public/views/css/main.css">
 </head>
 <body>
-		<?php include_once 'public/views/users/header_user.php';?>
+	<header>
+
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div
+						class="col-lg-6 col-md-6 col-sm-6 col-6 header-top-left no-padding">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+						</ul>
+					</div>
+					<div
+						class="col-lg-6 col-md-6 col-sm-6 col-6 header-top-right no-padding">
+						<ul>
+							<li><a href="tel:+440 012 3654 896"><span
+									class="lnr lnr-phone-handset"></span><span>+440 012 3654 896</span></a></li>
+							<li><a href="mailto:support@colorlib.com"><span
+									class="lnr lnr-envelope"></span><span>support@colorlib.com</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="logo-wrap">
+			<div class="container">
+				<div class="row justify-content-between align-items-center">
+					<div class="col-lg-4 col-md-4 col-sm-12 logo-left no-padding">
+						<a href="index.html"> <img class="img-fluid" src="/news/public/views/img/logo.png"
+							alt="">
+						</a>
+					</div>
+					<div
+						class="col-lg-8 col-md-8 col-sm-12 logo-right no-padding ads-banner">
+						<img class="img-fluid" src="/news/public/views/img/banner-ad.jpg" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php include_once 'public/views/users/categories.php';?>
+	</header>
 
 	<div class="site-main-container">
 		<!-- Start top-post Area -->
@@ -48,27 +90,10 @@
 					<div class="col-lg-8 post-list">
 						<!-- Start latest-post Area -->
 							<div class="latest-post-wrap">
-								<h4 class="cat-title"><?php							
-    								$conn = new mysqli(hostname, username, password, dbname);
-    								$sql = "SELECT * FROM categories WHERE id = ".$datas[0]->category_id ."";
-    								$result = $conn->query($sql);
-    								if ($result->num_rows > 0) {
-    								    while($row = $result->fetch_assoc()) {
-    								        echo $row['name'];
-    								    }
-    								}	
-								?></h4>
+								<h4 class="cat-title">Popular News</h4>
 								<div class="loadListPost">
 									<?php 
-									$conn = new mysqli(hostname, username, password, dbname);
-									$sql = "SELECT * FROM categories WHERE id = ".$datas[0]->category_id ."";
-									$result = $conn->query($sql);
-									$nameCategories = '';
-									if ($result->num_rows > 0) {
-									    while($row = $result->fetch_assoc()) {
-									        $nameCategories = $row['name'];
-									    }
-									}
+									
     								foreach ($datas as $data){
     								    echo "
                                         <div class='single-latest-post row align-items-center'>
@@ -78,7 +103,7 @@
         											<img class='img-fluid' src='/news/public/views/img/".$data->images."' alt=''>
         										</div>
         										<ul class='tags'>
-        											<li><a >".$nameCategories."</a></li>
+        											<li><a >Popular News</a></li>
         										</ul>
         									</div>
         									<div class='col-lg-7 post-right'>
@@ -107,9 +132,9 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="sidebars-area">
-						 <!-- Start Editorâ€™s  -->
+						 <!-- Start Editor’s  -->
 						 <?php include_once 'public/views/users/edictors.php';?>
-						 <!-- Editorâ€™s Pick -->
+						 <!-- Editor’s Pick -->
 							
 							<div class="single-sidebar-widget ads-widget">
 								<img class="img-fluid" src="img/sidebar-ads.jpg" alt="">
@@ -199,13 +224,13 @@
 		var limit = 2;
 		$( "#loadPost" ).click(function() {
 			$.ajax({
-				url: '/news/home/getByCategoriesLimit/'+limit+'/'+<?php echo $datas[0]->category_id?>,
-				data:Object,
+				url: '/news/home/getPostPopularNewsLimit/'+limit,
 				method:'POST'
 			}).done(function(result) {
 				limit++;
 				$(".loadListPost").html('');	
-				var posts = JSON.parse(result);				
+				var posts = JSON.parse(result);	
+				console.log(posts);			
 				for(var i = 0;i<posts.length;i++){
 					$('.loadListPost').append(` 
 						<div class="single-latest-post row align-items-center">
@@ -215,16 +240,7 @@
 								<img class="img-fluid" src="/news/public/views/img/`+posts[i].images+`" alt=''>
 							</div>
 							<ul class="tags">
-								<li><a href=><?php 
-								    $conn = new mysqli(hostname, username, password, dbname);
-									$sql = "SELECT * FROM categories WHERE id = ".$datas[0]->category_id ."";
-									$result = $conn->query($sql);
-									$nameCategories = '';
-									if ($result->num_rows > 0) {
-									    while($row = $result->fetch_assoc()) {
-									        echo $row['name'];
-									    }
-									}?></a></li>
+								<li><a href=>Popular News</a></li>
 							</ul>
 						</div>
 						<div class="col-lg-7 post-right">
@@ -242,6 +258,7 @@
 						</div>
 					</div>`);
 				}
+				console.log('debugger done');
 				
 			});
 		

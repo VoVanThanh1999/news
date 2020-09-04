@@ -59,10 +59,7 @@ include_once('public/views/Share/Header.php');
                                 colspan="1"
                                 aria-label="Engine version: activate to sort column ascending">Content
                             </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Status
-                            </th>
+                     
 
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -79,20 +76,7 @@ include_once('public/views/Share/Header.php');
                                 <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
                                 <td><?= $value->user_id ?></td>
                                 <td><?= $value->post_id ?></td>
-                                <td><span><?= $value->content ?></span></td>
-                                <td>
-                                    <?php
-                                    if ($value->status == 1) {
-                                        ?>
-                                        <input type="checkbox" id="status" checked="checked" style="pointer-events: none">
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <input type="checkbox" id="status" style="pointer-events: none">
-                                        <?php
-                                    }
-                                    ?>
-                                </td>
+                                <td><span><?= $value->content ?></span></td>                  
                                 <td class="text-center">
                                     <?php
                                     if ($value->active == 1) {
