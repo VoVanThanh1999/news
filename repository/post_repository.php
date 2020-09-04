@@ -57,7 +57,62 @@ class post_repository
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
-//                print_r($post);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+    }
+    
+    function getPostLaterNews()
+    {
+        $query =" SELECT * FROM post ORDER BY id DESC limit 2";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+    }
+    
+    
+    
+    function getPostLaterNewsLimit($limit){
+        $query =" SELECT * FROM post ORDER BY id DESC limit ".$limit."";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+    }
+    
+    function getPostPopular()
+    {
+        $query =" SELECT * FROM post ORDER BY count_conment DESC limit 2";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+    }
+    
+    function getPostPopularLimit($limit){
+        $query =" SELECT * FROM post ORDER BY count_conment DESC limit ".$limit."";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
                 array_push($posts,$post);
             }
         }
@@ -71,6 +126,21 @@ class post_repository
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],'',$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
+                array_push($posts,$post);
+            }
+        }
+        return $posts;
+    }
+    
+  
+    
+    function getPostByLikeTitleLimit($limit,$name) {
+        $query =" SELECT * FROM post WHERE title LIKE  '%".$name."%' limit ".$limit."";
+        $result = $this->mysql->query($query);
+        $posts = array();
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
                 array_push($posts,$post);
             }
         }

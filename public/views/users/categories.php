@@ -2,9 +2,7 @@
 	<div class="row align-items-center justify-content-between">
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
-				<li class="menu-active"><a href="index.html">Home</a></li>
-				<li><a href="archive.html">Archive</a></li>
-				<li><a href="category.html">Post Types</a></li>
+				<li class="menu-active"><a href="/news/home/index">Home</a></li>
 				<li class="menu-has-children"><a href="">Category </a>
 					<ul>
 						<?php
@@ -20,16 +18,17 @@
 						    echo "0 results";
 						}						
 						?>
-						
+						<li><a href="/news/home/laternews">Later News</a></li>
+						<li><a href="/news/home/popularnews">POPULAR News</a></li>
 					</ul></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="/news/home/about">About</a></li>
+				<li><a href="/news/home/contact">Contact</a></li>
 			</ul>
 		</nav>
 		<!-- #nav-menu-container -->
 		<div class="navbar-right">
-			<form class="Search">
-				<input type="text" class="form-control Search-box" name="Search-box"
+			<form class="Search" action="/news/home/searchByName">
+				<input type="text" class="form-control Search-box" name="param"
 					id="Search-box" placeholder="Search"> <label for="Search-box"
 					class="Search-box-label"> <span class="lnr lnr-magnifier"></span>
 				</label> <span class="Search-close"> <span class="lnr lnr-cross"></span>

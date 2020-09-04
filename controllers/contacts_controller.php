@@ -37,21 +37,20 @@ class contacts_controller extends model_and_view_user{
     }
     
     function save_contacts(){
-
         $contactsDAO = new contacts_repository();
+        $data = json_decode(json_encode($_POST));
         $id = 0;
-        $full_name = $_POST['name'];
-        $email = $_POST['email'];
-        $phone_number = $_POST['phone_number'];
-        $title = $_POST['subject'];
-        $content = $_POST['message'];
-        $status = 1;
-        $active = 1;
+        $full_name =  $data->nameUser;
+        $email = $data->email;
+        $phone_number = $data->phone;
+        $title = $data->subject;
+        $content = $data->content;
+        $status = 0;
+        $active = 0;
         $reply = "";
         $contacts = new contacts($id, $full_name, $email, $phone_number, $title, $content, $status, $active,$reply);
         $result = $contactsDAO->add($contacts);
-        echo $result;
-     
+        echo $result;  
     }
     
     function reply_email(){

@@ -51,7 +51,7 @@ class  post_controller extends model_and_view_post {
                     header('location: ./getAll');
                 }
                 else{
-                    $date =$_POST['date_up_post'];
+                    $date = date("Y/m/d");
                     $post_sv->createPost(new posts($id,$category_id,$title,$intro,$content,$image,$tag,$description,"",$slug,$active,$date));
                     header('location: ./getAll');
                 }

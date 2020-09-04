@@ -20,14 +20,11 @@
 
             				</div>
             				<div class='top-post-details'>
-            					<ul class='tags'>
-            						<li><a href=''>Food Habit</a></li>
-            					</ul>
+            				
             					<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
             						<h3>".$row['title']."</h3>
             					</a>
-            					<ul class='meta'>
-            						<li><a href=''><span class=''></span>Mark wiens</a></li>
+            					<ul class='meta'>				
             						<li><a href=''><span class='lnr lnr-calendar-full'></span>03
             								April, 2018</a></li>
             						<li><a href=''><span class='lnr lnr-bubble'></span>".$row['count_conment']."</a></li>
@@ -44,14 +41,12 @@
             						<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
             					</div>
             					<div class='top-post-details'>
-            						<ul class='tags'>
-            							<li><a href=''>Food Habit</a></li>
-            						</ul>
+            						
             						<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
             							<h4>".$row['title']."</h4>
             						</a>
             						<ul class='meta'>
-            							<li><a href=''><span class='lnr lnr-user'></span>Mark wiens</a></li>
+
             							<li><a href=''><span class='lnr lnr-calendar-full'></span>03
             									April, 2018</a></li>
             							<li><a href='#'><span class='lnr lnr-bubble'></span>".$row['count_conment']."</a></li>

@@ -1,7 +1,7 @@
 
 <!-- Start latest-post Area -->
 <div class="latest-post-wrap">
-	<h4 class="cat-title">Latest News</h4>
+	<h4 class="cat-title"><a class="text-while" href="news/home/laternews"></a>Latest News</h4>
 	<?php 
         $conn = new mysqli(hostname, username, password, dbname);
         $sql = "SELECT * FROM post ORDER BY id DESC limit  4";
@@ -17,7 +17,7 @@
                 				<img class='img-fluid' src='/news/public/views/img/".$row['images']."'  alt=''>
                 			</div>
                 			<ul class='tags'>
-                				<li><a href=''>Later News</a></li>
+                				<li><a href='/news/home/laterNews'>Later News</a></li>
                 			</ul>
                 		</div>
                 		<div class='col-lg-7 post-right'>
