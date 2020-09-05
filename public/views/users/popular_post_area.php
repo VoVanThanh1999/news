@@ -5,7 +5,7 @@
 	<h4 class="title">Popular Posts</h4>
 	<?php
 $conn = new mysqli(hostname, username, password, dbname);
-$sql = "SELECT * FROM post ORDER BY intro DESC limit  2";
+$sql = "SELECT * FROM post where active = 1 ORDER BY intro DESC limit  2";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
