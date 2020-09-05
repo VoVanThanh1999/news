@@ -4,7 +4,7 @@
 	<h4 class="cat-title"><a class="text-while" href="news/home/laternews"></a>Latest News</h4>
 	<?php 
         $conn = new mysqli(hostname, username, password, dbname);
-        $sql = "SELECT * FROM post ORDER BY id DESC limit  4";
+        $sql = "SELECT * FROM post where active = 1 ORDER BY id DESC limit  4";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // output data of each row

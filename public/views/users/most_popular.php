@@ -2,7 +2,7 @@
 	<h6 class="title">Most Popular</h6>	
 	<?php
         $conn = new mysqli(hostname, username, password, dbname);
-        $sql = "SELECT * FROM post ORDER BY content DESC limit  4";
+        $sql = "SELECT * FROM post where active = 1 ORDER BY content DESC limit  4";
         $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         // output data of each row

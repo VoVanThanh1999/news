@@ -56,7 +56,7 @@ include_once('public/views/Share/Menu.php');
                 </tr>
                 <tr>
                 	<?php
-                        if($data->status == 1){
+                        if($data->active == 1){
                            echo " <td> <label for='content' class='mt-2 float-right'>Reply</label></td>";
                            echo " <td><textarea  class='form-control' id='content'  name='' >".$datas->reply." </textarea></td>";
                         }else{

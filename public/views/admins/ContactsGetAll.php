@@ -79,7 +79,7 @@ include_once('public/views/Share/Header.php');
                                 <td><?= $value->phone_number ?></td>                                      
                                 <td>
                                     <?php
-                                    if ($value->status == 1) {
+                                    if ($value->active == 1) {
                                         ?>
                                         <input type="checkbox" id="status" checked="checked" style="pointer-events: none">
                                         <?php

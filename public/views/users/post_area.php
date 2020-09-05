@@ -4,7 +4,7 @@
 		<div class="row small-gutters">
 		<?php
             $conn = new mysqli(hostname, username, password, dbname);
-            $sql = "SELECT * FROM post ORDER BY id DESC limit  3";
+            $sql = "SELECT * FROM post where active = 1 ORDER BY id DESC limit  3";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 // output data of each row

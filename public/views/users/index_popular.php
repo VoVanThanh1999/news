@@ -4,7 +4,7 @@
 	<h4 class="cat-title">Popular</h4>
 	<?php 
         $conn = new mysqli(hostname, username, password, dbname);
-        $sql = "SELECT * FROM post ORDER BY count_conment DESC limit  4";
+        $sql = "SELECT * FROM post where active = 1 ORDER BY count_conment  DESC limit  4";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             // output data of each row
@@ -25,9 +25,8 @@
                 				<h4>".$row["title"]."</h4>
                 			</a>
                 			<ul class='meta'>
-                				<li><a href=''><span class='lnr lnr-user'></span>Mark wiens</a></li>
-                				<li><a href=''><span class='lnr lnr-calendar-full'></span>03 April,
-                						2018</a></li>
+                				
+                				<li><a href=''><span class='lnr lnr-calendar-full'></span>".$row['date']."</a></li>
                 				<li><a href=''><span class='lnr lnr-bubble'></span>".$row["count_conment"]." comments</a></li>
                 			</ul>
                 			<p class='excert'>".$row["description"]."</p>
