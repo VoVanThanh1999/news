@@ -45,7 +45,7 @@ include_once('public/views/Share/Header.php');
                             <th class="sorting_asc text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
                                 aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                ID
+                                STT
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -69,10 +69,11 @@ include_once('public/views/Share/Header.php');
                         </thead>
                         <tbody>
                         <?php
+                        $stt = 1;
                         foreach ($data as $value) {
                             ?>
                             <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
+                                <td tabindex="0" class="sorting_1 text-center"><?= $stt ++ ?></td>
                                 <td><?= $value->name ?></td>
                                 <td><?= $value->email ?></td>
                                 <td class="text-center">

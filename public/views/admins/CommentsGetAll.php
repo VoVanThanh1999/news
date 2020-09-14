@@ -70,13 +70,39 @@ include_once('public/views/Share/Header.php');
                         </thead>
                         <tbody>
                         <?php
+                        $stt = 1;
                         foreach ($data as $value) {
                             ?>
                             <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
-                                <td><?= $value->user_id ?></td>
-                                <td><?= $value->post_id ?></td>
-                                <td><span><?= $value->content ?></span></td>                  
+                                <td tabindex="0" class="sorting_1"><?= $stt++ ?></td>
+                                <?php
+                                if($value->user_id ==0){
+                                   echo("<td >client</td>");
+                                }
+                                else{
+                                    $mysql = new mysqli("112.78.2.36", "vie65_dbwebsite", "qwerty123#!", "vie65506_dbwebsitenews");
+                                    $query = "SELECT name FROM users WHERE id = $value->user_id";
+                                    $result = $mysql->query($query);
+                                    foreach ($result->fetch_all() as $items) {
+                                        echo("<td> $items[0]</td>");
+                                    }
+                                }
+                                ?>
+                                <?php
+                                    $mysql = new mysqli("112.78.2.36", "vie65_dbwebsite", "qwerty123#!", "vie65506_dbwebsitenews");
+                                    $query = "SELECT title FROM post WHERE id = $value->post_id";
+                                    $result = $mysql->query($query);
+                                    if(!empty($result->fetch_all())){
+                                        $result = $mysql->query($query);
+                                        foreach ($result->fetch_all() as $items) {
+                                            echo("<td>$items[0]</td>");
+                                        }
+                                    }
+                                    else{
+                                        echo("<td style='color: #d33333'> bài viết đã bị xóa</td>");
+                                    }
+                                ?>
+                                <td><span><?= $value->content ?></span></td>
                                 <td class="text-center">
                                     <?php
                                     if ($value->active == 1) {
@@ -127,43 +153,42 @@ include_once('public/views/Share/Header.php');
     $(document).ready(function () {
         $('#listData').dataTable();
     });
-
-    function DeleteRecord(id) {
+    var href = window.location.href;
+        function DeleteRecord(id) {
         alertify.confirm('Delete Comfirm', 'Are you sure to delete selected data?', function () {
             DoDelete(id);
         }, function () {
             alertify.error('Cancel')
         });
     }
-
     function DoDelete(id) {
         $.ajax({
             type: "DELETE",
-            url: "/news/admin/deleteComment/" + id,
+            url: "/news/comment_admin/deleteComment/" + id,
             dataType: "html",
             success: function (html) {
                 alertify.success('Deleted');
-                getAll();
+                window.location.href = href;
             },
             error: function (req, status, error) {
                 alert(error);
             }
         });
     }
-    function getAll() {
-        $.ajax({
-            type: "DELETE",
-            url: "/news/admin/GetAllComment",
-            dataType: "html",
-            success: function (html) {
-                $("div#listPost").empty();
-                $("div#listPost").html(html);
-            },
-            error: function (req, status, error) {
-                alert(error);
-            }
-        });
-    }
+    // function getAll() {
+    //     $.ajax({
+    //         type: "DELETE",
+    //         url: "/news/admin/GetAllComment",
+    //         dataType: "html",
+    //         success: function (html) {
+    //             $("div#listPost").empty();
+    //             $("div#listPost").html(html);
+    //         },
+    //         error: function (req, status, error) {
+    //             alert(error);
+    //         }
+    //     });
+    // }
 </script>
 <!-- -------- Footer share -------------- -->
 <?php

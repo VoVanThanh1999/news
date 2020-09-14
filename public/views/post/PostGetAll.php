@@ -3,11 +3,15 @@
 <?php
 include_once('public/views/Share/Header.php');
 ?>
+<script>   $(document).ready(function () {
+        $('#listData').dataTable();
+    });</script>
 <!------------------ End  Heade share -------------->
 <!-- ----------------menu share---------------------->
 <div id="listPost">
 <?php
 include_once('public/views/Share/Menu.php');
+
 ?>
 <!--            End menu share-->
 
@@ -47,7 +51,7 @@ include_once('public/views/Share/Menu.php');
                             <th class="sorting_asc text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
                                 aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                ID
+                                STT
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -83,11 +87,26 @@ include_once('public/views/Share/Menu.php');
                         </thead>
                         <tbody>
                         <?php
+                        $stt =1;
                         foreach ($data as $value) {
                             ?>
                             <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
-                                <td><?= $value->category_id ?></td>
+                                <td tabindex="0" class="sorting_1 text-center"><?= $stt ++ ?></td>
+                                <?php
+
+                                    $mysql = new mysqli("112.78.2.36", "vie65_dbwebsite", "qwerty123#!", "vie65506_dbwebsitenews");
+                                    $query = "SELECT name FROM categories WHERE id = $value->category_id";
+                                    $result = $mysql->query($query);
+                                    if(!empty($result->fetch_all())){
+                                        $result = $mysql->query($query);
+                                        foreach ($result->fetch_all() as $items) {
+                                            echo("<td>$items[0]</td>");
+                                        }
+                                    }
+                                    else{
+                                        echo("<td style='color: #d33333'> thể loại này đã bị xóa</td>");
+                                    }
+                                ?>
                                 <td><span><?= $value->title ?></span></td>
                                 <td><img src="/news/public/views/img/<?= $value->images ?>" alt=""></td>
                                 <td style="width: 100px;display: -webkit-box; -webkit-box-orient: vertical;"><?= $value->tag ?></td>
@@ -126,32 +145,30 @@ include_once('public/views/Share/Menu.php');
     </div>
 </div>
 <script>
+
     var href = window.location.href;
-    $(document).ready(function () {
-        $('#listData').dataTable();
-    });
-    function activatePost(id){
-        alertify.confirm('Delete Comfirm', 'Are you sure to active data?', function () {
-            activateRecord(id);
-        }, function () {
-            alertify.error('Cancel')
-        });
-    }
-    function activateRecord(id){
-        $.ajax({
-            type: "DELETE",
-            url: "./activePost/" + id,
-            dataType: "html",
-            success: function (html) {
-                alertify.success('Activate');
-                getAll();
-            },
-            error: function (req, status, error) {
-                alert(error);
-                alertify.error('Please try again');
-            }
-        });
-    }
+    // function activatePost(id){
+    //     alertify.confirm('Active Comfirm', 'Are you sure to active data?', function () {
+    //         activateRecord(id);
+    //     }, function () {
+    //         alertify.error('Cancel')
+    //     });
+    // }
+    // function activateRecord(id){
+    //     $.ajax({
+    //         type: "DELETE",
+    //         url: "./activePost/" + id,
+    //         dataType: "html",
+    //         success: function (html) {
+    //             alertify.success('Activate');
+    //             getAll();
+    //         },
+    //         error: function (req, status, error) {
+    //             alert(error);
+    //             alertify.error('Please try again');
+    //         }
+    //     });
+    // }
     function DeleteRecord(id) {
         alertify.confirm('Delete Comfirm', 'Are you sure to delete selected data?', function () {
             DoDelete(id)
@@ -168,21 +185,6 @@ include_once('public/views/Share/Menu.php');
             success: function (html) {
                 alertify.success('Deleted');
                 window.location.href = href;
-            },
-            error: function (req, status, error) {
-                alert(error);
-            }
-        });
-    }
-
-    function getAll() {
-        $.ajax({
-            type: "DELETE",
-            url: "GetAll",
-            dataType: "html",
-            success: function (html) {
-                $("div#listPost").empty();
-                $("div#listPost").html(html);
             },
             error: function (req, status, error) {
                 alert(error);
