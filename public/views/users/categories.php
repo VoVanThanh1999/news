@@ -3,9 +3,7 @@
 		<nav id="nav-menu-container">
 			<ul class="nav-menu">
 				<li class="menu-active"><a href="/news/home/index">Home</a></li>
-				<li class="menu-has-children"><a href="">Category </a>
-					<ul>
-						<?php
+				<?php
 						$conn = new mysqli(hostname, username, password, dbname);
 						$sql = "SELECT * FROM categories WHERE active = 1;";
 						$result = $conn->query($sql);
@@ -18,9 +16,8 @@
 						    echo "0 results";
 						}						
 						?>
-						<li><a href="/news/home/laternews">Later News</a></li>
-						<li><a href="/news/home/popularnews">POPULAR News</a></li>
-					</ul></li>
+				<li><a href="/news/home/laternews">Later News</a></li>
+				<li><a href="/news/home/popularnews">POPULAR News</a></li>
 				<li><a href="/news/home/about">About</a></li>
 				<li><a href="/news/home/contact">Contact</a></li>
 			</ul>

@@ -41,35 +41,19 @@ class comments_repository {
     }
     function saveOrUpdate(comments $p) {
       //  $user_id,$post_id,$content,$status,$active
-
-       $flag = true;
+        $flag = true;
         if ($p->getId() == null) {
             $query = "INSERT INTO comments (user_id, post_id, content,status_s,active,name_user,subject,email,date)
                         VALUES ('".$p->user_id."', '".$p->post_id."','".$p->content."',0,0,'".$p->name_user."','".$p->subject."','".$p->email."','".$p->date."')";
             $result = $this->mysql->query($query);
             $flag = $result;
-        } else {
+        } else {      
             $query = "  UPDATE comments
-                        SET user_id=?, post_id=?, content=?,status_s=?,active=?,name_user=?,subject=?,email=?
-                        WHERE id=? ";
-            $stmt =  $this->mysql->prepare($query);
-            $user_id = $p->user_id;
-            $post_id = $p->post_id;
-            $content= $p->content;
-            echo $content;
-            $status_s = $p->status;
-            $active=$p->active;
-            $name_user = $p->name_user;
-            $subject = $p->subject;
-            $email = $p->email;
-            $stmt->bind_param("sssssssss",$user_id,$post_id,$content, $p->status,$p->active,$name_user,$subject,$email,$p->id);
-            $stmt->execute();
-            if ($stmt->error) {
-                $flag = false;
-            }else{
-                $flag = true;
-            }
-            $stmt->close();
+                        SET user_id='".$p->user_id."',post_id='".$p->post_id."',content='".$p->content."',status_s=".$p->status.",active=".$p->active.",name_user='".$p->name_user."',subject='".$p->subject."',email='".$p->email."',date='".$p->date."'
+                        WHERE id='".$p->id."' ";
+            $result = $this->mysql->query($query);
+            $flag = $result;
+            
         }
         return $flag; 
     }

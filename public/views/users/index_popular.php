@@ -21,7 +21,7 @@
                 			</ul>
                 		</div>
                 		<div class='col-lg-7 post-right'>
-                			<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
+                			<a href='/news/chitiet/baiviet/".$row['slug']."'>
                 				<h4>".$row["title"]."</h4>
                 			</a>
                 			<ul class='meta'>

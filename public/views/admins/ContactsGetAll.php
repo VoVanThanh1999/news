@@ -47,6 +47,7 @@ include_once('public/views/Share/Header.php');
                                 aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
                                 STT
                             </th>
+
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
                                 aria-label="Browser: activate to sort column ascending">Họ tên

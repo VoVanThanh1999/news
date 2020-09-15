@@ -82,7 +82,7 @@
         										</ul>
         									</div>
         									<div class='col-lg-7 post-right'>
-        										<a href='/news/chitiet/baiviet/".$data->slug."/".$data->id."'>
+        										<a href='/news/chitiet/baiviet/".$data->slug."'>
         											<h4>".$data->title."</h4>
         										</a>
         										<ul class='meta'>
