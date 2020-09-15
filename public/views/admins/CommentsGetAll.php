@@ -67,7 +67,7 @@ include_once('public/views/Share/Header.php');
                                 colspan="1"
                                 aria-label="Engine version: activate to sort column ascending">Active
                             </th>
-                            <th class="text-center" style="width: 150px">Action</th>
+                            <th class="text-center" style="width: 160px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -75,10 +75,6 @@ include_once('public/views/Share/Header.php');
                         $stt = 1;
                         foreach ($data as $value) {
                             ?>
-
-                            <tr role="row" class="odd">          
-                                <td><?= $value->post_id ?></td>
-                                <td><span><?= $value->content ?></span></td>                  
 
                             <tr role="row" class="odd">
                                 <td tabindex="0" class="sorting_1"><?= $stt++ ?></td>
@@ -135,11 +131,7 @@ include_once('public/views/Share/Header.php');
                                             class='btn btn-secondary btn-shadow text-white button-large-edit'
                                             href='/news/comment_admin/disableCommentById/".$value->id."'>Disable <i class='fas fa-edit'></i> </a> ";
                                 	}
-                                	    
-                                	    
-                                	    
                                 	 ?>
-                                	
                                             <a
                                             class="btn btn-warning btn-shadow text-white button-large-delete"
                                             
