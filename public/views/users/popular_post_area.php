@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
             			<ul class='tags'>
             				<li><a href='/news/home/popularNews'>Popular</a></li>
             			</ul>
-            			<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
+            			<a href='/news/chitiet/baiviet/".$row['slug']."'>
             				<h3>".$row['title'].".</h3>
             			</a>
             			<ul class='meta'>
@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
         				</ul>
         			</div>
         			<div class='details'>
-        				<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
+        				<a href='/news/chitiet/baiviet/".$row['slug']."'>
         						<h4>".$row['title'].".</h4>
         				</a>
         				<ul class='meta'>

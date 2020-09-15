@@ -25,6 +25,21 @@ class post_repository
         }
         return null;
     }
+    
+    function getBySLug($id){
+        $query =" SELECT * FROM post WHERE slug = '".$id ."' ";
+        $result = $this->mysql->query($query);
+        $post;
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $post = new posts($row['id'],$row['category_id'],$row['title'],$row['intro'],$row['content'],$row['images'],$row['tag'],$row['description'],$row['count_conment'],$row['slug'],$row['active'],$row['date']);
+            }
+        }
+        if (isset($post)) {
+            return $post;
+        }
+        return null;
+    }
 
     function deleteById($id){
         $query = " DELETE FROM post WHERE id='".$id."' "; 
@@ -37,11 +52,11 @@ class post_repository
         $flag = true;
         if ($p->getId() == null) {
             $query = "INSERT INTO post (category_id, title, intro,content,images,tag,description,slug,active,count_conment,date)
- VALUES ('$p->category_id', '$p->title', '$p->intro','$p->content','$p->images.','$p->tag','$p->description','$p->slug',0,$p->active,'$p->date')";
+ VALUES ('$p->category_id', '$p->title', '$p->intro','$p->content','$p->images.','$p->tag','$p->description','$p->slug',1,0,'$p->date')";
             $result = $this->mysql->query($query);
             $flag = $result;
         } else {
-            $query = "UPDATE post SET category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description',  slug = '$p->slug', active = $p->active  
+            $query = "UPDATE post SET category_id= $p->category_id, title ='$p->title', intro = '$p->intro', content = '$p->content', images = '$p->images', tag = '$p->tag', description = '$p->description',  count_conment = '$p->count_conment'  ,slug = '$p->slug', active = $p->active  
                    WHERE id = $p->id";
             $result = $this->mysql->query($query);
             $flag = $result;

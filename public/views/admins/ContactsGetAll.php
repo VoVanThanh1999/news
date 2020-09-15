@@ -42,11 +42,7 @@ include_once('public/views/Share/Header.php');
                            aria-describedby="example1_info">
                         <thead>
                         <tr role="row">
-                            <th class="sorting_asc text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                ID
-                            </th>
+                           
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
                                 aria-label="Browser: activate to sort column ascending">Họ tên

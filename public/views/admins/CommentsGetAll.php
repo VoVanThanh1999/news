@@ -42,18 +42,10 @@ include_once('public/views/Share/Header.php');
                            aria-describedby="example1_info">
                         <thead>
                         <tr role="row">
-                            <th class="sorting_asc text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                ID
-                            </th>
+                            
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
-                                aria-label="Browser: activate to sort column ascending">User Id
-                            </th>
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Platform(s): activate to sort column ascending">Post Id
+                                aria-label="Platform(s): activate to sort column ascending">Title Post
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -72,9 +64,7 @@ include_once('public/views/Share/Header.php');
                         <?php
                         foreach ($data as $value) {
                             ?>
-                            <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
-                                <td><?= $value->user_id ?></td>
+                            <tr role="row" class="odd">          
                                 <td><?= $value->post_id ?></td>
                                 <td><span><?= $value->content ?></span></td>                  
                                 <td class="text-center">

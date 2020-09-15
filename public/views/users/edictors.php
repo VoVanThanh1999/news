@@ -15,7 +15,7 @@
                                 		<img class='img-fluid' src='/news/public/views/img/".$row['images']."' alt='' >
                                 	</div>
                                 	<div class='detail'>
-                                		<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
+                                		<a href='/news/chitiet/baiviet/".$row['slug']."'>
                                         <h6>".$row['title']."</h6></a>
                                 		<ul class='meta'>
                                 			<li><a href=''><span class='lnr lnr-calendar-full'></span>".$row['date']."</a></li>

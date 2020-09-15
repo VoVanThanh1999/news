@@ -13,7 +13,7 @@
                             			<img  class='img-fluid' src='/news/public/views/img/".$row['images']."' alt=''style='' >
                             		</div>
                             		<div class='details'>
-                            			<a href='/news/chitiet/baiviet/".$row['slug']."/".$row['id']."'>
+                            			<a href='/news/chitiet/baiviet/".$row['slug']."'>
                             				<h6>".$row['title']."</h6>
                             			</a>
                             			<ul class='meta'>
