@@ -45,7 +45,7 @@ include_once('public/views/Share/Header.php');
                             <th class="sorting_asc text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
                                 aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                ID
+                                STT
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -164,7 +164,7 @@ include_once('public/views/Share/Header.php');
     function DoDelete(id) {
         $.ajax({
             type: "DELETE",
-            url: "/news/comment_admin/deleteComment/" + id,
+            url: "/news/admin/deleteComment/" + id,
             dataType: "html",
             success: function (html) {
                 alertify.success('Deleted');

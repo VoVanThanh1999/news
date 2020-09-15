@@ -48,7 +48,7 @@ class contacts_repository
     }
 
     function deteteById($id){
-        $query ="DELETE FROM contacts WHERE id = '".$id."'";
+        $query ="DELETE FROM contacts WHERE id = '$id'";
         $result = $this->mysql->query($query);
         if($result==true){
             return  true;
