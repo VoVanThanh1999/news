@@ -6,13 +6,13 @@ class comment_admin extends model_and_view_admin{
     public function activeCommentById($id){
        $comment_sv = new comment_service();    
        $comment_sv->activeCommentById($id);
-       header('/news/admin/GetAllComment');
+       header('location:/news/admin/GetAllComment');
     }
     
     public function disableCommentById($id){
         $comment_sv = new comment_service(); 
         $comment_sv->disableCommentById($id);
-        header('/news/admin/GetAllComment');
+        header('location:/news/admin/GetAllComment');
     }
     
     public function deleteComment($id){

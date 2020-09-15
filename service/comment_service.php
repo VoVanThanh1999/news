@@ -27,8 +27,7 @@ class comment_service {
         $userDeltails = $userDAO->getById($comment->getUser_id());
         if (isset($comment) && $comment->getActive()==0){
             $comment->setActive(1);
-           
-            $postDetails->setCount_conment($postDetails->getCount_conment()+1); 
+            $postDetails->setCount_conment($postDetails->getCount_conment()+1);
             $postDAO->saveOrUpdate($postDetails);
             $commentDAO->saveOrUpdate($comment);
         }

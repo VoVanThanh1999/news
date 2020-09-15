@@ -45,7 +45,7 @@ include_once('public/views/Share/Header.php');
                             <th class="sorting_asc text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
                                 aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                ID
+                                STT
                             </th>
                             <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1"
@@ -63,20 +63,19 @@ include_once('public/views/Share/Header.php');
                                 colspan="1"
                                 aria-label="Engine version: activate to sort column ascending">Reply
                             </th>
-
-                           
                             <th class="text-center" style="width: 150px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
+                        $stt ++;
                         foreach ($data as $value) {
                             ?>
                             <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1"><?= $value->id ?></td>
-                                <td><?= $value->full_name ?></td>
-                                <td><?= $value->email ?></td>
-                                <td><?= $value->phone_number ?></td>                                      
+                                <td tabindex="0" class="sorting_1 text-center"><?= $stt ++?></td>
+                                <td ><?= $value->full_name ?></td>
+                                <td ><?= $value->email ?></td>
+                                <td ><?= $value->phone_number ?></td>
                                 <td>
                                     <?php
                                     if ($value->active == 1) {
