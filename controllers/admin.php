@@ -248,7 +248,7 @@ class admin extends model_and_view_admin
 
     function deleteComment($id)
     {
-        $comment_sv = new comment_service();
-        return $comment_sv->deleteComment($id);
+        $comment_dao = new comments_repository;
+        return $comment_dao->deleteById($id);
     }
 }
