@@ -171,8 +171,3 @@ class contacts{
 
     
 }
-class contactsModels{
-    // author nguyen dinh viet
-
-
-}

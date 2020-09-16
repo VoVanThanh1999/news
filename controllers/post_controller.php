@@ -8,7 +8,6 @@ class  post_controller extends model_and_view_post {
         $image = "";
         $files = $_FILES['file'];
         $fileName = $_FILES['file']['name'];
-        echo $fileName;
         $fileTmpName = $_FILES['file']['tmp_name'];
         $fileSize = $_FILES['file']['size'];
         $fileError = $_FILES['file']['error'];

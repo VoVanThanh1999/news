@@ -60,15 +60,13 @@ include_once('public/views/Share/Header.php');
                                 colspan="1"
                                 aria-label="Engine version: activate to sort column ascending">Số ĐT
                             </th>                
-                            <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1"
-                                colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Reply
-                            </th>
+                            
                             <th class="text-center" style="width: 150px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
+                        $stt = 0;
                         $stt ++;
                         foreach ($data as $value) {
                             ?>
