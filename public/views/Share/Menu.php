@@ -508,6 +508,11 @@
                         <i class="metismenu-icon pe-7s-comment"></i>Comment
                     </a>
                 </li>
+                <li >
+                    <a href="/news/admin/GetAllReply">
+                        <i class="metismenu-icon pe-7s-comment"></i>Reply
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
