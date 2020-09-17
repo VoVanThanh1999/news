@@ -24,6 +24,7 @@ require_once 'models/contacts.php';
 require_once 'models/configs.php';
 require_once 'models/comments.php';
 require_once 'models/categories.php';
+require_once 'models/Reply.php';
 
 //controller
 require_once 'controllers/categories_controller.php';
@@ -32,6 +33,8 @@ require_once 'controllers/categories_controller.php';
 require_once 'controllers/comment_admin.php';
 require_once 'controllers/comment_user.php';
 require_once 'controllers/post_controller.php';
+require_once 'controllers/reply_message.php';
+
 
 //service
 require_once 'service/comment_service.php';
@@ -43,6 +46,7 @@ require_once 'repository/configs_repository.php';
 require_once 'repository/comments_repository.php';
 require_once 'repository/user_repository.php';
 require_once 'repository/contacts_repository.php';
+require_once 'repository/reply_repository.php';
 // MAILER
 //require_once 'php_mailer/PHPMailer.php';
 //require_once 'php_mailer/SMTP.php';

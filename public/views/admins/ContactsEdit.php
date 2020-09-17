@@ -58,10 +58,10 @@ include_once('public/views/Share/Menu.php');
                 	<?php
                         if($data->active == 1){
                            echo " <td> <label for='content' class='mt-2 float-right'>Reply</label></td>";
-                           echo " <td><textarea  class='form-control' id='content'  name='' >".$datas->reply." </textarea></td>";
+                           echo " <td><textarea  class='form-control' id=''  name='' >".$datas->reply." </textarea></td>";
                         }else{
                             echo " <td> <label for='content' class='mt-2 float-right'>Reply</label></td>";
-                            echo " <td><textarea  class='form-control' id='summernote'  name='' > </textarea></td>";
+                            echo " <td><textarea  class='form-control' id='replymessage'   name='' > </textarea></td>";
                         }
                      ?>
                 
@@ -80,7 +80,14 @@ include_once('public/views/Share/Menu.php');
                 <tr>
                     <td></td>
                     <td>
-                        <input id="reply"  value="Reply" class="btn btn-success btn-shadow text-white mr-3 col-3" />
+                    <?php
+                        if($data->active == 1){
+                            echo "<input  disabled='disabled'     value='Reply' class='btn btn-secondary btn-shadow text-white mr-3 col-3' />";
+                        }else{
+                            echo "<input id='reply'  value='Reply' class='btn btn-success btn-shadow text-white mr-3 col-3' />";
+                        }
+                     ?>
+                    
                         <a href="/news/admin/GetAllContact" class="btn btn-danger btn-shadow text-white align-self-center mr-3 col-3 pt-2"><span>Cancel</span> </a>
                     </td>
                 </tr>
@@ -121,16 +128,12 @@ include_once('public/views/Share/Menu.php');
     $('#reply').click(function(){
     	var c = confirm("Xác nhận reply !");
     	if (c==true) {
-        	debugger;
+        
 			var idContact = $('#idContact').val();
-			var subject = $('#titleContact').val();
-			var content = $('#content').val();
-			var mailClient = $('#emailClient').val();
-			var Object = {'idContact':idContact,'subject':subject,'content':content,'mailClient':mailClient};
-			var urlResource = 'localhost/news/contacts_controller/reply_email';
-			
+			var content = $('#replymessage').val();
+			var Object = {'idContact':idContact,'content':content};
 			$.ajax({
-				url: '/news/contacts_controller/reply_email',
+				url: '/news/reply_message/reply',
 				data:Object,
 				method:'POST'
 		

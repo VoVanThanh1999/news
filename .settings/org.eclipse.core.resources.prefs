@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//controllers/reply_message.php=UTF-8
 encoding//public/views/admins/CommentsGetAll.php=UTF-8
 encoding//public/views/admins/ContactsEdit.php=UTF-8
 encoding//public/views/admins/ContactsGetAll.php=UTF-8
