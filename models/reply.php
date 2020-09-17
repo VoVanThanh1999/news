@@ -5,11 +5,18 @@ class Reply {
     public $dateCreate;
     public $userID;
     public $contactID;
-    public $reply;
     public $title;
     /**
      * @return mixed
      */
+    public function __construct($id,$message,$dateCreate,$userID,$contactID,$title){
+        $this->id=$id;
+        $this->message=$message;
+        $this->dateCreate=$dateCreate;
+        $this->userID=$userID;
+        $this->contactID=$contactID;
+        $this->title=$title;
+    }
     public function getId()
     {
         return $this->id;
@@ -50,10 +57,10 @@ class Reply {
     /**
      * @return mixed
      */
-    public function getReply()
-    {
-        return $this->reply;
-    }
+//    public function getReply()
+//    {
+//        return $this->reply;
+//    }
 
     /**
      * @return mixed
@@ -103,13 +110,13 @@ class Reply {
         $this->contactID = $contactID;
     }
 
-    /**
-     * @param mixed $reply
-     */
-    public function setReply($reply)
-    {
-        $this->reply = $reply;
-    }
+//    /**
+//     * @param mixed $reply
+//     */
+//    public function setReply($reply)
+//    {
+//        $this->reply = $reply;
+//    }
 
     /**
      * @param mixed $title

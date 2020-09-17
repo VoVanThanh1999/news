@@ -43,18 +43,17 @@ class reply_repository {
         }
         return $flag;
     }
-    function getAll()
-    {
-        $query =" SELECT * FROM users  ";
+
+    function getAll(){
+        echo("a");
+        $query =" SELECT * FROM reply  ";
         $result = $this->mysql->query($query);
-        $users = array();
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $user = new users($row['id'],$row['name'],$row['email'],$row['pass_word'],$row['gender'],$row['date_of_birth']);
-                array_push($users,$user);
-            }
+        $replys = [];
+        foreach ($result->fetch_all() as $value){
+            array_push($replys , new reply($value[0],$value[1],$value[2],$value[3],$value[4],$value[5]));
         }
-        return $users;
+
+        return $replys;
     }
 }
 

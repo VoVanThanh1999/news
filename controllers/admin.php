@@ -251,4 +251,10 @@ class admin extends model_and_view_admin
         $comment_dao = new comments_repository;
         return $comment_dao->deleteById($id);
     }
+    function GetAllReply()
+    {
+        $replyDao = new reply_repository();
+        $replys = $replyDao->getALL();
+        $this->view('Reply', $replys);
+    }
 }

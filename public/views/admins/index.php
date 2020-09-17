@@ -1,4 +1,4 @@
-tabs-animation<!--------------------- Heade share -------------->
+<!--------------------- Heade share -------------->
 <?php
 include_once('public/views/Share/Header.php');
 ?>
